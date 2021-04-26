@@ -15,15 +15,20 @@ export function App() {
           <button>Cancel</button>
           <button>Save</button>
         </form>
-        <section className="Task-list">
-          <label>
-            <input name="task" type="checkbox" />
-            Complete development of apprenticeship practice to-do app
-          </label>
+        <section className="TaskList">
+          <div className="taskCard">
+            <label>
+              <input name="task" type="checkbox" />
+              Complete development of apprenticeship practice to-do app
+            </label>
+            <button>Edit</button>
+            <button>Delete</button>
+          </div>
         </section>
         <button>Create New Task</button>
-        <section className="Complete-list">
+        <section className="CompleteList">
           <h3>Completed Tasks</h3>
+          <p>Count: 1</p>
           <label>
             <input name="task" type="checkbox" />
             Lorem ipsum
