@@ -9,7 +9,7 @@ export function App() {
       </header>
       <body>
         <h3>Active Tasks</h3>
-        <form>
+        <form className="newTaskForm">
           <label>New Task</label>
           <input></input>
           <button>Cancel</button>
