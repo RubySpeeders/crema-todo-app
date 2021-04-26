@@ -25,7 +25,7 @@ export function App() {
             <button>Delete</button>
           </div>
         </section>
-        <button>Create New Task</button>
+        <button className="newTaskButton">Create New Task</button>
         <section className="CompleteList">
           <h3>Completed Tasks</h3>
           <p>Count: 1</p>
