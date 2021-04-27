@@ -34,7 +34,7 @@
   align-items: flex-start;
   padding: 16px;
   
-  position: absolute;
+  /* position: absolute; */
   width: 466px;
   height: 90px;
   left: 487px;
@@ -72,8 +72,6 @@ width: 466px;
 height: 40px;
 left: 487px;
 top: 274px;
-
-/* Primary/10% */
 
 background: rgba(65, 88, 196, 0.1);
 border-radius: 4px;
