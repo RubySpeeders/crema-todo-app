@@ -4,7 +4,7 @@ export function NewTaskForm() {
       <label>New Task</label>
       <input></input>
       <button>Cancel</button>
-      <button>Save</button>
+      <button id="saveButton">Save</button>
     </form>
   )
 }

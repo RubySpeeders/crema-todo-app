@@ -7,9 +7,10 @@ export function TaskCard() {
 
   return (
     <div className="taskCard">
-      <label>
-        <input name="task" type="checkbox" />
+      <label className="container">
+        <input name="task" type="checkbox" className="checkbox" />
         Complete development of apprenticeship practice to-do app
+        <span className="checkmark"></span>
       </label>
       <button>Edit</button>
       <button>Delete</button>

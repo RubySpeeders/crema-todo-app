@@ -1,6 +1,6 @@
-import { AppHeader } from "./AppHeader"
 import { render } from "@testing-library/react"
 import React from "react"
+import { AppHeader } from "./AppHeader"
 
 describe("AppHeader", () => {
   it("name prop is rendered", () => {

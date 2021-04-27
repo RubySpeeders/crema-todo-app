@@ -7,7 +7,9 @@ export function CreateTaskButton() {
 
   return (
     <div>
-      <button className="newTaskButton">Create New Task</button>
+      <button className="newTaskButton">
+        <p id="newTaskText">Create New Task</p>
+      </button>
     </div>
   )
 }
