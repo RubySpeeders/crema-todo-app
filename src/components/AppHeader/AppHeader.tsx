@@ -1,6 +1,6 @@
 export function AppHeader() {
   return (
-    <header className="App-header">
+    <header className="AppHeader">
       <h1>My Tasks</h1>
     </header>
   )

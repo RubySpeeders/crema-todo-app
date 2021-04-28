@@ -5,7 +5,7 @@ import { TaskCard } from "./TaskCard"
 describe("TaskCard", () => {
   it("name prop is rendered", () => {
     // Arrange
-    const name = "TaskCard"
+    const name = "taskCard"
 
     // Act
     const { getByText } = render(<TaskCard />)

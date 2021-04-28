@@ -5,7 +5,7 @@ import { CreateTaskButton } from "./CreateTaskButton"
 describe("CreateTaskButton", () => {
   it("name prop is rendered", () => {
     // Arrange
-    const name = "CreateTaskButton"
+    const name = "createTaskButton"
 
     // Act
     const { getByText } = render(<CreateTaskButton />)

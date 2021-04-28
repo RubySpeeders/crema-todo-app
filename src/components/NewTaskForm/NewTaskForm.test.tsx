@@ -5,7 +5,7 @@ import { NewTaskForm } from "./NewTaskForm"
 describe("NewTaskForm", () => {
   it("name prop is rendered", () => {
     // Arrange
-    const name = "NewTaskForm"
+    const name = "newTaskForm"
 
     // Act
     const { getByText } = render(<NewTaskForm />)
