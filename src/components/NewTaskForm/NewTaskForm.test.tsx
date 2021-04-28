@@ -1,6 +1,6 @@
-import { NewTaskForm } from "./NewTaskForm"
 import { render } from "@testing-library/react"
 import React from "react"
+import { NewTaskForm } from "./NewTaskForm"
 
 describe("NewTaskForm", () => {
   it("name prop is rendered", () => {
