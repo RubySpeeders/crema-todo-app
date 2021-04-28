@@ -3,9 +3,9 @@ import { render } from "@testing-library/react"
 import { CreateTaskButton } from "./CreateTaskButton"
 
 describe("CreateTaskButton", () => {
-  it("name prop is rendered", () => {
+  it("displays button text", () => {
     // Arrange
-    const name = "createTaskButton"
+    const name = "Create New Task"
 
     // Act
     const { getByText } = render(<CreateTaskButton />)

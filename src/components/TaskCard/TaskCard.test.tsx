@@ -3,15 +3,18 @@ import { render } from "@testing-library/react"
 import { TaskCard } from "./TaskCard"
 
 describe("TaskCard", () => {
-  it("name prop is rendered", () => {
+  it("has edit and delete buttons", () => {
     // Arrange
-    const name = "taskCard"
+    // const btnText1 = "Edit"
+    // const btnText2 = "Delete"
 
     // Act
     const { getByText } = render(<TaskCard />)
-    const received = getByText(name)
+    const receivedEdit = getByText("Edit")
+    const receivedDelete = getByText("Delete")
 
     // Assert
-    expect(received).toBeDefined()
+    expect(receivedEdit).toBeDefined()
+    expect(receivedDelete).toBeDefined()
   })
 })

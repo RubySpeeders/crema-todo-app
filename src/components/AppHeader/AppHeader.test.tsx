@@ -3,9 +3,9 @@ import { render } from "@testing-library/react"
 import { AppHeader } from "./AppHeader"
 
 describe("AppHeader", () => {
-  it("name prop is rendered", () => {
+  it("displays title", () => {
     // Arrange
-    const name = "AppHeader"
+    const name = "My Tasks"
 
     // Act
     const { getByText } = render(<AppHeader />)

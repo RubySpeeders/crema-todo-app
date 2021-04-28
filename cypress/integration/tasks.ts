@@ -3,5 +3,6 @@ describe("App", function () {
     cy.visit("/")
     cy.get(".App-header").contains("My Tasks")
     cy.get('[type="checkbox"]').should("exist")
+    // cy.findByTestId("kittykat")
   })
 })

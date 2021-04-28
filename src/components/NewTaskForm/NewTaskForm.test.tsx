@@ -1,15 +1,15 @@
-import { render } from "@testing-library/react"
+import { getByLabelText, render } from "@testing-library/react"
 // import React from "react"
 import { NewTaskForm } from "./NewTaskForm"
 
 describe("NewTaskForm", () => {
-  it("name prop is rendered", () => {
+  it("has a label for input", () => {
     // Arrange
-    const name = "newTaskForm"
+    const name = "New Task"
 
     // Act
-    const { getByText } = render(<NewTaskForm />)
-    const received = getByText(name)
+    const { getByLabelText } = render(<NewTaskForm />)
+    const received = getByLabelText(name)
 
     // Assert
     expect(received).toBeDefined()

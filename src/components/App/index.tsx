@@ -10,19 +10,17 @@ export function App() {
   return (
     <div className="App">
       <AppHeader />
-      <body>
-        <h3>Active Tasks</h3>
-        <NewTaskForm />
-        <div className="TaskList">
-          <TaskCard />
-        </div>
-        <CreateTaskButton />
-        <div className="CompleteList">
-          <h3>Completed Tasks</h3>
-          <TaskCounter />
-          <TaskCard />
-        </div>
-      </body>
+      <h3>Active Tasks</h3>
+      <NewTaskForm />
+      <div className="TaskList">
+        <TaskCard />
+      </div>
+      <CreateTaskButton />
+      <div className="CompleteList">
+        <h3>Completed Tasks</h3>
+        <TaskCounter />
+        <TaskCard />
+      </div>
     </div>
   )
 }
