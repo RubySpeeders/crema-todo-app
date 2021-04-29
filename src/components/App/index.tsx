@@ -17,20 +17,29 @@ export function App() {
   //   setTasksArray([...taskArray, e.target.value])
   // }
   const tasks: Task[] = [{ task: "finish the app" }, { task: "do a dance" }]
+  const completedTasks: Task[] = [
+    { task: "make an array" },
+    { task: "do it live" },
+  ]
   return (
     <div className="App">
       <AppHeader />
       <h3>Active Tasks</h3>
-      {tasks.map((taskItem: Task) => {
-        return <TaskCard task={taskItem} />
-      })}
+      <div className="TaskList">
+        {" "}
+        {tasks.map((taskItem: Task) => {
+          return <TaskCard task={taskItem} />
+        })}
+      </div>
+
       <FormNewTask />
-      <div className="TaskList">{/* <TaskCard taskArray={tasks}/> */}</div>
       <ButtonCreateTask />
       <div className="CompleteList">
         <h3>Completed Tasks</h3>
         <TaskCounter />
-        {/* <TaskCard /> */}
+        {completedTasks.map((taskItem: Task) => {
+          return <TaskCard task={taskItem} />
+        })}
       </div>
     </div>
   )
