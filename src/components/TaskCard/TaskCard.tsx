@@ -1,15 +1,14 @@
 // import { useState } from "react"
 
-// type Props = Readonly<{}>
+export type Task = { task: string }
+type Props = { task: Task }
 
-export function TaskCard() {
-  // const [count, setCount] = useState(0)
-
+export function TaskCard({ task }: Props) {
   return (
     <div className="taskCard">
       <label className="container">
         <input name="task" type="checkbox" className="checkbox" />
-        Complete development of apprenticeship practice to-do app
+        {task.task}
         <span className="checkmark"></span>
       </label>
       <button>Edit</button>

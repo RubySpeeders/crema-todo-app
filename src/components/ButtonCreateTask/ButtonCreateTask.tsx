@@ -2,8 +2,8 @@
 
 // type Props = Readonly<{}>
 
-export function CreateTaskButton() {
-  // const [count, setCount] = useState(0)
+export function ButtonCreateTask() {
+  // const [modal, setModal] = useState(0)
 
   return (
     <div>

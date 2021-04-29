@@ -1,6 +1,6 @@
 // import React from "react"
 import decoratorCentered from "@storybook/addon-centered"
-import { NewTaskForm } from "./NewTaskForm"
+import { ButtonCreateTask } from "./ButtonCreateTask"
 
 /**
  * See Storybook Docs: Writing Stories
@@ -8,8 +8,8 @@ import { NewTaskForm } from "./NewTaskForm"
  */
 
 export default {
-  title: "NewTaskForm",
+  title: "ButtonCreateTask",
   decorators: [decoratorCentered],
 }
 
-export const example = () => <NewTaskForm />
+export const example = () => <ButtonCreateTask />

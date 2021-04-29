@@ -1,6 +1,6 @@
 import { render } from "@testing-library/react"
 // import React from "react"
-import { NewTaskForm } from "./NewTaskForm"
+import { FormNewTask } from "./FormNewTask"
 
 describe("NewTaskForm", () => {
   it("has a label for input", () => {
@@ -8,7 +8,7 @@ describe("NewTaskForm", () => {
     const name = "New Task"
 
     // Act
-    const { getByLabelText } = render(<NewTaskForm />)
+    const { getByLabelText } = render(<FormNewTask />)
     const received = getByLabelText(name)
 
     // Assert

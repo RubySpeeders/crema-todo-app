@@ -12,4 +12,4 @@ export default {
   decorators: [decoratorCentered],
 }
 
-export const example = () => <TaskCard />
+export const example = () => <TaskCard task={{ task: "finish the app" }} />
