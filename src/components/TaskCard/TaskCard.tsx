@@ -1,6 +1,6 @@
 // import { useState } from "react"
+import { Task } from "../App"
 
-export type Task = { task: string }
 type Props = { task: Task }
 
 export function TaskCard({ task }: Props) {

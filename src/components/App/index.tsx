@@ -4,8 +4,9 @@ import { AppHeader } from "../AppHeader"
 import { ButtonCreateTask } from "../ButtonCreateTask"
 import { FormNewTask } from "../FormNewTask"
 import { TaskCard } from "../TaskCard"
-import { Task } from "../TaskCard/TaskCard"
 import { TaskCounter } from "../TaskCounter"
+
+export type Task = { task: string }
 
 export function App() {
   // const [modal, setModal] = React.useState(false)
@@ -16,6 +17,7 @@ export function App() {
   // const addTask = (e) => {
   //   setTasksArray([...taskArray, e.target.value])
   // }
+
   const tasks: Task[] = [{ task: "finish the app" }, { task: "do a dance" }]
   const completedTasks: Task[] = [
     { task: "make an array" },
