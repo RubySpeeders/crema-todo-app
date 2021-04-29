@@ -2,7 +2,7 @@ import { render } from "@testing-library/react"
 // import React from "react"
 import { FormNewTask } from "./FormNewTask"
 
-describe("NewTaskForm", () => {
+describe("FormNewTask", () => {
   it("has a label for input", () => {
     // Arrange
     const name = "New Task"

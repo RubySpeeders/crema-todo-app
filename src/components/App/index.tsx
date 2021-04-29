@@ -2,7 +2,7 @@
 import "./styles.css"
 import { AppHeader } from "../AppHeader"
 import { ButtonCreateTask } from "../ButtonCreateTask"
-import { FormNewTask } from "../FormNewTask/FormNewTask"
+import { FormNewTask } from "../FormNewTask"
 import { TaskCard } from "../TaskCard"
 import { Task } from "../TaskCard/TaskCard"
 import { TaskCounter } from "../TaskCounter"

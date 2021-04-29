@@ -8,7 +8,7 @@ import { FormNewTask } from "./FormNewTask"
  */
 
 export default {
-  title: "NewTaskForm",
+  title: "FormNewTask",
   decorators: [decoratorCentered],
 }
 

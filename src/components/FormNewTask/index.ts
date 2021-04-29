@@ -1,1 +1,1 @@
-export { FormNewTask as NewTaskForm } from "./FormNewTask"
+export { FormNewTask } from "./FormNewTask"

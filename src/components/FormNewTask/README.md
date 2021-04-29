@@ -1,4 +1,4 @@
-# `<NewTaskForm />`
+# `<FormNewTask />`
 
 DESCRIPTION_HERE
 
@@ -11,7 +11,7 @@ DESCRIPTION_HERE
 
 ## Example
 
-![NewTaskForm](../../../.loki/reference/chrome_NewTaskForm_example.png)
+![FormNewTask](../../../.loki/reference/chrome_NewTaskForm_example.png)
 
 > Image location: [`.loki/reference/chrome_NewTaskForm_example.png`](../../../.loki/reference/chrome_NewTaskForm_example.png)
 > 
