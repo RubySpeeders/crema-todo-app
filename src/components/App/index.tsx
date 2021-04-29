@@ -29,8 +29,8 @@ export function App() {
       <h3>Active Tasks</h3>
       <div className="TaskList">
         {" "}
-        {tasks.map((taskItem: Task) => {
-          return <TaskCard task={taskItem} />
+        {tasks.map((taskItem: Task, index: number) => {
+          return <TaskCard key={index} task={taskItem} />
         })}
       </div>
 
