@@ -1,4 +1,3 @@
-// import { useState } from "react"
 import { Task } from "../../types/Task"
 
 type Props = { task: Task }
