@@ -12,4 +12,8 @@ export default {
   decorators: [decoratorCentered],
 }
 
-export const example = () => <ButtonCreateTask />
+export const example = () => (
+  <ButtonCreateTask
+    onShowModal={() => console.log("testing story function?")}
+  />
+)

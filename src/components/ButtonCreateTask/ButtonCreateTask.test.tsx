@@ -8,7 +8,13 @@ describe("ButtonCreateTask", () => {
     const name = "Create New Task"
 
     // Act
-    const { getByText } = render(<ButtonCreateTask />)
+    const { getByText } = render(
+      <ButtonCreateTask
+        onShowModal={() => {
+          console.log("test happened")
+        }}
+      />,
+    )
     const received = getByText(name)
 
     // Assert

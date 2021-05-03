@@ -23,6 +23,10 @@ export function App() {
     { task: "make an array" },
     { task: "do it live" },
   ]
+
+  const showModal = () => {
+    console.log("this works")
+  }
   return (
     <div className="App">
       <AppHeader />
@@ -35,7 +39,7 @@ export function App() {
       </div>
 
       <FormNewTask />
-      <ButtonCreateTask />
+      <ButtonCreateTask onShowModal={showModal} />
       <div className="CompleteList">
         <h3>Completed Tasks</h3>
         <TaskCounter />
