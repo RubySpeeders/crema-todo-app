@@ -16,24 +16,17 @@ export function App() {
   const addTask = (text: string) => {
     setTasksArray((previousArray) => [
       ...previousArray,
-      { id: Math.random(), task: text, status: false },
+      { id: Math.random(), task: text, isComplete: false },
     ])
   }
-
-  // const tasks: Task[] = [
-  //   { id: 1, task: "finish the app", status: false },
-  //   { id: 2, task: "do a dance", status: false },
-  // ]
-  const completedTasks: Task[] = [
-    { id: 3, task: "make an array", status: true },
-    { id: 4, task: "do it live", status: true },
-  ]
+  const completedTasks = taskArray.filter((task) => task.isComplete)
+  const activeTasks = taskArray.filter((task) => !task.isComplete)
   return (
     <div className="App">
       <AppHeader />
       <h3>Active Tasks</h3>
       <div className="TaskList">
-        {taskArray.map((taskItem: Task, index: number) => {
+        {activeTasks.map((taskItem: Task, index: number) => {
           return <TaskCard key={index} task={taskItem} />
         })}
       </div>
@@ -43,7 +36,7 @@ export function App() {
       <div className="CompleteList">
         <h3>Completed Tasks</h3>
         <TaskCounter />
-        {completedTasks.map((taskItem: Task, index) => {
+        {completedTasks.map((taskItem: Task, index: number) => {
           return <TaskCard key={index} task={taskItem} />
         })}
       </div>
