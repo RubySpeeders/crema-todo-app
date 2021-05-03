@@ -12,4 +12,11 @@ export default {
   decorators: [decoratorCentered],
 }
 
-export const example = () => <FormNewTask />
+export const example = () => (
+  <FormNewTask
+    show={true}
+    onHideModal={() => {
+      console.log("test story")
+    }}
+  />
+)

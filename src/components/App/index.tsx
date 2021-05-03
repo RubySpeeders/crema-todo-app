@@ -1,4 +1,4 @@
-// import React from "react"
+import React from "react"
 import "./styles.css"
 import { AppHeader } from "../AppHeader"
 import { ButtonCreateTask } from "../ButtonCreateTask"
@@ -9,7 +9,7 @@ import { TaskCounter } from "../TaskCounter"
 export type Task = { task: string }
 
 export function App() {
-  // const [modal, setModal] = React.useState(false)
+  const [modal, setModal] = React.useState(false)
   // const handleModal = (e) => {
   //   setModal(true)
   // }
@@ -24,9 +24,10 @@ export function App() {
     { task: "do it live" },
   ]
 
-  const showModal = () => {
-    console.log("this works")
+  const handleModal = () => {
+    modal ? setModal(false) : setModal(true)
   }
+
   return (
     <div className="App">
       <AppHeader />
@@ -38,8 +39,9 @@ export function App() {
         })}
       </div>
 
-      <FormNewTask />
-      <ButtonCreateTask onShowModal={showModal} />
+      <FormNewTask show={modal} onHideModal={handleModal} />
+      <ButtonCreateTask onShowModal={handleModal} />
+      {modal}
       <div className="CompleteList">
         <h3>Completed Tasks</h3>
         <TaskCounter />
