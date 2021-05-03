@@ -10,7 +10,7 @@ describe("TaskCard", () => {
 
     // Act
     const { getByText } = render(
-      <TaskCard task={{ id: 1, task: "do a dance", status: true }} />,
+      <TaskCard task={{ id: 1, task: "do a dance", isComplete: true }} />,
     )
     const receivedEdit = getByText("Edit")
     const receivedDelete = getByText("Delete")
