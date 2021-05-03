@@ -1,47 +1,48 @@
-import React from "react"
+// import React from "react"
 import "./styles.css"
+import { AppHeader } from "../AppHeader"
+import { ButtonCreateTask } from "../ButtonCreateTask"
+import { FormNewTask } from "../FormNewTask"
+import { TaskCard } from "../TaskCard"
+import { TaskCounter } from "../TaskCounter"
+
+export type Task = { task: string }
 
 export function App() {
-  const [count, setCount] = React.useState(0)
-  const changeCount = () => {
-    setCount(1)
-  }
+  // const [modal, setModal] = React.useState(false)
+  // const handleModal = (e) => {
+  //   setModal(true)
+  // }
+  // const [taskArray, setTasksArray] = React.useState([])
+  // const addTask = (e) => {
+  //   setTasksArray([...taskArray, e.target.value])
+  // }
 
+  const tasks: Task[] = [{ task: "finish the app" }, { task: "do a dance" }]
+  const completedTasks: Task[] = [
+    { task: "make an array" },
+    { task: "do it live" },
+  ]
   return (
     <div className="App">
-      <header className="App-header">
-        <h1>My Tasks</h1>
-      </header>
-      <body>
-        <h3>Active Tasks</h3>
-        <form className="newTaskForm">
-          <label>New Task</label>
-          <input></input>
-          <button>Cancel</button>
-          <button>Save</button>
-        </form>
-        <section className="TaskList">
-          <div className="taskCard">
-            <label>
-              <input name="task" type="checkbox" />
-              Complete development of apprenticeship practice to-do app
-            </label>
-            <button>Edit</button>
-            <button>Delete</button>
-          </div>
-        </section>
-        <button className="newTaskButton" onClick={changeCount}>
-          Create New Task
-        </button>
-        <section className="CompleteList">
-          <h3>Completed Tasks</h3>
-          <p>Count: {count}</p>
-          <label>
-            <input name="task" type="checkbox" />
-            Lorem ipsum
-          </label>
-        </section>
-      </body>
+      <AppHeader />
+      <h3>Active Tasks</h3>
+      <div className="TaskList">
+        {" "}
+        {tasks.map((taskItem: Task) => {
+          return <TaskCard task={taskItem} />
+        })}
+      </div>
+
+      <FormNewTask />
+      <ButtonCreateTask />
+      <div className="CompleteList">
+        <h3>Completed Tasks</h3>
+        <TaskCounter />
+        {completedTasks.map((taskItem: Task) => {
+          return <TaskCard task={taskItem} />
+        })}
+      </div>
     </div>
   )
 }
