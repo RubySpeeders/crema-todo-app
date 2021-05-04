@@ -5,5 +5,7 @@ describe("App", function () {
     cy.get('[type="checkbox"]').should("exist")
     cy.get(".createTaskButton").click()
     cy.get(".newTaskForm").should("exist")
+    cy.get("#cancelButton").click()
+    cy.get(".newTaskForm").should("not.exist")
   })
 })
