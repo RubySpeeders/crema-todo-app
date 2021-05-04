@@ -12,22 +12,24 @@ export function App() {
   // const handleModal = (e) => {
   //   setModal(true)
   // }
-  const [taskArray, setTasksArray] = React.useState<Task[]>([])
+  const [tasks, setTasks] = React.useState<Task[]>([])
   const addTask = (text: string) => {
-    setTasksArray((previousArray) => [
+    setTasks((previousArray) => [
       ...previousArray,
       { id: Math.random(), task: text, isComplete: false },
     ])
   }
-  const completedTasks = taskArray.filter((task) => task.isComplete)
-  const activeTasks = taskArray.filter((task) => !task.isComplete)
+  const completedTasks = tasks.filter((task) => task.isComplete)
+  const activeTasks = tasks.filter((task) => !task.isComplete)
   return (
     <div className="App">
       <AppHeader />
       <h3>Active Tasks</h3>
       <div className="TaskList">
         {activeTasks.map((taskItem: Task, index: number) => {
-          return <TaskCard key={index} task={taskItem} />
+          return (
+            <TaskCard key={index} task={taskItem} data-testid="active-task" />
+          )
         })}
       </div>
 
@@ -37,7 +39,13 @@ export function App() {
         <h3>Completed Tasks</h3>
         <TaskCounter />
         {completedTasks.map((taskItem: Task, index: number) => {
-          return <TaskCard key={index} task={taskItem} />
+          return (
+            <TaskCard
+              key={index}
+              task={taskItem}
+              data-testid="completed-task"
+            />
+          )
         })}
       </div>
     </div>
