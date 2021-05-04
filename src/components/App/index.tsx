@@ -31,7 +31,7 @@ export function App() {
   return (
     <div className="App">
       <AppHeader />
-      <h3>Active Tasks</h3>
+      <p>Active Tasks</p>
       <div className="TaskList">
         {" "}
         {tasks.map((taskItem: Task) => {
@@ -43,7 +43,7 @@ export function App() {
       <ButtonCreateTask onShowModal={handleModal} />
       {modal}
       <div className="CompleteList">
-        <h3>Completed Tasks</h3>
+        <p>Completed Tasks</p>
         <TaskCounter />
         {completedTasks.map((taskItem: Task) => {
           return <TaskCard task={taskItem} />
