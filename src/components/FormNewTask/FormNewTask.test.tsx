@@ -9,7 +9,7 @@ describe("FormNewTask", () => {
     const name = "New Task"
 
     // Act
-    const { getByLabelText } = render(
+    const { getByText } = render(
       <FormNewTask
         show={modal}
         onHideModal={() => {
@@ -17,7 +17,7 @@ describe("FormNewTask", () => {
         }}
       />,
     )
-    const received = getByLabelText(name)
+    const received = getByText(name)
 
     // Assert
     expect(received).toBeDefined()
