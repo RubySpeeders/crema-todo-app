@@ -3,6 +3,7 @@ describe("App", function () {
     cy.visit("/")
     cy.get(".AppHeader").contains("My Tasks")
     cy.get('[type="checkbox"]').should("exist")
-    // cy.findByTestId("kittykat")
+    cy.get(".createTaskButton").click()
+    cy.get(".newTaskForm").should("exist")
   })
 })
