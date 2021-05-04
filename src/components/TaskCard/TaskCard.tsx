@@ -20,7 +20,7 @@ export function TaskCard({ task }: Props) {
           <CheckCircleIcon className="ellipse" />
         )}
       </div>
-      {task.task}
+      <p className="normal">{task.task}</p>
     </div>
   )
 }

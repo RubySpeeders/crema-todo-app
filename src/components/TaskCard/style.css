@@ -23,3 +23,19 @@ color: #4158C4;
       justify-content: flex-start;
       margin-right: 1em;
   }
+
+.normal {
+width: 8em;
+  height: 16px;
+  left: 487px;
+  top: 128px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 100%;
+  /* identical to box height, or 16px */
+  letter-spacing: 0.005em;
+  /* Text/Black/Active */
+  color: rgba(0, 0, 0, 0.87);
+  }

@@ -5,16 +5,13 @@ import { TaskCard } from "./TaskCard"
 describe("TaskCard", () => {
   it("has edit and delete buttons", () => {
     // Arrange
-    // const btnText1 = "Edit"
-    // const btnText2 = "Delete"
+    const todoText = "do a dance"
 
     // Act
-    const { getByText } = render(<TaskCard task={{ task: "do a dance" }} />)
-    const receivedEdit = getByText("Edit")
-    const receivedDelete = getByText("Delete")
+    const { getByText } = render(<TaskCard task={{ task: todoText }} />)
+    const element = getByText(todoText)
 
     // Assert
-    expect(receivedEdit).toBeDefined()
-    expect(receivedDelete).toBeDefined()
+    expect(element).toHaveClass("normal")
   })
 })

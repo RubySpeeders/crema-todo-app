@@ -34,8 +34,8 @@ export function App() {
       <p>Active Tasks</p>
       <div className="TaskList">
         {" "}
-        {tasks.map((taskItem: Task) => {
-          return <TaskCard task={taskItem} />
+        {tasks.map((taskItem: Task, index: number) => {
+          return <TaskCard key={index} task={taskItem} />
         })}
       </div>
 
@@ -45,8 +45,8 @@ export function App() {
       <div className="CompleteList">
         <p>Completed Tasks</p>
         <TaskCounter />
-        {completedTasks.map((taskItem: Task) => {
-          return <TaskCard task={taskItem} />
+        {completedTasks.map((taskItem: Task, index: number) => {
+          return <TaskCard key={index} task={taskItem} />
         })}
       </div>
     </div>
