@@ -95,8 +95,10 @@
       "!src/**/?(*.)stories.{ts,tsx}",
       "!src/**/?(*.)test.{ts,tsx}",
       "!src/index.tsx",
+      "!src/**/index.ts",
       "!src/reportWebVitals.ts",
-      "!src/serviceWorker.ts"
+      "!src/serviceWorker.ts", 
+      "!src/components/App/*.{ts,tsx}"
     ]
   },
   "loki": {

@@ -5,7 +5,6 @@ type Props = { onAddTask: (text: string) => void }
 export function FormNewTask({ onAddTask }: Props) {
   const textInputRef = useRef<HTMLInputElement>(null)
   const addNewTask = (e: React.FormEvent) => {
-    console.log("this happened")
     e.preventDefault()
     if (textInputRef.current) {
       const enteredText = textInputRef.current.value
