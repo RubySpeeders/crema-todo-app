@@ -3,20 +3,23 @@ import { render } from "@testing-library/react"
 import { FormNewTask } from "./FormNewTask"
 
 describe("FormNewTask", () => {
+  const modal = false
   it("has a label for input", () => {
     // Arrange
-    const modal = false
-    const handleModal = () => {
-      console.log("this is temporary")
-    }
+    const name = "New Task"
 
     // Act
     const { getByLabelText } = render(
-      <FormNewTask show={modal} onHideModal={handleModal} />,
+      <FormNewTask
+        show={modal}
+        onHideModal={() => {
+          console.log(name)
+        }}
+      />,
     )
-    // const received = getByLabelText(name)
+    const received = getByLabelText(name)
 
     // Assert
-    // expect(received).toBeDefined()
+    expect(received).toBeDefined()
   })
 })
