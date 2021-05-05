@@ -10,11 +10,13 @@ export function FormNewTask({ show, onHideModal }: Props) {
     <div>
       <form className="newTaskForm">
         <label htmlFor="taskInput">New Task</label>
-        <input id="taskInput"></input>
-        <button id="cancelButton" onClick={onHideModal}>
-          Cancel
-        </button>
-        <button id="saveButton">Save</button>
+        <input id="taskInput" placeholder="Task description"></input>
+        <div className="buttonArea">
+          <button id="cancelButton" onClick={onHideModal}>
+            Cancel
+          </button>
+          <button id="saveButton">Save</button>
+        </div>
       </form>
     </div>
   )
