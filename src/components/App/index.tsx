@@ -31,24 +31,26 @@ export function App() {
   return (
     <div className="App">
       <AppHeader />
-      <p>Active Tasks</p>
-      <div className="TaskList">
-        {" "}
-        {tasks.map((taskItem: Task, index: number) => {
-          return <TaskCard key={index} task={taskItem} />
-        })}
-      </div>
+      <main>
+        <p>Active Tasks</p>
+        <div className="TaskList">
+          {" "}
+          {tasks.map((taskItem: Task, index: number) => {
+            return <TaskCard key={index} task={taskItem} />
+          })}
+        </div>
 
-      <FormNewTask show={modal} onHideModal={handleModal} />
-      <ButtonCreateTask onShowModal={handleModal} />
-      {modal}
-      <div className="CompleteList">
-        <p>Completed Tasks</p>
-        <TaskCounter />
-        {completedTasks.map((taskItem: Task, index: number) => {
-          return <TaskCard key={index} task={taskItem} />
-        })}
-      </div>
+        <FormNewTask show={modal} onHideModal={handleModal} />
+        <ButtonCreateTask onShowModal={handleModal} />
+        {modal}
+        <div className="CompleteList">
+          <p>Completed Tasks</p>
+          <TaskCounter />
+          {completedTasks.map((taskItem: Task, index: number) => {
+            return <TaskCard key={index} task={taskItem} />
+          })}
+        </div>
+      </main>
     </div>
   )
 }
