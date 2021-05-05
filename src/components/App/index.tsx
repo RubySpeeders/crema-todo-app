@@ -1,3 +1,4 @@
+import { nanoid } from "nanoid"
 import React from "react"
 import "./styles.css"
 import { Task } from "../../types/Task"
@@ -16,7 +17,7 @@ export function App() {
   const addTask = (text: string) => {
     setTasks((previousArray) => [
       ...previousArray,
-      { id: Math.random(), description: text, isComplete: false },
+      { id: nanoid(), description: text, isComplete: false },
     ])
   }
   const completedTasks = tasks.filter((task) => task.isComplete)
@@ -32,8 +33,8 @@ export function App() {
       <main>
         <p>Active Tasks</p>
         <div className="TaskList">
-          {activeTasks.map((taskItem: Task, index: number) => {
-            return <TaskCard key={index} task={taskItem} />
+          {activeTasks.map((taskItem: Task) => {
+            return <TaskCard key={taskItem.id} task={taskItem} />
           })}
         </div>
 
@@ -47,8 +48,8 @@ export function App() {
         <div className="CompleteList">
           <p>Completed Tasks</p>
           <TaskCounter />
-          {completedTasks.map((taskItem: Task, index: number) => {
-            return <TaskCard key={index} task={taskItem} />
+          {completedTasks.map((taskItem: Task) => {
+            return <TaskCard key={taskItem.id} task={taskItem} />
           })}
         </div>
       </main>
