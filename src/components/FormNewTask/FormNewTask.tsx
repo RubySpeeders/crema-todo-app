@@ -1,6 +1,6 @@
 import "./style.css"
 
-type Props = { show: boolean; onHideModal: () => void }
+export type Props = { show: boolean; onHideModal: () => void }
 
 export function FormNewTask({ show, onHideModal }: Props) {
   if (!show) {

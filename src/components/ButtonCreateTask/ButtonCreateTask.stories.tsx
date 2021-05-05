@@ -1,4 +1,5 @@
 // import React from "react"
+import { action } from "@storybook/addon-actions"
 import decoratorCentered from "@storybook/addon-centered"
 import { ButtonCreateTask } from "./ButtonCreateTask"
 
@@ -13,7 +14,5 @@ export default {
 }
 
 export const example = () => (
-  <ButtonCreateTask
-    onShowModal={() => console.log("testing story function?")}
-  />
+  <ButtonCreateTask onShowModal={action("onShowModal")} />
 )
