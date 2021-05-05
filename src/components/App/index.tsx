@@ -27,9 +27,7 @@ export function App() {
       <h3>Active Tasks</h3>
       <div className="TaskList">
         {activeTasks.map((taskItem: Task, index: number) => {
-          return (
-            <TaskCard key={index} task={taskItem} data-testid="active-task" />
-          )
+          return <TaskCard key={index} task={taskItem} />
         })}
       </div>
 
@@ -39,13 +37,7 @@ export function App() {
         <h3>Completed Tasks</h3>
         <TaskCounter />
         {completedTasks.map((taskItem: Task, index: number) => {
-          return (
-            <TaskCard
-              key={index}
-              task={taskItem}
-              data-testid="completed-task"
-            />
-          )
+          return <TaskCard key={index} task={taskItem} />
         })}
       </div>
     </div>

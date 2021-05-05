@@ -13,5 +13,7 @@ export default {
 }
 
 export const example = () => (
-  <TaskCard task={{ id: 1, task: "finish the app", isComplete: false }} />
+  <TaskCard
+    task={{ id: 1, description: "finish the app", isComplete: false }}
+  />
 )

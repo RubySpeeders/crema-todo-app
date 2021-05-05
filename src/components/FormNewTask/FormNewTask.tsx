@@ -1,6 +1,6 @@
 import React, { useRef } from "react"
 
-type Props = { onAddTask: (text: string) => void }
+export type Props = { onAddTask: (text: string) => void }
 
 export function FormNewTask({ onAddTask }: Props) {
   const textInputRef = useRef<HTMLInputElement>(null)

@@ -7,7 +7,7 @@ export function TaskCard({ task }: Props) {
     <div className="taskCard">
       <label className="container">
         <input name="task" type="checkbox" className="checkbox" />
-        {task.task}
+        {task.description}
         <span className="checkmark"></span>
       </label>
       <button>Edit</button>
