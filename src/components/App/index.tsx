@@ -1,46 +1,43 @@
-// import React from "react"
+import React from "react"
 import "./styles.css"
+import { Task } from "../../types/Task"
 import { AppHeader } from "../AppHeader"
 import { ButtonCreateTask } from "../ButtonCreateTask"
 import { FormNewTask } from "../FormNewTask"
 import { TaskCard } from "../TaskCard"
 import { TaskCounter } from "../TaskCounter"
 
-export type Task = { task: string }
-
 export function App() {
   // const [modal, setModal] = React.useState(false)
   // const handleModal = (e) => {
   //   setModal(true)
   // }
-  // const [taskArray, setTasksArray] = React.useState([])
-  // const addTask = (e) => {
-  //   setTasksArray([...taskArray, e.target.value])
-  // }
-
-  const tasks: Task[] = [{ task: "finish the app" }, { task: "do a dance" }]
-  const completedTasks: Task[] = [
-    { task: "make an array" },
-    { task: "do it live" },
-  ]
+  const [tasks, setTasks] = React.useState<Task[]>([])
+  const addTask = (text: string) => {
+    setTasks((previousArray) => [
+      ...previousArray,
+      { id: Math.random(), description: text, isComplete: false },
+    ])
+  }
+  const completedTasks = tasks.filter((task) => task.isComplete)
+  const activeTasks = tasks.filter((task) => !task.isComplete)
   return (
     <div className="App">
       <AppHeader />
       <h3>Active Tasks</h3>
       <div className="TaskList">
-        {" "}
-        {tasks.map((taskItem: Task) => {
-          return <TaskCard task={taskItem} />
+        {activeTasks.map((taskItem: Task, index: number) => {
+          return <TaskCard key={index} task={taskItem} />
         })}
       </div>
 
-      <FormNewTask />
+      <FormNewTask onAddTask={addTask} />
       <ButtonCreateTask />
       <div className="CompleteList">
         <h3>Completed Tasks</h3>
         <TaskCounter />
-        {completedTasks.map((taskItem: Task) => {
-          return <TaskCard task={taskItem} />
+        {completedTasks.map((taskItem: Task, index: number) => {
+          return <TaskCard key={index} task={taskItem} />
         })}
       </div>
     </div>

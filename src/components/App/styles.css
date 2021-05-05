@@ -1,4 +1,4 @@
-$purpleButton: #4158c4;
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 
 .App {
   text-align: center;
@@ -91,11 +91,11 @@ $purpleButton: #4158c4;
 
   /* Button/Large */
 
-  font-family: Roboto;
   font-style: normal;
-  font-weight: 500;
+  font-weight: 600;
   font-size: 18px;
   line-height: 100%;
+  font-family: "Roboto";
   /* identical to box height, or 18px */
 
   text-align: center;

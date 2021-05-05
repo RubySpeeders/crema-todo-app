@@ -1,5 +1,4 @@
-import { render } from "@testing-library/react"
-// import React from "react"
+import { fireEvent, render } from "@testing-library/react"
 import { FormNewTask } from "./FormNewTask"
 
 describe("FormNewTask", () => {
@@ -8,10 +7,28 @@ describe("FormNewTask", () => {
     const name = "New Task"
 
     // Act
-    const { getByLabelText } = render(<FormNewTask />)
+    const { getByLabelText } = render(
+      <FormNewTask onAddTask={(name: string) => console.log(name)} />,
+    )
     const received = getByLabelText(name)
 
     // Assert
     expect(received).toBeDefined()
+  })
+  it("tests onAddTask is called with correct parameter", () => {
+    // Arrange
+    const onAddTask = jest.fn()
+
+    // Act
+    const { getByLabelText, getByText } = render(
+      <FormNewTask onAddTask={onAddTask} />,
+    )
+    const input = getByLabelText("New Task")
+    const saveButton = getByText("Save")
+    fireEvent.change(input, { target: { value: "meeting with Mandy" } })
+    fireEvent.click(saveButton)
+
+    // Assert
+    expect(onAddTask).toHaveBeenCalledWith("meeting with Mandy")
   })
 })
