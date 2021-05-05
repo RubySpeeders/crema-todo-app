@@ -4,7 +4,7 @@ import { TaskCard } from "./TaskCard"
 describe("TaskCard", () => {
   it("has edit and delete buttons", () => {
     // Arrange
-    const task = { id: 1, task: "do a dance", isComplete: true }
+    const task = { id: 1, description: "do a dance", isComplete: true }
 
     // Act
     const { getByText } = render(<TaskCard task={task} />)
