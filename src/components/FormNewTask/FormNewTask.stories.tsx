@@ -1,5 +1,5 @@
+import { action } from "@storybook/addon-actions"
 import decoratorCentered from "@storybook/addon-centered"
-// import React from "react"
 import { FormNewTask } from "./FormNewTask"
 
 /**
@@ -12,10 +12,4 @@ export default {
   decorators: [decoratorCentered],
 }
 
-export const example = () => (
-  <FormNewTask
-    onAddTask={(text) => {
-      console.log(text)
-    }}
-  />
-)
+export const example = () => <FormNewTask onTaskAdd={action("onTaskAdd")} />

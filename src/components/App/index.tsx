@@ -16,7 +16,7 @@ export function App() {
   const addTask = (text: string) => {
     setTasks((previousArray) => [
       ...previousArray,
-      { id: Math.random(), task: text, isComplete: false },
+      { id: Math.random(), description: text, isComplete: false },
     ])
   }
   const completedTasks = tasks.filter((task) => task.isComplete)
