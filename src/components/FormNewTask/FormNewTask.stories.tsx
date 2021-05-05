@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+// import { action } from "@storybook/addon-actions"
+>>>>>>> develop
 import decoratorCentered from "@storybook/addon-centered"
 import { Meta, Story } from "@storybook/react"
 import { FormNewTask, Props } from "./FormNewTask"

@@ -2,7 +2,7 @@ import CheckCircleIcon from "@material-ui/icons/CheckCircle"
 import RadioButtonUncheckedIcon from "@material-ui/icons/RadioButtonUnchecked"
 import { useState } from "react"
 import "./style.css"
-import { Task } from "../App"
+import { Task } from "../../types/Task"
 
 type Props = { task: Task }
 
@@ -20,7 +20,7 @@ export function TaskCard({ task }: Props) {
           <CheckCircleIcon className="ellipse" />
         )}
       </div>
-      <p className="normal">{task.task}</p>
+      <p className="normal">{task.description}</p>
     </div>
   )
 }
