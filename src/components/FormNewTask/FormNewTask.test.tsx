@@ -25,10 +25,10 @@ describe("FormNewTask", () => {
     )
     const input = getByLabelText("New Task")
     const saveButton = getByText("Save")
-    fireEvent.change(input, { target: { value: "make dinner" } })
+    fireEvent.change(input, { target: { value: "meeting with Mandy" } })
     fireEvent.click(saveButton)
 
     // Assert
-    expect(onAddTask).toHaveBeenCalledWith("make dinner")
+    expect(onAddTask).toHaveBeenCalledWith("meeting with Mandy")
   })
 })
