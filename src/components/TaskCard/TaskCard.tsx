@@ -4,7 +4,7 @@ import { useState } from "react"
 import "./style.css"
 import { Task } from "../../types/Task"
 
-type Props = { task: Task }
+export type Props = { task: Task }
 
 export function TaskCard({ task }: Props) {
   const [isClicked, setClick] = useState(false)

@@ -14,8 +14,16 @@ export default {
   },
   title: "FormNewTask",
   decorators: [decoratorCentered],
+  args: { show: true },
 } as Meta<Props>
 
 const Template: Story<Props> = (argTypes) => <FormNewTask {...argTypes} />
 
-export const FormNewTaskStory = Template.bind({})
+export const FormNewTaskStoryVisible = Template.bind({})
+FormNewTaskStoryVisible.args = {
+  show: true,
+}
+export const FormNewTaskStoryHidden = Template.bind({})
+FormNewTaskStoryHidden.args = {
+  show: false,
+}
