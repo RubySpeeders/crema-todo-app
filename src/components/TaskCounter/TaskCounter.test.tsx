@@ -2,13 +2,11 @@ import { render } from "@testing-library/react"
 import { TaskCounter } from "./TaskCounter"
 
 describe("TaskCounter", () => {
-  const completedTasks = [
-    { id: "123ABC", description: "let's do this", isComplete: true },
-  ]
-
   it("checks that the length of completed tasks is there", () => {
     // Arrange
-    // const count = completedTasks.length
+    const completedTasks = [
+      { id: "123ABC", description: "let's do this", isComplete: true },
+    ]
 
     // Act
     const { getByTestId } = render(

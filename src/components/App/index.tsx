@@ -10,9 +10,7 @@ import { TaskCounter } from "../TaskCounter"
 
 export function App() {
   const [modal, setModal] = React.useState(false)
-  // const handleModal = (e) => {
-  //   setModal(true)
-  // }
+
   const [tasks, setTasks] = React.useState<Task[]>([])
   const addTask = (text: string) => {
     setTasks((previousArray) => [
@@ -24,7 +22,7 @@ export function App() {
   const activeTasks = tasks.filter((task) => !task.isComplete)
 
   const handleModal = () => {
-    modal ? setModal(false) : setModal(true)
+    setModal(!modal)
   }
 
   return (

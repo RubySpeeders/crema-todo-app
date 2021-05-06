@@ -96,25 +96,23 @@ h5 {
   font-size: 24px;
   line-height: 100%;
   /* identical to box height, or 24px */
-  
-  
   color: rgba(0, 0, 0, 0.87);
   
 }
 
 p {
-width: 92px;
-height: 16px;
-left: 487px;
-top: 128px;
-font-family: Roboto;
-font-style: normal;
-font-weight: bold;
-font-size: 16px;
-line-height: 100%;
-/* identical to box height, or 16px */
-letter-spacing: 0.005em;
-/* Text/Black/Active */
-color: rgba(0, 0, 0, 0.87);
+  width: 92px;
+  height: 16px;
+  left: 487px;
+  top: 128px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 100%;
+  /* identical to box height, or 16px */
+  letter-spacing: 0.005em;
+  /* Text/Black/Active */
+  color: rgba(0, 0, 0, 0.87);
 }
 

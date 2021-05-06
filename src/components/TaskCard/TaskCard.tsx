@@ -9,7 +9,7 @@ export type Props = { task: Task }
 export function TaskCard({ task }: Props) {
   const [isClicked, setClick] = useState(false)
   const handleCheckbox = () => {
-    isClicked ? setClick(false) : setClick(true)
+    setClick(!isClicked)
   }
   return (
     <div className="taskCard">
