@@ -21,7 +21,7 @@ export function FormNewTask({ onAddTask, show, onHideModal }: Props) {
   }
   return (
     <form className="newTaskForm" onSubmit={addNewTask}>
-      <div>
+      <div className="formInput">
         <label htmlFor="taskInput">New Task</label>
         <input
           type="text"

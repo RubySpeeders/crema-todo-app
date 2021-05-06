@@ -37,22 +37,17 @@ export function App() {
             return <TaskCard key={taskItem.id} task={taskItem} />
           })}
         </div>
-
-        <FormNewTask
-          show={modal}
-          onHideModal={handleModal}
-          onAddTask={addTask}
-        />
         <ButtonCreateTask onShowModal={handleModal} />
         {modal}
         <div className="CompleteList">
           <p>Completed Tasks</p>
-          <TaskCounter />
+          <TaskCounter completedTasks={completedTasks} />
           {completedTasks.map((taskItem: Task) => {
             return <TaskCard key={taskItem.id} task={taskItem} />
           })}
         </div>
       </main>
+      <FormNewTask show={modal} onHideModal={handleModal} onAddTask={addTask} />
     </div>
   )
 }
