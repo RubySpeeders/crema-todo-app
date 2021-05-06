@@ -6,15 +6,15 @@ describe("TaskCounter", () => {
     { id: "123ABC", description: "let's do this", isComplete: true },
   ]
 
-  it("checks that a count is there", () => {
+  it("checks that the length of completed tasks is there", () => {
     // Arrange
-    const count = completedTasks.length
+    // const count = completedTasks.length
 
     // Act
-    const { getByText } = render(
+    const { getByTestId } = render(
       <TaskCounter completedTasks={completedTasks} />,
     )
-    const received = getByText(count)
+    const received = getByTestId("count")
 
     // Assert
     expect(received).toBeDefined()

@@ -5,7 +5,7 @@ type Props = { completedTasks: Task[] }
 export function TaskCounter({ completedTasks }: Props) {
   return (
     <div>
-      <p>Count: {completedTasks.length}</p>
+      <p data-testid="count">Count: {completedTasks.length}</p>
     </div>
   )
 }
