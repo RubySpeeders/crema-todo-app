@@ -15,9 +15,12 @@ export function TaskCard({ task }: Props) {
     <div className="taskCard">
       <div className="checkbox" onClick={handleCheckbox}>
         {!isClicked ? (
-          <RadioButtonUncheckedIcon className="ellipse" />
+          <RadioButtonUncheckedIcon
+            className="ellipse"
+            data-testid="unchecked"
+          />
         ) : (
-          <CheckCircleIcon className="ellipse" />
+          <CheckCircleIcon className="ellipse" data-testid="checked" />
         )}
       </div>
       <p className="normal">{task.description}</p>
