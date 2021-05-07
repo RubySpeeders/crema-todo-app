@@ -10,6 +10,8 @@ export function TaskCard({ task }: Props) {
   const [isClicked, setClick] = useState(false)
   const handleCheckbox = () => {
     setClick(!isClicked)
+    task.isComplete = true
+    console.log(task)
   }
   return (
     <div className="taskCard">

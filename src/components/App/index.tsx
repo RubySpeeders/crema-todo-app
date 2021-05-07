@@ -1,5 +1,5 @@
 import { nanoid } from "nanoid"
-import React from "react"
+import { useState } from "react"
 import "./styles.css"
 import { Task } from "../../types/Task"
 import { AppHeader } from "../AppHeader"
@@ -9,9 +9,9 @@ import { TaskCard } from "../TaskCard"
 import { TaskCounter } from "../TaskCounter"
 
 export function App() {
-  const [modal, setModal] = React.useState(false)
+  const [modal, setModal] = useState(false)
 
-  const [tasks, setTasks] = React.useState<Task[]>([])
+  const [tasks, setTasks] = useState<Task[]>([])
   const addTask = (text: string) => {
     setTasks((previousArray) => [
       ...previousArray,
