@@ -1,4 +1,5 @@
 // import React from "react"
+import { action } from "@storybook/addon-actions"
 import decoratorCentered from "@storybook/addon-centered"
 import { ButtonCreateTask } from "./ButtonCreateTask"
 
@@ -12,4 +13,6 @@ export default {
   decorators: [decoratorCentered],
 }
 
-export const example = () => <ButtonCreateTask />
+export const example = () => (
+  <ButtonCreateTask onShowModal={action("onShowModal")} />
+)

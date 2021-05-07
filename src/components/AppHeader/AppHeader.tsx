@@ -1,7 +1,11 @@
+import "./style.css"
+import MenuIcon from "@material-ui/icons/Menu"
+
 export function AppHeader() {
   return (
     <header className="AppHeader">
-      <h1>My Tasks</h1>
+      <MenuIcon />
+      <h5 className="AppHeaderTitle">My Tasks</h5>
     </header>
   )
 }

@@ -1,8 +1,13 @@
 import React, { useRef } from "react"
+import "./style.css"
 
-export type Props = { onAddTask: (text: string) => void }
+export type Props = {
+  onAddTask: (text: string) => void
+  show: boolean
+  onHideModal: () => void
+}
 
-export function FormNewTask({ onAddTask }: Props) {
+export function FormNewTask({ onAddTask, show, onHideModal }: Props) {
   const textInputRef = useRef<HTMLInputElement>(null)
   const addNewTask = (e: React.FormEvent) => {
     e.preventDefault()
@@ -11,16 +16,28 @@ export function FormNewTask({ onAddTask }: Props) {
       onAddTask(enteredText)
     }
   }
+  if (!show) {
+    return null
+  }
   return (
     <form className="newTaskForm" onSubmit={addNewTask}>
-      <div>
+      <div className="formInput">
         <label htmlFor="taskInput">New Task</label>
-        <input type="text" id="taskInput" ref={textInputRef}></input>
+        <input
+          type="text"
+          id="taskInput"
+          ref={textInputRef}
+          placeholder="Task description"
+        ></input>
       </div>
-      <button id="cancelButton">Cancel</button>
-      <button type="submit" id="saveButton">
-        Save
-      </button>
+      <div className="buttonArea">
+        <button id="cancelButton" onClick={onHideModal}>
+          Cancel
+        </button>
+        <button type="submit" id="saveButton">
+          Save
+        </button>
+      </div>
     </form>
   )
 }

@@ -1,17 +1,29 @@
+import CheckCircleIcon from "@material-ui/icons/CheckCircle"
+import RadioButtonUncheckedIcon from "@material-ui/icons/RadioButtonUnchecked"
+import { useState } from "react"
+import "./style.css"
 import { Task } from "../../types/Task"
 
-type Props = { task: Task }
+export type Props = { task: Task }
 
 export function TaskCard({ task }: Props) {
+  const [isClicked, setClick] = useState(false)
+  const handleCheckbox = () => {
+    setClick(!isClicked)
+  }
   return (
     <div className="taskCard">
-      <label className="container">
-        <input name="task" type="checkbox" className="checkbox" />
-        {task.description}
-        <span className="checkmark"></span>
-      </label>
-      <button>Edit</button>
-      <button>Delete</button>
+      <div className="checkbox" onClick={handleCheckbox}>
+        {!isClicked ? (
+          <RadioButtonUncheckedIcon
+            className="ellipse"
+            data-testid="unchecked"
+          />
+        ) : (
+          <CheckCircleIcon className="ellipse" data-testid="checked" />
+        )}
+      </div>
+      <p className="normal">{task.description}</p>
     </div>
   )
 }

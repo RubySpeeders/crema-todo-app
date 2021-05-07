@@ -12,4 +12,8 @@ export default {
   decorators: [decoratorCentered],
 }
 
-export const example = () => <TaskCounter />
+const completedTasks = [
+  { id: "123ABC", description: "let's do this", isComplete: true },
+]
+
+export const example = () => <TaskCounter completedTasks={completedTasks} />

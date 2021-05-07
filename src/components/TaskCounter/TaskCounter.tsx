@@ -1,14 +1,11 @@
-import React from "react"
+import { Task } from "../../types/Task"
 
-export function TaskCounter() {
-  const [count, setCount] = React.useState(0)
-  const changeCount = () => {
-    setCount(15)
-  }
+type Props = { completedTasks: Task[] }
+
+export function TaskCounter({ completedTasks }: Props) {
   return (
     <div>
-      <button onClick={changeCount}>Click me</button>
-      <p>Count: {count}</p>
+      <p data-testid="count">Count: {completedTasks.length}</p>
     </div>
   )
 }

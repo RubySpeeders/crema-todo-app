@@ -1,32 +1,20 @@
-import { fireEvent, render } from "@testing-library/react"
-// import React from "react"
+import { render } from "@testing-library/react"
 import { TaskCounter } from "./TaskCounter"
 
 describe("TaskCounter", () => {
-  it("click me button exists", () => {
+  it("checks that the length of completed tasks is there", () => {
     // Arrange
-    const name = "Click me"
+    const completedTasks = [
+      { id: "123ABC", description: "let's do this", isComplete: true },
+    ]
 
     // Act
-    const { getByText } = render(<TaskCounter />)
-    const received = getByText(name)
+    const { getByTestId } = render(
+      <TaskCounter completedTasks={completedTasks} />,
+    )
+    const received = getByTestId("count")
 
     // Assert
     expect(received).toBeDefined()
-  })
-  it("changes the count to 15 after clicking the button", () => {
-    // Arrange
-    const name = "Click me"
-
-    // Act
-    const { getByText } = render(<TaskCounter />)
-    const button = getByText(name)
-    const countBefore = getByText("Count: 0")
-    expect(countBefore).toBeDefined()
-    fireEvent.click(button)
-
-    // Assert
-    const countAfter = getByText("Count: 15")
-    expect(countAfter).toBeDefined()
   })
 })

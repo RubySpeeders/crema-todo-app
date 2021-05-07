@@ -1,18 +1,34 @@
-import { render } from "@testing-library/react"
+import { fireEvent, render } from "@testing-library/react"
 import { TaskCard } from "./TaskCard"
 
 describe("TaskCard", () => {
-  it("has edit and delete buttons", () => {
+  it("has a task with the description on the card", () => {
     // Arrange
-    const task = { id: 1, description: "do a dance", isComplete: true }
+    const task = { id: "123ABC", description: "do a dance", isComplete: true }
 
     // Act
     const { getByText } = render(<TaskCard task={task} />)
-    const receivedEdit = getByText("Edit")
-    const receivedDelete = getByText("Delete")
+    const element = getByText(task.description)
 
     // Assert
-    expect(receivedEdit).toBeDefined()
-    expect(receivedDelete).toBeDefined()
+    expect(element).toHaveClass("normal")
+  })
+  it("has a checkbox that changes between checked and unchecked", () => {
+    // Arrange
+    const task = { id: "123ABC", description: "do a dance", isComplete: true }
+
+    // Act
+    const { getByTestId } = render(<TaskCard task={task} />)
+    const uncheckedBox = getByTestId("unchecked")
+
+    // Assert
+    expect(uncheckedBox).toHaveClass("ellipse")
+
+    // Act
+    fireEvent.click(uncheckedBox)
+    const checkedBox = getByTestId("checked")
+
+    // Assert
+    expect(checkedBox).toHaveClass("ellipse")
   })
 })
