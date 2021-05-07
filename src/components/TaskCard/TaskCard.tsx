@@ -4,15 +4,15 @@ import { useState } from "react"
 import "./style.css"
 import { Task } from "../../types/Task"
 
-export type Props = { task: Task }
+export type Props = { task: Task; onStatusChange: (id: string) => void }
 
-export function TaskCard({ task }: Props) {
+export function TaskCard({ task, onStatusChange }: Props) {
   const [isClicked, setClick] = useState(false)
   const handleCheckbox = () => {
     setClick(!isClicked)
-    task.isComplete = true
-    console.log(task)
+    onStatusChange(task.id)
   }
+
   return (
     <div className="taskCard">
       <div className="checkbox" onClick={handleCheckbox}>
