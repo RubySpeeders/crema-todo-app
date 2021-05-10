@@ -3,11 +3,14 @@ import RadioButtonUncheckedIcon from "@material-ui/icons/RadioButtonUnchecked"
 import "./style.css"
 import { Task } from "../../types/Task"
 
-export type Props = { task: Task; onStatusChange: (id: string) => void }
+export type Props = {
+  task: Task
+  onStatusChange: (id: string, task: Task) => void
+}
 
 export function TaskCard({ task, onStatusChange }: Props) {
   const handleCheckbox = () => {
-    onStatusChange(task.id)
+    onStatusChange(task.id, task)
   }
   let className = "normal"
   if (task.isComplete) {
