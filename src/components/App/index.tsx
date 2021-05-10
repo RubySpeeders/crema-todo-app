@@ -19,33 +19,43 @@ export function App() {
     ])
   }
 
-  const statusHandler = (id: string, task: Task) => {
-    if (task.isComplete) {
-      setTasks((previousArray) => {
-        const found = previousArray.find((task) => task.id === id)
-        if (found) {
-          // if(found.isComplete) {}
-          return [
-            ...previousArray.filter((item) => item.id !== id),
-            { ...found, isComplete: false },
-          ]
-        } else {
-          return [...previousArray]
-        }
-      })
-    } else {
-      setTasks((previousArray) => {
-        const found = previousArray.find((task) => task.id === id)
-        if (found) {
-          return [
-            ...previousArray.filter((item) => item.id !== id),
-            { ...found, isComplete: true },
-          ]
-        } else {
-          return [...previousArray]
-        }
-      })
-    }
+  const statusHandler = (id: string) => {
+    // if (task.isComplete) {
+    //   setTasks((previousArray) => {
+    //     const found = previousArray.find((task) => task.id === id)
+    //     if (found) {
+    //       return [
+    //         ...previousArray.filter((item) => item.id !== id),
+    //         { ...found, isComplete: false },
+    //       ]
+    //     } else {
+    //       return [...previousArray]
+    //     }
+    //   })
+    // } else {
+    //   setTasks((previousArray) => {
+    //     const found = previousArray.find((task) => task.id === id)
+    //     if (found) {
+    //       return [
+    //         ...previousArray.filter((item) => item.id !== id),
+    //         { ...found, isComplete: true },
+    //       ]
+    //     } else {
+    //       return [...previousArray]
+    //     }
+    //   })
+    // }
+    setTasks((previousArray) => {
+      const found = previousArray.find((task) => task.id === id)
+      if (found) {
+        return [
+          ...previousArray.filter((item) => item.id !== id),
+          { ...found, isComplete: !found.isComplete },
+        ]
+      } else {
+        return [...previousArray]
+      }
+    })
   }
 
   const completedTasks = tasks.filter((task) => task.isComplete)
