@@ -2,12 +2,18 @@ import { fireEvent, render } from "@testing-library/react"
 import { TaskCard } from "./TaskCard"
 
 describe("TaskCard", () => {
+  const statusHandler = () => {
+    console.log("should replace this with a jest.fn")
+  }
+
   it("has a task with the description on the card", () => {
     // Arrange
     const task = { id: "123ABC", description: "do a dance", isComplete: true }
 
     // Act
-    const { getByText } = render(<TaskCard task={task} />)
+    const { getByText } = render(
+      <TaskCard task={task} onStatusChange={statusHandler} />,
+    )
     const element = getByText(task.description)
 
     // Assert
@@ -18,7 +24,9 @@ describe("TaskCard", () => {
     const task = { id: "123ABC", description: "do a dance", isComplete: true }
 
     // Act
-    const { getByTestId } = render(<TaskCard task={task} />)
+    const { getByTestId } = render(
+      <TaskCard task={task} onStatusChange={statusHandler} />,
+    )
     const uncheckedBox = getByTestId("unchecked")
 
     // Assert

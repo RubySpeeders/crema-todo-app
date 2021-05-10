@@ -1,3 +1,4 @@
+import ExpandLessIcon from "@material-ui/icons/ExpandLess"
 import { nanoid } from "nanoid"
 import { useState } from "react"
 import "./styles.css"
@@ -21,12 +22,18 @@ export function App() {
   const statusHandler = (id: string) => {
     setTasks((previousArray) => {
       const found = previousArray.find((task) => task.id === id)
+      // if (found) {
+      //   found.isComplete = true
+      // }
+      // return [...previousArray]
       if (found) {
-        found.isComplete = true
+        return [
+          ...previousArray.filter((item) => item.id !== id),
+          { ...found, isComplete: true },
+        ]
+      } else {
+        return [...previousArray]
       }
-      return [...previousArray]
-      //this adds another task to the array, resulting in duplicate tasks - one with false, and one with true
-      //return [...previousArray, {...task, id: true}]
     })
   }
 
@@ -41,8 +48,8 @@ export function App() {
     <div className="App">
       <AppHeader />
       <main>
-        <p>Active Tasks</p>
-        <div className="TaskList">
+        <div className="activeList">
+          <p>Active Tasks</p>
           {activeTasks.map((taskItem: Task) => {
             return (
               <TaskCard
@@ -55,8 +62,11 @@ export function App() {
         </div>
         <ButtonCreateTask onShowModal={handleModal} />
         {modal}
-        <div className="CompleteList">
+        <div className="completeList">
           <p>Completed Tasks</p>
+          <span>
+            Hide <ExpandLessIcon />
+          </span>
           <TaskCounter completedTasks={completedTasks} />
           {completedTasks.map((taskItem: Task) => {
             return (
