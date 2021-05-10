@@ -19,7 +19,7 @@ export function TaskCard({ task, onStatusChange }: Props) {
 
   return (
     <div className="taskCard">
-      <div className="checkbox" onClick={handleCheckbox}>
+      <div className="checkbox" data-testid="checkbox" onClick={handleCheckbox}>
         {!task.isComplete ? (
           <RadioButtonUncheckedIcon
             className="ellipse"
