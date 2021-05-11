@@ -12,10 +12,6 @@ export function TaskCard({ task, onStatusChange }: Props) {
   const handleCheckbox = () => {
     onStatusChange(task.id)
   }
-  let className = "normal"
-  if (task.isComplete) {
-    className += " completeDescription"
-  }
 
   return (
     <div className="taskCard">
@@ -29,7 +25,9 @@ export function TaskCard({ task, onStatusChange }: Props) {
           <CheckCircleIcon className="ellipse" data-testid="checked" />
         )}
       </div>
-      <p className={className}>{task.description}</p>
+      <p className={task.isComplete ? "normal completeDescription" : "normal"}>
+        {task.description}
+      </p>
     </div>
   )
 }
