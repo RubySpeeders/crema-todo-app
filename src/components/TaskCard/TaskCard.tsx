@@ -1,20 +1,22 @@
 import CheckCircleIcon from "@material-ui/icons/CheckCircle"
 import RadioButtonUncheckedIcon from "@material-ui/icons/RadioButtonUnchecked"
-import { useState } from "react"
 import "./style.css"
 import { Task } from "../../types/Task"
 
-export type Props = { task: Task }
+export type Props = {
+  task: Task
+  onStatusChange: (id: string) => void
+}
 
-export function TaskCard({ task }: Props) {
-  const [isClicked, setClick] = useState(false)
+export function TaskCard({ task, onStatusChange }: Props) {
   const handleCheckbox = () => {
-    setClick(!isClicked)
+    onStatusChange(task.id)
   }
+
   return (
     <div className="taskCard">
-      <div className="checkbox" onClick={handleCheckbox}>
-        {!isClicked ? (
+      <div className="checkbox" data-testid="checkbox" onClick={handleCheckbox}>
+        {!task.isComplete ? (
           <RadioButtonUncheckedIcon
             className="ellipse"
             data-testid="unchecked"
@@ -23,7 +25,9 @@ export function TaskCard({ task }: Props) {
           <CheckCircleIcon className="ellipse" data-testid="checked" />
         )}
       </div>
-      <p className="normal">{task.description}</p>
+      <p className={task.isComplete ? "normal completeDescription" : "normal"}>
+        {task.description}
+      </p>
     </div>
   )
 }

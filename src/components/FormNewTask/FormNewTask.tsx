@@ -14,6 +14,7 @@ export function FormNewTask({ onAddTask, show, onHideModal }: Props) {
     if (textInputRef.current) {
       const enteredText = textInputRef.current.value
       onAddTask(enteredText)
+      onHideModal()
     }
   }
   if (!show) {

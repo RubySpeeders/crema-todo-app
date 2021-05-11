@@ -17,4 +17,12 @@ describe("App", function () {
     cy.get("#saveButton").click()
     cy.get(".checkbox > .MuiSvgIcon-root").should("exist")
   })
+  it("changes an active task to completed when checkbox is clicked", function () {
+    cy.visit("/")
+    cy.get(".createTaskButton").click()
+    cy.get("#taskInput").type("make dinner")
+    cy.get("#saveButton").click()
+    cy.get("[data-testid=unchecked]").click()
+    cy.get("[data-testid=checked] > path").should("exist")
+  })
 })
