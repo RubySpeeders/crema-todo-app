@@ -46,6 +46,7 @@ export function TaskCard({ task, onStatusChange, modal, handleModal }: Props) {
         modal={modal}
         onHideModal={handleModal}
         onAddTask={testFunction}
+        placeholder={task.description}
       />
     </div>
   )

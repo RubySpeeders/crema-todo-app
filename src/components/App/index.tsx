@@ -77,8 +77,8 @@ export function App() {
                 key={taskItem.id}
                 task={taskItem}
                 onStatusChange={statusHandler}
-                modal={modal}
-                handleModal={handleModal}
+                modal={editModal}
+                handleModal={handleEditModal}
               />
             )
           })}
@@ -89,6 +89,7 @@ export function App() {
         modal={modal}
         onHideModal={handleModal}
         onAddTask={addTask}
+        placeholder={"Task description"}
       />
     </div>
   )

@@ -6,9 +6,16 @@ export type Props = {
   modal: boolean
   onHideModal: () => void
   label: string
+  placeholder: string
 }
 
-export function FormNewTask({ onAddTask, modal, onHideModal, label }: Props) {
+export function FormNewTask({
+  onAddTask,
+  modal,
+  onHideModal,
+  label,
+  placeholder,
+}: Props) {
   const textInputRef = useRef<HTMLInputElement>(null)
   const addNewTask = (e: React.FormEvent) => {
     e.preventDefault()
@@ -29,7 +36,7 @@ export function FormNewTask({ onAddTask, modal, onHideModal, label }: Props) {
           type="text"
           id="taskInput"
           ref={textInputRef}
-          placeholder="Task description"
+          placeholder={placeholder}
         ></input>
       </div>
       <div className="buttonArea">
