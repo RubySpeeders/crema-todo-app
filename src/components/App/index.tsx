@@ -52,6 +52,8 @@ export function App() {
                 key={taskItem.id}
                 task={taskItem}
                 onStatusChange={statusHandler}
+                show={modal}
+                handleModal={handleModal}
               />
             )
           })}
@@ -70,6 +72,8 @@ export function App() {
                 key={taskItem.id}
                 task={taskItem}
                 onStatusChange={statusHandler}
+                show={modal}
+                handleModal={handleModal}
               />
             )
           })}
