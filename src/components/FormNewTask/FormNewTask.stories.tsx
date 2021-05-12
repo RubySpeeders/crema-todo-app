@@ -21,9 +21,9 @@ const Template: Story<Props> = (argTypes) => <FormNewTask {...argTypes} />
 
 export const FormNewTaskStoryVisible = Template.bind({})
 FormNewTaskStoryVisible.args = {
-  show: true,
+  modal: true,
 }
 export const FormNewTaskStoryHidden = Template.bind({})
 FormNewTaskStoryHidden.args = {
-  show: false,
+  modal: false,
 }

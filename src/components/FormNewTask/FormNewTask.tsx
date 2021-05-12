@@ -3,11 +3,12 @@ import "./style.css"
 
 export type Props = {
   onAddTask: (text: string) => void
-  show: boolean
+  modal: boolean
   onHideModal: () => void
+  label: string
 }
 
-export function FormNewTask({ onAddTask, show, onHideModal }: Props) {
+export function FormNewTask({ onAddTask, modal, onHideModal, label }: Props) {
   const textInputRef = useRef<HTMLInputElement>(null)
   const addNewTask = (e: React.FormEvent) => {
     e.preventDefault()
@@ -17,13 +18,13 @@ export function FormNewTask({ onAddTask, show, onHideModal }: Props) {
       onHideModal()
     }
   }
-  if (!show) {
+  if (!modal) {
     return null
   }
   return (
     <form className="newTaskForm" onSubmit={addNewTask}>
       <div className="formInput">
-        <label htmlFor="taskInput">New Task</label>
+        <label htmlFor="taskInput">{label}</label>
         <input
           type="text"
           id="taskInput"

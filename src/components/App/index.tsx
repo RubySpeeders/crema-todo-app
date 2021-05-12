@@ -11,6 +11,7 @@ import { TaskCounter } from "../TaskCounter"
 
 export function App() {
   const [modal, setModal] = useState(false)
+  const [editModal, setEditModal] = useState(false)
   const [tasks, setTasks] = useState<Task[]>([])
   const addTask = (text: string) => {
     setTasks((previousArray) => [
@@ -40,6 +41,10 @@ export function App() {
     setModal(!modal)
   }
 
+  const handleEditModal = () => {
+    setEditModal(!editModal)
+  }
+
   return (
     <div className="App">
       <AppHeader />
@@ -52,8 +57,8 @@ export function App() {
                 key={taskItem.id}
                 task={taskItem}
                 onStatusChange={statusHandler}
-                show={modal}
-                handleModal={handleModal}
+                modal={editModal}
+                handleModal={handleEditModal}
               />
             )
           })}
@@ -72,14 +77,19 @@ export function App() {
                 key={taskItem.id}
                 task={taskItem}
                 onStatusChange={statusHandler}
-                show={modal}
+                modal={modal}
                 handleModal={handleModal}
               />
             )
           })}
         </div>
       </main>
-      <FormNewTask show={modal} onHideModal={handleModal} onAddTask={addTask} />
+      <FormNewTask
+        label={"New Task"}
+        modal={modal}
+        onHideModal={handleModal}
+        onAddTask={addTask}
+      />
     </div>
   )
 }

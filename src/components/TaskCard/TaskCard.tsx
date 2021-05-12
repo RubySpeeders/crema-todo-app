@@ -2,17 +2,22 @@ import CheckCircleIcon from "@material-ui/icons/CheckCircle"
 import RadioButtonUncheckedIcon from "@material-ui/icons/RadioButtonUnchecked"
 import "./style.css"
 import { Task } from "../../types/Task"
+import { FormNewTask } from "../FormNewTask"
 
 export type Props = {
   task: Task
   onStatusChange: (id: string) => void
-  show: boolean
+  modal: boolean
   handleModal: () => void
 }
 
-export function TaskCard({ task, onStatusChange, show, handleModal }: Props) {
+export function TaskCard({ task, onStatusChange, modal, handleModal }: Props) {
   const handleCheckbox = () => {
     onStatusChange(task.id)
+  }
+
+  const testFunction = (test: string) => {
+    console.log(test)
   }
 
   return (
@@ -22,7 +27,7 @@ export function TaskCard({ task, onStatusChange, show, handleModal }: Props) {
         handleModal()
       }}
     >
-      {show}
+      {modal}
       <div className="checkbox" data-testid="checkbox" onClick={handleCheckbox}>
         {!task.isComplete ? (
           <RadioButtonUncheckedIcon
@@ -36,6 +41,12 @@ export function TaskCard({ task, onStatusChange, show, handleModal }: Props) {
       <p className={task.isComplete ? "normal completeDescription" : "normal"}>
         {task.description}
       </p>
+      <FormNewTask
+        label={"Edit Task"}
+        modal={modal}
+        onHideModal={handleModal}
+        onAddTask={testFunction}
+      />
     </div>
   )
 }
