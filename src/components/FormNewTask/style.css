@@ -1,4 +1,4 @@
-.newTaskForm {
+.taskForm {
     margin: auto;
     display: flex;
     flex-direction: column;
@@ -88,3 +88,9 @@
     margin: 0px 10px;
   }
   
+  .label {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }

@@ -1,4 +1,5 @@
-import React, { useRef } from "react"
+import DeleteOutlineIcon from "@material-ui/icons/DeleteOutline"
+import React, { useEffect, useRef } from "react"
 import "./style.css"
 
 export type Props = {
@@ -16,6 +17,12 @@ export function FormNewTask({
   label,
   placeholder,
 }: Props) {
+  useEffect(() => {
+    const onBodyClick = (e: Event) => {
+      console.log(e)
+    }
+    document.body.addEventListener("click", onBodyClick, { capture: true })
+  }, [])
   const textInputRef = useRef<HTMLInputElement>(null)
   const addNewTask = (e: React.FormEvent) => {
     e.preventDefault()
@@ -29,9 +36,18 @@ export function FormNewTask({
     return null
   }
   return (
-    <form className="newTaskForm" onSubmit={addNewTask}>
+    <form className="taskForm" onSubmit={addNewTask}>
       <div className="formInput">
-        <label htmlFor="taskInput">{label}</label>
+        <div className="label">
+          <label htmlFor="taskInput">{label}</label>
+          {label === "Edit Task" && (
+            <DeleteOutlineIcon
+              onClick={() => {
+                console.log("clicked delete")
+              }}
+            />
+          )}
+        </div>
         <input
           type="text"
           id="taskInput"

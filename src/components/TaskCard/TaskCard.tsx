@@ -16,7 +16,7 @@ export function TaskCard({ task, onStatusChange, modal, handleModal }: Props) {
     onStatusChange(task.id)
   }
 
-  const testFunction = (test: string) => {
+  const deleteTask = (test: string) => {
     console.log(test)
   }
 
@@ -38,14 +38,14 @@ export function TaskCard({ task, onStatusChange, modal, handleModal }: Props) {
           <CheckCircleIcon className="ellipse" data-testid="checked" />
         )}
       </div>
-      <p className={task.isComplete ? "normal completeDescription" : "normal"}>
+      <p className={`normal ${task.isComplete && "completeDescription"}`}>
         {task.description}
       </p>
       <FormNewTask
         label={"Edit Task"}
         modal={modal}
         onHideModal={handleModal}
-        onAddTask={testFunction}
+        onAddTask={deleteTask}
         placeholder={task.description}
       />
     </div>
