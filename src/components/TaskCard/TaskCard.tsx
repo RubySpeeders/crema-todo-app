@@ -9,9 +9,15 @@ export type Props = {
   task: Task
   onStatusChange: (id: string) => void
   onDeleteTask: (id: string) => void
+  onEditTask: (id: string) => void
 }
 
-export function TaskCard({ task, onStatusChange, onDeleteTask }: Props) {
+export function TaskCard({
+  task,
+  onStatusChange,
+  onDeleteTask,
+  onEditTask,
+}: Props) {
   const [editModal, setEditModal] = useState(false)
   const handleEditModal = () => {
     setEditModal(!editModal)
@@ -51,6 +57,7 @@ export function TaskCard({ task, onStatusChange, onDeleteTask }: Props) {
         modal={editModal}
         onHideModal={handleEditModal}
         onDeleteTask={onDeleteTask}
+        onEditTask={onEditTask}
         placeholder={task.description}
         taskId={task.id}
       />

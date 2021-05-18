@@ -33,6 +33,10 @@ export function App() {
     })
   }
 
+  const editTask = (id: string) => {
+    console.log("passed the id ok", id)
+  }
+
   // const editTask = (id: string, text: string) => {
   //   setTasks((previousArray) => {
   //     const found = previousArray.find((task) => task.id === id)
@@ -79,6 +83,7 @@ export function App() {
                 task={taskItem}
                 onStatusChange={statusHandler}
                 onDeleteTask={deleteTask}
+                onEditTask={editTask}
               />
             )
           })}
@@ -98,6 +103,7 @@ export function App() {
                 task={taskItem}
                 onStatusChange={statusHandler}
                 onDeleteTask={deleteTask}
+                onEditTask={editTask}
               />
             )
           })}

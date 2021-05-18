@@ -5,6 +5,7 @@ import "./style.css"
 export type Props = {
   onAddTask?: (text: string) => void
   onDeleteTask?: (id: string) => void
+  onEditTask?: (id: string) => void
   taskId?: string
   modal: boolean
   onHideModal: () => void
@@ -18,6 +19,7 @@ export function FormNewTask({
   modal,
   onHideModal,
   onDeleteTask,
+  onEditTask,
   label,
   placeholder,
 }: Props) {
@@ -55,7 +57,14 @@ export function FormNewTask({
       <form
         // ref={formRef}
         className="taskForm"
-        onSubmit={addNewTask}
+        onSubmit={(e) => {
+          if (label === "New Task") {
+            addNewTask(e)
+          } else if (label === "Edit Task" && onEditTask && taskId) {
+            e.preventDefault()
+            onEditTask(taskId)
+          }
+        }}
       >
         <div className="formInput">
           <div className="label">
