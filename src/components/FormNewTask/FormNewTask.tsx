@@ -33,6 +33,7 @@ export function FormNewTask({
       onHideModal()
     }
   }
+  //I am not using this currently, but still need to keep it for my next challenge of showing/hiding the modal onClick!
   // const formRef = useRef<HTMLFormElement | null>(null)
   // useEffect(() => {
   //   const onBodyClick = (e: MouseEvent) => {
