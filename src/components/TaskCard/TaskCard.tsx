@@ -22,9 +22,6 @@ export function TaskCard({
   const handleCheckbox = () => {
     onStatusChange(task.id)
   }
-  // const handleDelete = (id: string) => {
-  //   console.log(id)
-  // }
 
   return (
     <div>

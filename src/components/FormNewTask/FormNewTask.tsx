@@ -63,7 +63,6 @@ export function FormNewTask({
             {label === "Edit Task" && (
               <DeleteOutlineIcon
                 onClick={() => {
-                  console.log(taskId)
                   if (onDeleteTask && taskId) {
                     onDeleteTask(taskId)
                   }

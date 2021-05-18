@@ -34,7 +34,7 @@ export function App() {
     })
   }
 
-  // const editHandler = (id: string, text: string) => {
+  // const editTask = (id: string, text: string) => {
   //   setTasks((previousArray) => {
   //     const found = previousArray.find((task) => task.id === id)
   //     if (found) {
@@ -57,6 +57,7 @@ export function App() {
         return [...previousArray]
       }
     })
+    setEditModal(false)
   }
 
   const completedTasks = tasks.filter((task) => task.isComplete)
