@@ -1,6 +1,7 @@
 import CheckCircleIcon from "@material-ui/icons/CheckCircle"
 import RadioButtonUncheckedIcon from "@material-ui/icons/RadioButtonUnchecked"
 import "./style.css"
+import { useState } from "react"
 import { Task } from "../../types/Task"
 import { FormNewTask } from "../FormNewTask"
 
@@ -8,17 +9,13 @@ export type Props = {
   task: Task
   onStatusChange: (id: string) => void
   onDeleteTask: (id: string) => void
-  editModal: boolean
-  handleModal: () => void
 }
 
-export function TaskCard({
-  task,
-  onStatusChange,
-  onDeleteTask,
-  editModal,
-  handleModal,
-}: Props) {
+export function TaskCard({ task, onStatusChange, onDeleteTask }: Props) {
+  const [editModal, setEditModal] = useState(false)
+  const handleEditModal = () => {
+    setEditModal(!editModal)
+  }
   const handleCheckbox = () => {
     onStatusChange(task.id)
   }
@@ -28,7 +25,7 @@ export function TaskCard({
       <div
         className="taskCard"
         onClick={() => {
-          handleModal()
+          handleEditModal()
         }}
       >
         <div
@@ -52,7 +49,7 @@ export function TaskCard({
       <FormNewTask
         label={"Edit Task"}
         modal={editModal}
-        onHideModal={handleModal}
+        onHideModal={handleEditModal}
         onDeleteTask={onDeleteTask}
         placeholder={task.description}
         taskId={task.id}

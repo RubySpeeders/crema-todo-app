@@ -11,7 +11,6 @@ import { TaskCounter } from "../TaskCounter"
 
 export function App() {
   const [modal, setModal] = useState(false)
-  const [editModal, setEditModal] = useState(false)
   const [tasks, setTasks] = useState<Task[]>([])
   const addTask = (text: string) => {
     setTasks((previousArray) => [
@@ -57,7 +56,7 @@ export function App() {
         return [...previousArray]
       }
     })
-    setEditModal(false)
+    // setEditModal(false)
   }
 
   const completedTasks = tasks.filter((task) => task.isComplete)
@@ -65,10 +64,6 @@ export function App() {
 
   const handleModal = () => {
     setModal(!modal)
-  }
-
-  const handleEditModal = () => {
-    setEditModal(!editModal)
   }
 
   return (
@@ -83,8 +78,6 @@ export function App() {
                 key={taskItem.id}
                 task={taskItem}
                 onStatusChange={statusHandler}
-                editModal={editModal}
-                handleModal={handleEditModal}
                 onDeleteTask={deleteTask}
               />
             )
@@ -104,8 +97,6 @@ export function App() {
                 key={taskItem.id}
                 task={taskItem}
                 onStatusChange={statusHandler}
-                editModal={editModal}
-                handleModal={handleEditModal}
                 onDeleteTask={deleteTask}
               />
             )

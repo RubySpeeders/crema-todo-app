@@ -25,7 +25,7 @@ export function FormNewTask({
 
   const addNewTask = (e: React.FormEvent) => {
     e.preventDefault()
-    if (textInputRef.current && onAddTask) {
+    if (textInputRef.current && onAddTask && onHideModal) {
       const enteredText = textInputRef.current.value
       onAddTask(enteredText)
       onHideModal()
@@ -65,6 +65,7 @@ export function FormNewTask({
                 onClick={() => {
                   if (onDeleteTask && taskId) {
                     onDeleteTask(taskId)
+                    onHideModal()
                   }
                 }}
               />
