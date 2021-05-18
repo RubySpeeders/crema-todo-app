@@ -20,9 +20,9 @@ export function TaskCard({
   const handleCheckbox = () => {
     onStatusChange(task.id)
   }
-  const handleDelete = (id: string) => {
-    console.log(id)
-  }
+  // const handleDelete = (id: string) => {
+  //   console.log(id)
+  // }
 
   return (
     <div>
@@ -54,8 +54,9 @@ export function TaskCard({
         label={"Edit Task"}
         modal={editModal}
         onHideModal={handleModal}
-        onDeleteTask={handleDelete}
+        // onDeleteTask={handleDelete}
         placeholder={task.description}
+        taskId={task.id}
       />
     </div>
   )

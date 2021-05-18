@@ -5,7 +5,7 @@ import "./style.css"
 export type Props = {
   onAddTask?: (text: string) => void
   onDeleteTask?: (id: string) => void
-  taskId?: number
+  taskId?: string
   modal: boolean
   onHideModal: () => void
   label: string
@@ -14,7 +14,8 @@ export type Props = {
 
 export function FormNewTask({
   onAddTask,
-  onDeleteTask,
+  // onDeleteTask,
+  taskId,
   modal,
   onHideModal,
   label,
@@ -22,11 +23,9 @@ export function FormNewTask({
 }: Props) {
   const textInputRef = useRef<HTMLInputElement>(null)
   const deleteTask = (id: string) => {
-    if (onDeleteTask) {
-      onDeleteTask(id)
-    }
+    console.log(id)
   }
-  deleteTask("123")
+
   const addNewTask = (e: React.FormEvent) => {
     e.preventDefault()
     if (textInputRef.current && onAddTask) {
@@ -67,7 +66,9 @@ export function FormNewTask({
             {label === "Edit Task" && (
               <DeleteOutlineIcon
                 onClick={() => {
-                  console.log("i do something")
+                  if (taskId) {
+                    deleteTask(taskId)
+                  }
                 }}
               />
             )}
