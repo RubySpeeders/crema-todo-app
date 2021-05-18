@@ -6,9 +6,10 @@ describe("App", function () {
   it("shows a modal after clicking Create New Task button and hides it after clicking cancel", function () {
     cy.visit("/")
     cy.get(".createTaskButton").click()
-    cy.get(".newTaskForm").should("exist")
+    cy.get(".taskForm").should("exist")
+    cy.get("label").should("have.text", "New Task")
     cy.get("#cancelButton").click()
-    cy.get(".newTaskForm").should("not.exist")
+    cy.get(".taskForm").should("not.exist")
   })
   it("creates a new task with a checkbox", function () {
     cy.visit("/")
@@ -24,5 +25,15 @@ describe("App", function () {
     cy.get("#saveButton").click()
     cy.get("[data-testid=unchecked]").click()
     cy.get("[data-testid=checked] > path").should("exist")
+  })
+  it("shows an edit modal after clicking a task, edits the description, then hides the modal after clicking save", function () {
+    cy.visit("/")
+    cy.get(".createTaskButton").click()
+    cy.get("#taskInput").type("make dinner")
+    cy.get("#saveButton").click()
+    cy.get(".taskCard").click()
+    cy.get("#taskInput").type("wash the dishes")
+    cy.get("#saveButton").click()
+    cy.get(".normal").should("have.text", "wash the dishes")
   })
 })

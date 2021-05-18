@@ -29,26 +29,26 @@ describe("FormNewTask", () => {
   //TODO: CHANGE TO EDIT TASK PARAMETERS INSTEAD OF ADD TASK PARAMETERS
   it("tests onEditTask is called with correct parameter", () => {
     // Arrange
-    const onAddTask = jest.fn()
+    const onEditTask = jest.fn()
     const modal = true
 
     // Act
     const { getByLabelText, getByText } = render(
       <FormNewTask
-        label="New Task"
+        label="Edit Task"
         placeholder="TaskDescription"
-        onAddTask={onAddTask}
+        onEditTask={onEditTask}
         modal={modal}
-        onHideModal={onAddTask}
+        onHideModal={onEditTask}
       />,
     )
 
-    const input = getByLabelText("New Task", { selector: "input" })
+    const input = getByLabelText("Edit Task", { selector: "input" })
     const saveButton = getByText("Save")
     fireEvent.change(input, { target: { value: "meeting with Mandy" } })
     fireEvent.click(saveButton)
 
     // Assert
-    expect(onAddTask).toHaveBeenCalledWith("meeting with Mandy")
+    expect(onEditTask).toHaveBeenCalledWith("testId", "meeting with Mandy")
   })
 })
