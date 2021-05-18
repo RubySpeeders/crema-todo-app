@@ -7,6 +7,7 @@ import { FormNewTask } from "../FormNewTask"
 export type Props = {
   task: Task
   onStatusChange: (id: string) => void
+  onDeleteTask: (id: string) => void
   editModal: boolean
   handleModal: () => void
 }
@@ -14,6 +15,7 @@ export type Props = {
 export function TaskCard({
   task,
   onStatusChange,
+  onDeleteTask,
   editModal,
   handleModal,
 }: Props) {
@@ -54,7 +56,7 @@ export function TaskCard({
         label={"Edit Task"}
         modal={editModal}
         onHideModal={handleModal}
-        // onDeleteTask={handleDelete}
+        onDeleteTask={onDeleteTask}
         placeholder={task.description}
         taskId={task.id}
       />

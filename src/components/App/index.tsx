@@ -48,6 +48,17 @@ export function App() {
   //   })
   // }
 
+  const deleteTask = (id: string) => {
+    setTasks((previousArray) => {
+      const found = previousArray.find((task) => task.id === id)
+      if (found) {
+        return [...previousArray.filter((item) => item.id !== id)]
+      } else {
+        return [...previousArray]
+      }
+    })
+  }
+
   const completedTasks = tasks.filter((task) => task.isComplete)
   const activeTasks = tasks.filter((task) => !task.isComplete)
 
@@ -73,6 +84,7 @@ export function App() {
                 onStatusChange={statusHandler}
                 editModal={editModal}
                 handleModal={handleEditModal}
+                onDeleteTask={deleteTask}
               />
             )
           })}
@@ -93,6 +105,7 @@ export function App() {
                 onStatusChange={statusHandler}
                 editModal={editModal}
                 handleModal={handleEditModal}
+                onDeleteTask={deleteTask}
               />
             )
           })}
