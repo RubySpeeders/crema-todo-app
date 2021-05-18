@@ -1,9 +1,11 @@
 import DeleteOutlineIcon from "@material-ui/icons/DeleteOutline"
-import React, { useEffect, useRef } from "react"
+import React, { useRef } from "react"
 import "./style.css"
 
 export type Props = {
-  onAddTask: (text: string) => void
+  onAddTask?: (text: string) => void
+  onDeleteTask?: (id: string) => void
+  taskId?: number
   modal: boolean
   onHideModal: () => void
   label: string
@@ -12,57 +14,80 @@ export type Props = {
 
 export function FormNewTask({
   onAddTask,
+  onDeleteTask,
   modal,
   onHideModal,
   label,
   placeholder,
 }: Props) {
-  useEffect(() => {
-    const onBodyClick = (e: Event) => {
-      console.log(e)
-    }
-    document.body.addEventListener("click", onBodyClick, { capture: true })
-  }, [])
   const textInputRef = useRef<HTMLInputElement>(null)
+  const deleteTask = (id: string) => {
+    if (onDeleteTask) {
+      onDeleteTask(id)
+    }
+  }
+  deleteTask("123")
   const addNewTask = (e: React.FormEvent) => {
     e.preventDefault()
-    if (textInputRef.current) {
+    if (textInputRef.current && onAddTask) {
       const enteredText = textInputRef.current.value
       onAddTask(enteredText)
       onHideModal()
     }
   }
+  // const formRef = useRef<HTMLFormElement | null>(null)
+  // useEffect(() => {
+  //   const onBodyClick = (e: MouseEvent) => {
+  //     if (formRef.current && formRef.current.contains(e.target as Node)) {
+  //       return
+  //     }
+  //     onHideModal()
+  //   }
+
+  //   document.body.addEventListener("click", onBodyClick, { capture: true })
+
+  //   return () => {
+  //     document.body.removeEventListener("click", onBodyClick, { capture: true })
+  //   }
+  // }, [])
+
   if (!modal) {
     return null
   }
   return (
-    <form className="taskForm" onSubmit={addNewTask}>
-      <div className="formInput">
-        <div className="label">
-          <label htmlFor="taskInput">{label}</label>
-          {label === "Edit Task" && (
-            <DeleteOutlineIcon
-              onClick={() => {
-                console.log("clicked delete")
-              }}
-            />
-          )}
+    <div>
+      <form
+        // ref={formRef}
+        className="taskForm"
+        onSubmit={addNewTask}
+      >
+        <div className="formInput">
+          <div className="label">
+            <label htmlFor="taskInput">{label}</label>
+            {label === "Edit Task" && (
+              <DeleteOutlineIcon
+                onClick={() => {
+                  console.log("i do something")
+                }}
+              />
+            )}
+          </div>
+          <input
+            type="text"
+            id="taskInput"
+            ref={textInputRef}
+            placeholder={placeholder}
+          ></input>
         </div>
-        <input
-          type="text"
-          id="taskInput"
-          ref={textInputRef}
-          placeholder={placeholder}
-        ></input>
-      </div>
-      <div className="buttonArea">
-        <button id="cancelButton" onClick={onHideModal}>
-          Cancel
-        </button>
-        <button type="submit" id="saveButton">
-          Save
-        </button>
-      </div>
-    </form>
+        <div className="buttonArea">
+          <button id="cancelButton" onClick={onHideModal}>
+            Cancel
+          </button>
+          <button type="submit" id="saveButton">
+            Save
+          </button>
+        </div>
+      </form>
+    </div>
   )
 }

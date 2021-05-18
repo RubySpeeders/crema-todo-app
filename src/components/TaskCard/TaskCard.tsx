@@ -7,45 +7,54 @@ import { FormNewTask } from "../FormNewTask"
 export type Props = {
   task: Task
   onStatusChange: (id: string) => void
-  modal: boolean
+  editModal: boolean
   handleModal: () => void
 }
 
-export function TaskCard({ task, onStatusChange, modal, handleModal }: Props) {
+export function TaskCard({
+  task,
+  onStatusChange,
+  editModal,
+  handleModal,
+}: Props) {
   const handleCheckbox = () => {
     onStatusChange(task.id)
   }
-
-  const deleteTask = (test: string) => {
-    console.log(test)
+  const handleDelete = (id: string) => {
+    console.log(id)
   }
 
   return (
-    <div
-      className="taskCard"
-      onClick={() => {
-        handleModal()
-      }}
-    >
-      {modal}
-      <div className="checkbox" data-testid="checkbox" onClick={handleCheckbox}>
-        {!task.isComplete ? (
-          <RadioButtonUncheckedIcon
-            className="ellipse"
-            data-testid="unchecked"
-          />
-        ) : (
-          <CheckCircleIcon className="ellipse" data-testid="checked" />
-        )}
+    <div>
+      <div
+        className="taskCard"
+        onClick={() => {
+          handleModal()
+        }}
+      >
+        <div
+          className="checkbox"
+          data-testid="checkbox"
+          onClick={handleCheckbox}
+        >
+          {!task.isComplete ? (
+            <RadioButtonUncheckedIcon
+              className="ellipse"
+              data-testid="unchecked"
+            />
+          ) : (
+            <CheckCircleIcon className="ellipse" data-testid="checked" />
+          )}
+        </div>
+        <p className={`normal ${task.isComplete && "completeDescription"}`}>
+          {task.description}
+        </p>
       </div>
-      <p className={`normal ${task.isComplete && "completeDescription"}`}>
-        {task.description}
-      </p>
       <FormNewTask
         label={"Edit Task"}
-        modal={modal}
+        modal={editModal}
         onHideModal={handleModal}
-        onAddTask={deleteTask}
+        onDeleteTask={handleDelete}
         placeholder={task.description}
       />
     </div>
