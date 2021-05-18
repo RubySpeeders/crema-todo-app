@@ -5,18 +5,19 @@ describe("TaskCard", () => {
   //Arrange
   const statusHandler = jest.fn()
   const task = { id: "123ABC", description: "do a dance", isComplete: true }
-  const editModal = false
-  const handleEditModal = () => {
-    console.log("do a real test!")
-  }
+
   it("has a task with the description on the card", () => {
     // Act
     const { getByText } = render(
       <TaskCard
         task={task}
         onStatusChange={statusHandler}
-        modal={editModal}
-        handleModal={handleEditModal}
+        onDeleteTask={() => {
+          console.log("delete function")
+        }}
+        onEditTask={() => {
+          console.log("edit function")
+        }}
       />,
     )
     const element = getByText(task.description)
@@ -30,8 +31,12 @@ describe("TaskCard", () => {
       <TaskCard
         task={task}
         onStatusChange={statusHandler}
-        modal={editModal}
-        handleModal={handleEditModal}
+        onDeleteTask={() => {
+          console.log("delete function")
+        }}
+        onEditTask={() => {
+          console.log("edit function")
+        }}
       />,
     )
     const checkbox = getByTestId("checkbox")
@@ -43,17 +48,18 @@ describe("TaskCard", () => {
   it("has a checkbox", () => {
     // Arrange
     const task = { id: "123ABC", description: "do a dance", isComplete: false }
-    const editModal = false
-    const handleEditModal = () => {
-      console.log("do a real test!")
-    }
+
     // Act
     const { getByTestId } = render(
       <TaskCard
         task={task}
         onStatusChange={statusHandler}
-        modal={editModal}
-        handleModal={handleEditModal}
+        onDeleteTask={() => {
+          console.log("delete function")
+        }}
+        onEditTask={() => {
+          console.log("edit function")
+        }}
       />,
     )
     const uncheckedBox = getByTestId("unchecked")
