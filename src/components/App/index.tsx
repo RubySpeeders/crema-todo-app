@@ -8,7 +8,6 @@ import { AppHeader } from "../AppHeader"
 import { ButtonCreateTask } from "../ButtonCreateTask"
 import { FormNewTask } from "../FormNewTask"
 import { TaskCard } from "../TaskCard"
-// import { TaskCounter } from "../TaskCounter"
 
 export function App() {
   const [modal, setModal] = useState(false)
@@ -68,7 +67,7 @@ export function App() {
           <div className="completeLabel">
             <p className="complete">Completed Tasks</p>
             {expanded ? (
-              <div className="expand" onClick={handleExpand}>
+              <div className="expand active" onClick={handleExpand}>
                 Hide
                 <ExpandLessIcon />
               </div>
@@ -79,7 +78,6 @@ export function App() {
               </div>
             )}
           </div>
-          {/* <TaskCounter completedTasks={completedTasks} /> */}
           {expanded &&
             completedTasks.map((taskItem: Task) => {
               return (
