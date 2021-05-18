@@ -33,23 +33,23 @@ export function App() {
     })
   }
 
-  const editTask = (id: string) => {
-    console.log("passed the id ok", id)
-  }
-
   // const editTask = (id: string, text: string) => {
-  //   setTasks((previousArray) => {
-  //     const found = previousArray.find((task) => task.id === id)
-  //     if (found) {
-  //       return [
-  //         ...previousArray.filter((item) => item.id !== id),
-  //         { ...found, description: text },
-  //       ]
-  //     } else {
-  //       return [...previousArray]
-  //     }
-  //   })
+  //   console.log("passed the id ok", id)
   // }
+
+  const editTask = (id: string, text: string) => {
+    setTasks((previousArray) => {
+      const found = previousArray.find((task) => task.id === id)
+      if (found) {
+        return [
+          ...previousArray.filter((item) => item.id !== id),
+          { ...found, description: text },
+        ]
+      } else {
+        return [...previousArray]
+      }
+    })
+  }
 
   const deleteTask = (id: string) => {
     setTasks((previousArray) => {

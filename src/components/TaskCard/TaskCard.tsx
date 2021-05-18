@@ -9,7 +9,7 @@ export type Props = {
   task: Task
   onStatusChange: (id: string) => void
   onDeleteTask: (id: string) => void
-  onEditTask: (id: string) => void
+  onEditTask: (id: string, text: string) => void
 }
 
 export function TaskCard({
