@@ -26,29 +26,4 @@ describe("FormNewTask", () => {
     // Assert
     expect(onAddTask).toHaveBeenCalledWith("meeting with Mandy")
   })
-
-  it("tests onEditTask is called with correct parameter", () => {
-    // Arrange
-    const onEditTask = jest.fn()
-    const modal = true
-
-    // Act
-    const { getByLabelText, getByText } = render(
-      <FormNewTask
-        label="Edit Task"
-        placeholder="TaskDescription"
-        onEditTask={onEditTask}
-        modal={modal}
-        onHideModal={onEditTask}
-      />,
-    )
-
-    const input = getByLabelText("Edit Task", { selector: "input" })
-    const saveButton = getByText("Save")
-    fireEvent.change(input, { target: { value: "meeting with Mandy" } })
-    fireEvent.click(saveButton)
-
-    // Assert
-    expect(onEditTask).toHaveBeenCalled()
-  })
 })

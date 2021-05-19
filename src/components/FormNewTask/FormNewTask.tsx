@@ -30,7 +30,6 @@ export function FormNewTask({
     if (textInputRef.current && onAddTask && onHideModal) {
       const enteredText = textInputRef.current.value
       onAddTask(enteredText)
-      onHideModal()
     }
   }
   //I am not using this currently, but still need to keep it for my next challenge of showing/hiding the modal onClick!
@@ -70,8 +69,8 @@ export function FormNewTask({
             e.preventDefault()
             const enteredText = textInputRef.current.value
             onEditTask(taskId, enteredText)
-            onHideModal()
           }
+          onHideModal()
         }}
       >
         <div className="formInput">
