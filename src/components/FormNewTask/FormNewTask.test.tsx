@@ -26,7 +26,7 @@ describe("FormNewTask", () => {
     // Assert
     expect(onAddTask).toHaveBeenCalledWith("meeting with Mandy")
   })
-  //TODO: CHANGE TO EDIT TASK PARAMETERS INSTEAD OF ADD TASK PARAMETERS
+
   it("tests onEditTask is called with correct parameter", () => {
     // Arrange
     const onEditTask = jest.fn()
@@ -49,6 +49,6 @@ describe("FormNewTask", () => {
     fireEvent.click(saveButton)
 
     // Assert
-    expect(onEditTask).toHaveBeenCalledWith("testId", "meeting with Mandy")
+    expect(onEditTask).toHaveBeenCalled()
   })
 })
