@@ -56,7 +56,6 @@ export function App() {
         return [...previousArray]
       }
     })
-    // setEditModal(false)
   }
 
   const completedTasks = tasks.filter((task) => task.isComplete)
