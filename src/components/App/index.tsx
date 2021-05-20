@@ -1,4 +1,5 @@
 import ExpandLessIcon from "@material-ui/icons/ExpandLess"
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore"
 import { nanoid } from "nanoid"
 import { useState } from "react"
 import "./styles.css"
@@ -7,11 +8,14 @@ import { AppHeader } from "../AppHeader"
 import { ButtonCreateTask } from "../ButtonCreateTask"
 import { FormNewTask } from "../FormNewTask"
 import { TaskCard } from "../TaskCard"
-import { TaskCounter } from "../TaskCounter"
 
 export function App() {
   const [modal, setModal] = useState(false)
   const [tasks, setTasks] = useState<Task[]>([])
+  const [expanded, setExpand] = useState(true)
+  const completedTasks = tasks.filter((task) => task.isComplete)
+  const activeTasks = tasks.filter((task) => !task.isComplete)
+
   const addTask = (text: string) => {
     setTasks((previousArray) => [
       ...previousArray,
@@ -58,11 +62,12 @@ export function App() {
     })
   }
 
-  const completedTasks = tasks.filter((task) => task.isComplete)
-  const activeTasks = tasks.filter((task) => !task.isComplete)
-
   const handleModal = () => {
     setModal(!modal)
+  }
+
+  const handleExpand = () => {
+    setExpand(!expanded)
   }
 
   return (
@@ -86,22 +91,32 @@ export function App() {
         <ButtonCreateTask onShowModal={handleModal} />
         {modal}
         <div className="completeList">
-          <p>Completed Tasks</p>
-          <span>
-            Hide <ExpandLessIcon />
-          </span>
-          <TaskCounter completedTasks={completedTasks} />
-          {completedTasks.map((taskItem: Task) => {
-            return (
-              <TaskCard
-                key={taskItem.id}
-                task={taskItem}
-                onStatusChange={statusHandler}
-                onDeleteTask={deleteTask}
-                onEditTask={editTask}
-              />
-            )
-          })}
+          <div className="completeLabel">
+            <p className="complete">Completed Tasks</p>
+            {expanded ? (
+              <div className="expand active" onClick={handleExpand}>
+                Hide
+                <ExpandLessIcon />
+              </div>
+            ) : (
+              <div className="expand" onClick={handleExpand}>
+                Show
+                <ExpandMoreIcon />
+              </div>
+            )}
+          </div>
+          {expanded &&
+            completedTasks.map((taskItem: Task) => {
+              return (
+                <TaskCard
+                  key={taskItem.id}
+                  task={taskItem}
+                  onStatusChange={statusHandler}
+                  onDeleteTask={deleteTask}
+                  onEditTask={editTask}
+                />
+              )
+            })}
         </div>
       </main>
       <FormNewTask
