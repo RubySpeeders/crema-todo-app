@@ -28,12 +28,7 @@ export function TaskCard({
 
   return (
     <div>
-      <div
-        className="taskCard"
-        onClick={() => {
-          handleEditModal()
-        }}
-      >
+      <div className="taskCard" onClick={handleEditModal}>
         <div
           className="checkbox"
           data-testid="checkbox"

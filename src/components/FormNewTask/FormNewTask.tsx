@@ -1,37 +1,53 @@
 import DeleteOutlineIcon from "@material-ui/icons/DeleteOutline"
 import React, { useRef } from "react"
 import "./style.css"
+import { Union } from "ts-toolbelt"
 
-export type Props = {
-  onAddTask?: (text: string) => void
-  onDeleteTask?: (id: string) => void
-  onEditTask?: (id: string, text: string) => void
-  taskId?: string
-  modal: boolean
-  onHideModal: () => void
-  label: string
+export type FormProps = Union.Strict<EditTaskProps | NewTaskProps> & {
   placeholder: string
+  onHideModal: () => void
+  modal: boolean
+}
+
+type EditTaskProps = {
+  onDeleteTask: (id: string) => void
+  onEditTask: (id: string, text: string) => void
+  taskId: string
+  label: "Edit Task"
+}
+
+type NewTaskProps = {
+  onAddTask: (text: string) => void
+  label: "New Task"
 }
 
 export function FormNewTask({
-  onAddTask,
-  taskId,
-  modal,
-  onHideModal,
-  onDeleteTask,
-  onEditTask,
   label,
   placeholder,
-}: Props) {
+  onHideModal,
+  modal,
+  ...props
+}: FormProps) {
   const textInputRef = useRef<HTMLInputElement>(null)
 
-  const addNewTask = (e: React.FormEvent) => {
+  const handleSubmitNewTask = (e: React.FormEvent) => {
     e.preventDefault()
-    if (textInputRef.current && onAddTask && onHideModal) {
+    if (textInputRef.current) {
       const enteredText = textInputRef.current.value
-      onAddTask(enteredText)
+      props.onAddTask?.(enteredText)
+      onHideModal()
     }
   }
+
+  const handleSubmitEditTask = (e: React.FormEvent) => {
+    e.preventDefault()
+    if (textInputRef.current) {
+      const enteredText = textInputRef.current.value
+      props.onEditTask?.(props.taskId, enteredText)
+      onHideModal()
+    }
+  }
+
   //I am not using this currently, but still need to keep it for my next challenge of showing/hiding the modal onClick!
   // const formRef = useRef<HTMLFormElement | null>(null)
   // useEffect(() => {
@@ -57,21 +73,9 @@ export function FormNewTask({
       <form
         // ref={formRef}
         className="taskForm"
-        onSubmit={(e) => {
-          if (label === "New Task") {
-            addNewTask(e)
-          } else if (
-            label === "Edit Task" &&
-            onEditTask &&
-            taskId &&
-            textInputRef.current
-          ) {
-            e.preventDefault()
-            const enteredText = textInputRef.current.value
-            onEditTask(taskId, enteredText)
-          }
-          onHideModal()
-        }}
+        onSubmit={
+          label === "New Task" ? handleSubmitNewTask : handleSubmitEditTask
+        }
       >
         <div className="formInput">
           <div className="label">
@@ -79,8 +83,8 @@ export function FormNewTask({
             {label === "Edit Task" && (
               <DeleteOutlineIcon
                 onClick={() => {
-                  if (onDeleteTask && taskId) {
-                    onDeleteTask(taskId)
+                  if (props.onDeleteTask && props.taskId) {
+                    props.onDeleteTask(props.taskId)
                     onHideModal()
                   }
                 }}
