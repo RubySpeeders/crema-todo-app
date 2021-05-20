@@ -116,3 +116,18 @@ p {
   color: rgba(0, 0, 0, 0.87);
 }
 
+.complete {
+  width: 9em
+}
+
+.completeLabel {
+  display: flex;
+  align-items: center;
+  width: 28em;
+  justify-content: space-between;
+}
+
+.expand {
+  display: flex;
+  align-items: center;
+}
