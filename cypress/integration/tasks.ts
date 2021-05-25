@@ -28,6 +28,7 @@ describe("App", function () {
   })
   it("shows an edit modal after clicking a task, edits the description, then hides the modal after clicking save", function () {
     cy.visit("/")
+    cy.get(".createTaskButton").click()
     cy.get("#taskInput").type("make dinner")
     cy.get("#saveButton").click()
     cy.get(".taskCard").click()
@@ -37,7 +38,6 @@ describe("App", function () {
   })
   it("shows and hides complete tasks", function () {
     cy.visit("/")
-    cy.get(".createTaskButton").click()
     cy.get(".createTaskButton").click()
     cy.get("#taskInput").type("another task")
     cy.get("#saveButton").click()
