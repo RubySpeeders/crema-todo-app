@@ -48,6 +48,7 @@ export function TaskCard({
         </p>
       </div>
       <FormNewTask
+        kind={"edit"}
         label={"Edit Task"}
         modal={editModal}
         onHideModal={handleEditModal}

@@ -120,6 +120,7 @@ export function App() {
         </div>
       </main>
       <FormNewTask
+        kind={"new"}
         label={"New Task"}
         modal={modal}
         onHideModal={handleModal}

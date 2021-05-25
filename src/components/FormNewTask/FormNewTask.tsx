@@ -1,9 +1,8 @@
 import DeleteOutlineIcon from "@material-ui/icons/DeleteOutline"
 import React, { useRef } from "react"
 import "./style.css"
-import { Union } from "ts-toolbelt"
 
-export type FormProps = Union.Strict<EditTaskProps | NewTaskProps> & {
+export type FormProps = (EditTaskProps | NewTaskProps) & {
   placeholder: string
   onHideModal: () => void
   modal: boolean
@@ -14,11 +13,13 @@ type EditTaskProps = {
   onEditTask: (id: string, text: string) => void
   taskId: string
   label: "Edit Task"
+  kind: "edit"
 }
 
 type NewTaskProps = {
   onAddTask: (text: string) => void
   label: "New Task"
+  kind: "new"
 }
 
 export function FormNewTask({
@@ -32,18 +33,18 @@ export function FormNewTask({
 
   const handleSubmitNewTask = (e: React.FormEvent) => {
     e.preventDefault()
-    if (textInputRef.current) {
+    if (textInputRef.current && props.kind === "new") {
       const enteredText = textInputRef.current.value
-      props.onAddTask?.(enteredText)
+      props.onAddTask(enteredText)
       onHideModal()
     }
   }
 
   const handleSubmitEditTask = (e: React.FormEvent) => {
     e.preventDefault()
-    if (textInputRef.current) {
+    if (textInputRef.current && props.kind === "edit") {
       const enteredText = textInputRef.current.value
-      props.onEditTask?.(props.taskId, enteredText)
+      props.onEditTask(props.taskId, enteredText)
       onHideModal()
     }
   }
@@ -80,7 +81,7 @@ export function FormNewTask({
         <div className="formInput">
           <div className="label">
             <label htmlFor="taskInput">{label}</label>
-            {label === "Edit Task" && (
+            {props.kind === "edit" && (
               <DeleteOutlineIcon
                 onClick={() => {
                   if (props.onDeleteTask && props.taskId) {
