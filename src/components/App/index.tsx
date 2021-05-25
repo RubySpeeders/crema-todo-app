@@ -121,7 +121,6 @@ export function App() {
       </main>
       <FormNewTask
         kind={"new"}
-        label={"New Task"}
         modal={modal}
         onHideModal={handleModal}
         onAddTask={addTask}

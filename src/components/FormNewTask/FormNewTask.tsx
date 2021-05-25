@@ -12,18 +12,15 @@ type EditTaskProps = {
   onDeleteTask: (id: string) => void
   onEditTask: (id: string, text: string) => void
   taskId: string
-  label: "Edit Task"
   kind: "edit"
 }
 
 type NewTaskProps = {
   onAddTask: (text: string) => void
-  label: "New Task"
   kind: "new"
 }
 
 export function FormNewTask({
-  label,
   placeholder,
   onHideModal,
   modal,
@@ -75,12 +72,14 @@ export function FormNewTask({
         // ref={formRef}
         className="taskForm"
         onSubmit={
-          label === "New Task" ? handleSubmitNewTask : handleSubmitEditTask
+          props.kind === "new" ? handleSubmitNewTask : handleSubmitEditTask
         }
       >
         <div className="formInput">
           <div className="label">
-            <label htmlFor="taskInput">{label}</label>
+            <label htmlFor="taskInput">
+              {props.kind === "edit" ? "Edit Task" : "New Task"}
+            </label>
             {props.kind === "edit" && (
               <DeleteOutlineIcon
                 onClick={() => {

@@ -10,7 +10,7 @@ describe("FormNewTask", () => {
     // Act
     const { getByLabelText, getByText } = render(
       <FormNewTask
-        label="New Task"
+        kind="new"
         placeholder="TaskDescription"
         onAddTask={onAddTask}
         modal={modal}
