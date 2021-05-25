@@ -46,6 +46,13 @@ export function FormNewTask({
     }
   }
 
+  const handleDelete = () => {
+    if (props.kind === "edit") {
+      props.onDeleteTask(props.taskId)
+      onHideModal()
+    }
+  }
+
   //I am not using this currently, but still need to keep it for my next challenge of showing/hiding the modal onClick!
   // const formRef = useRef<HTMLFormElement | null>(null)
   // useEffect(() => {
@@ -82,12 +89,8 @@ export function FormNewTask({
             </label>
             {props.kind === "edit" && (
               <DeleteOutlineIcon
-                onClick={() => {
-                  if (props.onDeleteTask && props.taskId) {
-                    props.onDeleteTask(props.taskId)
-                    onHideModal()
-                  }
-                }}
+                onClick={handleDelete}
+                data-testid="deleteIcon"
               />
             )}
           </div>
