@@ -14,9 +14,7 @@ import { TaskCard } from "../TaskCard"
 export function App() {
   const tasks: Task[] = useAppSelector((state) => state.allTasks.tasks)
   const dispatch = useAppDispatch()
-
   const [modal, setModal] = useState(false)
-  // const [tasks, setTasks] = useState<Task[]>([])
   const [expanded, setExpand] = useState(true)
   const completedTasks = tasks.filter((task) => task.isComplete)
   const activeTasks = tasks.filter((task) => !task.isComplete)
