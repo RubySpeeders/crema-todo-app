@@ -4,7 +4,7 @@ import { nanoid } from "nanoid"
 import { useState } from "react"
 import { useAppDispatch, useAppSelector } from "../../redux/hooks"
 import "./styles.css"
-import { addTaskRedux } from "../../redux/task/taskSlice"
+import { addTask, editStatus } from "../../redux/task/taskSlice"
 import { Task } from "../../types/Task"
 import { AppHeader } from "../AppHeader"
 import { ButtonCreateTask } from "../ButtonCreateTask"
@@ -19,25 +19,24 @@ export function App() {
   const completedTasks = tasks.filter((task) => task.isComplete)
   const activeTasks = tasks.filter((task) => !task.isComplete)
 
-  const addTask = (text: string) => {
-    dispatch(
-      addTaskRedux({ id: nanoid(), description: text, isComplete: false }),
-    )
+  const addTaskHandler = (text: string) => {
+    dispatch(addTask({ id: nanoid(), description: text, isComplete: false }))
   }
 
-  // const statusHandler = (id: string) => {
-  //   setTasks((previousArray) => {
-  //     const found = previousArray.find((task) => task.id === id)
-  //     if (found) {
-  //       return [
-  //         ...previousArray.filter((item) => item.id !== id),
-  //         { ...found, isComplete: !found.isComplete },
-  //       ]
-  //     } else {
-  //       return [...previousArray]
-  //     }
-  //   })
-  // }
+  const statusHandler = (task: Task) => {
+    dispatch(editStatus(task))
+    // setTasks((previousArray) => {
+    //   const found = previousArray.find((task) => task.id === id)
+    //   if (found) {
+    //     return [
+    //       ...previousArray.filter((item) => item.id !== id),
+    //       { ...found, isComplete: !found.isComplete },
+    //     ]
+    //   } else {
+    //     return [...previousArray]
+    //   }
+    // })
+  }
 
   const handleModal = () => {
     setModal(!modal)
@@ -58,11 +57,7 @@ export function App() {
               <TaskCard
                 key={taskItem.id}
                 task={taskItem}
-                onStatusChange={() => {
-                  console.log(
-                    "replace with statushandler once redux is finished",
-                  )
-                }}
+                onStatusChange={statusHandler}
               />
             )
           })}
@@ -90,17 +85,17 @@ export function App() {
                 <TaskCard
                   key={taskItem.id}
                   task={taskItem}
-                  onStatusChange={() => {
-                    console.log(
-                      "replace with statushandler once redux is finished",
-                    )
-                  }}
+                  onStatusChange={statusHandler}
                 />
               )
             })}
         </div>
       </main>
-      <FormNewTask show={modal} onHideModal={handleModal} onAddTask={addTask} />
+      <FormNewTask
+        show={modal}
+        onHideModal={handleModal}
+        onAddTask={addTaskHandler}
+      />
     </div>
   )
 }

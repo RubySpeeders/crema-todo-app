@@ -5,12 +5,12 @@ import { Task } from "../../types/Task"
 
 export type Props = {
   task: Task
-  onStatusChange: (id: string) => void
+  onStatusChange: (task: Task) => void
 }
 
 export function TaskCard({ task, onStatusChange }: Props) {
   const handleCheckbox = () => {
-    onStatusChange(task.id)
+    onStatusChange(task)
   }
 
   return (
