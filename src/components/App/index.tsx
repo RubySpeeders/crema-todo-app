@@ -23,10 +23,6 @@ export function App() {
     dispatch(
       addTaskRedux({ id: nanoid(), description: text, isComplete: false }),
     )
-    // setTasks((previousArray) => [
-    //   ...previousArray,
-    //   { id: nanoid(), description: text, isComplete: false },
-    // ])
   }
 
   // const statusHandler = (id: string) => {
