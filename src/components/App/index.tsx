@@ -42,11 +42,6 @@ export function App() {
       const found = previousArray.find((task) => task.id === id)
       if (found) {
         // const index = previousArray.indexOf(found)
-        return previousArray.map((task) => {
-          if (task === found) {
-            task.description = text
-          }
-        })
         // return [
         //   ...previousArray.filter((item) => item.id !== id),
         //   { ...found, description: text },
