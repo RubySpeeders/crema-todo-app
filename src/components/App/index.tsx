@@ -41,10 +41,16 @@ export function App() {
     setTasks((previousArray) => {
       const found = previousArray.find((task) => task.id === id)
       if (found) {
-        return [
-          ...previousArray.filter((item) => item.id !== id),
-          { ...found, description: text },
-        ]
+        // const index = previousArray.indexOf(found)
+        return previousArray.map((task) => {
+          if (task === found) {
+            task.description = text
+          }
+        })
+        // return [
+        //   ...previousArray.filter((item) => item.id !== id),
+        //   { ...found, description: text },
+        // ]
       } else {
         return [...previousArray]
       }
@@ -120,11 +126,11 @@ export function App() {
         </div>
       </main>
       <FormNewTask
-        kind={"new"}
+        kind="new"
         modal={modal}
         onHideModal={handleModal}
         onAddTask={addTask}
-        placeholder={"Task description"}
+        placeholder="Task description"
       />
     </div>
   )
