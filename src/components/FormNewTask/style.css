@@ -50,11 +50,9 @@
 
   #saveButton {
     padding: 16px 16px;
-
     bottom: 32.45%;
   
     /* Primary */
-  
     background: #4158c4;
     border-radius: 4px;
     border: none;

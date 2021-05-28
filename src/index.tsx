@@ -11,8 +11,8 @@ ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <Route exact path="/" component={Homepage} />
+      <Route exact path="/todo" component={App} />
     </BrowserRouter>
-    <App />
   </React.StrictMode>,
   document.getElementById("root"),
 )

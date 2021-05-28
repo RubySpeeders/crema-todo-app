@@ -49,18 +49,25 @@ export function App() {
     <div className="App">
       <AppHeader />
       <main>
-        <div className="activeList">
-          <p>Active Tasks</p>
-          {activeTasks.map((taskItem: Task) => {
-            return (
-              <TaskCard
-                key={taskItem.id}
-                task={taskItem}
-                onStatusChange={statusHandler}
-              />
-            )
-          })}
-        </div>
+        {tasks.length === 0 ? (
+          <div className="emptyTaskList">
+            <p>Create a task with the button below.</p>
+          </div>
+        ) : (
+          <div className="activeList">
+            <p>Active Tasks</p>
+            {activeTasks.map((taskItem: Task) => {
+              return (
+                <TaskCard
+                  key={taskItem.id}
+                  task={taskItem}
+                  onStatusChange={statusHandler}
+                />
+              )
+            })}
+          </div>
+        )}
+
         <ButtonCreateTask onShowModal={handleModal} />
         {modal}
         <div className="completeList">

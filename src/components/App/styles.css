@@ -131,3 +131,12 @@ p {
   display: flex;
   align-items: center;
 }
+
+.emptyTaskList {
+  width: 18em;
+  display: flex;
+}
+
+.emptyTaskList p {
+  flex: 1;
+}

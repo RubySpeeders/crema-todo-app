@@ -1,12 +1,21 @@
 import CheckIcon from "@material-ui/icons/Check"
+import { Link } from "react-router-dom"
+import "./style.css"
 
 export function Homepage() {
   return (
-    <div>
-      <CheckIcon />
-      <h5>Welcome!</h5>
-      <p>Get things done with Todo</p>
-      <button>Get Started</button>
+    <div className="homepage">
+      <div className="homepageContent">
+        <div className="circle"></div>
+        <CheckIcon />
+        <div className="welcome">
+          <h5>Welcome!</h5>
+          <p>Get things done with Todo</p>
+        </div>
+        <Link to="/todo">
+          <button>Get Started</button>
+        </Link>
+      </div>
     </div>
   )
 }
