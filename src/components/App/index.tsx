@@ -41,11 +41,12 @@ export function App() {
     setTasks((previousArray) => {
       const found = previousArray.find((task) => task.id === id)
       if (found) {
-        // const index = previousArray.indexOf(found)
-        // return [
-        //   ...previousArray.filter((item) => item.id !== id),
-        //   { ...found, description: text },
-        // ]
+        return previousArray.map((item) => {
+          if (item === found) {
+            return { ...found, description: text }
+          }
+          return item
+        })
       } else {
         return [...previousArray]
       }
