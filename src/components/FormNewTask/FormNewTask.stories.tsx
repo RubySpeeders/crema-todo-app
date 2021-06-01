@@ -1,7 +1,7 @@
 // import { action } from "@storybook/addon-actions"
 import decoratorCentered from "@storybook/addon-centered"
 import { Meta, Story } from "@storybook/react"
-import { FormNewTask, Props } from "./FormNewTask"
+import { FormNewTask, FormProps } from "./FormNewTask"
 
 /**
  * See Storybook Docs: Writing Stories
@@ -15,15 +15,15 @@ export default {
   title: "FormNewTask",
   decorators: [decoratorCentered],
   args: { show: true },
-} as Meta<Props>
+} as Meta<FormProps>
 
-const Template: Story<Props> = (argTypes) => <FormNewTask {...argTypes} />
+const Template: Story<FormProps> = (argTypes) => <FormNewTask {...argTypes} />
 
 export const FormNewTaskStoryVisible = Template.bind({})
 FormNewTaskStoryVisible.args = {
-  show: true,
+  modal: true,
 }
 export const FormNewTaskStoryHidden = Template.bind({})
 FormNewTaskStoryHidden.args = {
-  show: false,
+  modal: false,
 }

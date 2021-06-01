@@ -4,7 +4,7 @@ import MenuIcon from "@material-ui/icons/Menu"
 export function AppHeader() {
   return (
     <header className="AppHeader">
-      <MenuIcon />
+      <MenuIcon className="menuIcon" />
       <h5 className="AppHeaderTitle">My Tasks</h5>
     </header>
   )
