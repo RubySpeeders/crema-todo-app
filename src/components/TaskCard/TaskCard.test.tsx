@@ -43,7 +43,7 @@ describe("TaskCard", () => {
     fireEvent.click(checkbox)
 
     // Assert
-    expect(statusHandler).toHaveBeenCalledWith(task.id)
+    expect(statusHandler).toHaveBeenCalledWith(task)
   })
   it("has a checkbox", () => {
     // Arrange
