@@ -24,7 +24,7 @@ export const taskSlice = createSlice({
         })
       }
     },
-    editTask: (state, action) => {
+    editTask: (state, action: PayloadAction<{ id: string; text: string }>) => {
       const found = state.tasks.find(
         (task: Task) => task.id === action.payload.id,
       )
@@ -36,20 +36,18 @@ export const taskSlice = createSlice({
         })
       }
     },
-    // deleteTask: (state, action: PayloadAction<Task>) => {
-    //   const found = state.tasks.find(
-    //     (task: Task) => task.id === action.payload.id,
-    //   )
-    //   if (found ) {
-
-    //     state.tasks.slice(index, action.payload.id)
-    //   }
-    // },
+    deleteTask: (state, action: PayloadAction<string>) => {
+      const found = state.tasks.find((task: Task) => task.id === action.payload)
+      if (found) {
+        const index = state.tasks.indexOf(found)
+        state.tasks.splice(index, 1)
+      }
+    },
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { addTask, editStatus, editTask } = taskSlice.actions
+export const { addTask, editStatus, editTask, deleteTask } = taskSlice.actions
 
 export const selectTasks = (state: RootState) => state.allTasks.tasks
 

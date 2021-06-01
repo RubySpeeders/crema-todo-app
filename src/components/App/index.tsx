@@ -4,7 +4,12 @@ import { nanoid } from "nanoid"
 import { useState } from "react"
 import { useAppDispatch, useAppSelector } from "../../redux/hooks"
 import "./styles.css"
-import { addTask, editStatus, editTask } from "../../redux/task/taskSlice"
+import {
+  addTask,
+  deleteTask,
+  editStatus,
+  editTask,
+} from "../../redux/task/taskSlice"
 import { Task } from "../../types/Task"
 import { AppHeader } from "../AppHeader"
 import { ButtonCreateTask } from "../ButtonCreateTask"
@@ -31,16 +36,8 @@ export function App() {
     dispatch(editTask({ id, text }))
   }
 
-  const deleteTask = (id: string) => {
-    // setTasks((previousArray) => {
-    //   const found = previousArray.find((task) => task.id === id)
-    //   if (found) {
-    //     return [...previousArray.filter((item) => item.id !== id)]
-    //   } else {
-    //     return [...previousArray]
-    //   }
-    // })
-    console.log(id)
+  const deleteHandler = (id: string) => {
+    dispatch(deleteTask(id))
   }
 
   const handleModal = () => {
@@ -63,7 +60,7 @@ export function App() {
                 key={taskItem.id}
                 task={taskItem}
                 onStatusChange={statusHandler}
-                onDeleteTask={deleteTask}
+                onDeleteTask={deleteHandler}
                 onEditTask={editHandler}
               />
             )
@@ -93,7 +90,7 @@ export function App() {
                   key={taskItem.id}
                   task={taskItem}
                   onStatusChange={statusHandler}
-                  onDeleteTask={deleteTask}
+                  onDeleteTask={deleteHandler}
                   onEditTask={editHandler}
                 />
               )
