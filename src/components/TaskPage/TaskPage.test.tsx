@@ -1,6 +1,5 @@
-import { TaskPage } from "./TaskPage"
 import { render } from "@testing-library/react"
-import React from "react"
+import { TaskPage } from "./TaskPage"
 
 describe("TaskPage", () => {
   it("name prop is rendered", () => {
