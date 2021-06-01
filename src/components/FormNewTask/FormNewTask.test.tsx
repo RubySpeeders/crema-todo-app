@@ -10,9 +10,13 @@ describe("FormNewTask", () => {
     // Act
     const { getByLabelText, getByText } = render(
       <FormNewTask
+        kind="new"
+        placeholder="Task Description"
         onAddTask={onAddTask}
-        show={modal}
-        onHideModal={onAddTask}
+        modal={modal}
+        onHideModal={() => {
+          console.log("onhide called")
+        }}
       />,
     )
 
@@ -23,5 +27,65 @@ describe("FormNewTask", () => {
 
     // Assert
     expect(onAddTask).toHaveBeenCalledWith("meeting with Mandy")
+  })
+  it("tests Edit Form called with correct parameters", () => {
+    // Arrange
+    const onEditTask = jest.fn()
+    const modal = true
+    const id = "123ABC"
+
+    // Act
+    const { getByLabelText, getByText } = render(
+      <FormNewTask
+        kind="edit"
+        placeholder="Task Description"
+        onEditTask={onEditTask}
+        modal={modal}
+        onHideModal={() => {
+          console.log("onhide called")
+        }}
+        onDeleteTask={() => {
+          console.log("ondelete called")
+        }}
+        taskId={id}
+      />,
+    )
+
+    const input = getByLabelText("Edit Task", { selector: "input" })
+    const saveButton = getByText("Save")
+    fireEvent.change(input, { target: { value: "meeting with Mandy" } })
+    fireEvent.click(saveButton)
+
+    // Assert
+    expect(onEditTask).toHaveBeenCalledWith(id, "meeting with Mandy")
+  })
+  it("tests deleting is called with correct parameters", () => {
+    // Arrange
+    const onDeleteTask = jest.fn()
+    const modal = true
+    const id = "123ABC"
+
+    // Act
+    const { getByTestId } = render(
+      <FormNewTask
+        kind="edit"
+        placeholder="Task Description"
+        onEditTask={() => {
+          console.log("onEdit called")
+        }}
+        modal={modal}
+        onHideModal={() => {
+          console.log("onhide called")
+        }}
+        onDeleteTask={onDeleteTask}
+        taskId={id}
+      />,
+    )
+
+    const deleteIcon = getByTestId("deleteIcon")
+    fireEvent.click(deleteIcon)
+
+    // Assert
+    expect(onDeleteTask).toHaveBeenCalledWith(id)
   })
 })

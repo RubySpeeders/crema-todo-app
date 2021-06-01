@@ -13,7 +13,9 @@ export const taskSlice = createSlice({
       state.tasks.push(action.payload)
     },
     editStatus: (state, action: PayloadAction<Task>) => {
-      const found = state.tasks.find((task) => task.id === action.payload.id)
+      const found = state.tasks.find(
+        (task: Task) => task.id === action.payload.id,
+      )
       if (found) {
         const index = state.tasks.indexOf(found)
         state.tasks.splice(index, 1, {

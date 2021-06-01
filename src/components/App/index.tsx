@@ -38,6 +38,35 @@ export function App() {
     // })
   }
 
+  const editTask = (id: string, text: string) => {
+    // setTasks((previousArray) => {
+    //   const found = previousArray.find((task) => task.id === id)
+    //   if (found) {
+    //     return previousArray.map((item) => {
+    //       if (item === found) {
+    //         return { ...found, description: text }
+    //       }
+    //       return item
+    //     })
+    //   } else {
+    //     return [...previousArray]
+    //   }
+    // })
+    console.log(id, text)
+  }
+
+  const deleteTask = (id: string) => {
+    // setTasks((previousArray) => {
+    //   const found = previousArray.find((task) => task.id === id)
+    //   if (found) {
+    //     return [...previousArray.filter((item) => item.id !== id)]
+    //   } else {
+    //     return [...previousArray]
+    //   }
+    // })
+    console.log(id)
+  }
+
   const handleModal = () => {
     setModal(!modal)
   }
@@ -58,6 +87,8 @@ export function App() {
                 key={taskItem.id}
                 task={taskItem}
                 onStatusChange={statusHandler}
+                onDeleteTask={deleteTask}
+                onEditTask={editTask}
               />
             )
           })}
@@ -86,15 +117,19 @@ export function App() {
                   key={taskItem.id}
                   task={taskItem}
                   onStatusChange={statusHandler}
+                  onDeleteTask={deleteTask}
+                  onEditTask={editTask}
                 />
               )
             })}
         </div>
       </main>
       <FormNewTask
-        show={modal}
         onHideModal={handleModal}
         onAddTask={addTaskHandler}
+        kind="new"
+        modal={modal}
+        placeholder="i thought i deleted this"
       />
     </div>
   )
