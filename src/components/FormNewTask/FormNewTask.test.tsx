@@ -1,23 +1,27 @@
 import { fireEvent, render } from "@testing-library/react"
+import { Provider } from "react-redux"
+import store from "../../redux/store"
 import { FormNewTask } from "./FormNewTask"
 
 describe("FormNewTask", () => {
   it("tests onAddTask is called with correct parameter", () => {
     // Arrange
-    const onAddTask = jest.fn()
+    const handleSubmitNewTask = jest.fn()
     const modal = true
 
     // Act
     const { getByLabelText, getByText } = render(
-      <FormNewTask
-        kind="new"
-        placeholder="Task Description"
-        onAddTask={onAddTask}
-        modal={modal}
-        onHideModal={() => {
-          console.log("onhide called")
-        }}
-      />,
+      <Provider store={store}>
+        <FormNewTask
+          kind="new"
+          placeholder="Task Description"
+          modal={modal}
+          onHideModal={() => {
+            console.log("onhide called")
+          }}
+        />
+        ,
+      </Provider>,
     )
 
     const input = getByLabelText("New Task", { selector: "input" })
@@ -26,7 +30,10 @@ describe("FormNewTask", () => {
     fireEvent.click(saveButton)
 
     // Assert
-    expect(onAddTask).toHaveBeenCalledWith("meeting with Mandy")
+    expect(handleSubmitNewTask).toHaveBeenCalledWith("meeting with Mandy")
+    const state = store.getState().allTasks
+    console.log(store.getState().allTasks.tasks)
+    expect(state.tasks[0].description).toBe("meeting with Mandy")
   })
   it("tests Edit Form called with correct parameters", () => {
     // Arrange
@@ -36,19 +43,18 @@ describe("FormNewTask", () => {
 
     // Act
     const { getByLabelText, getByText } = render(
-      <FormNewTask
-        kind="edit"
-        placeholder="Task Description"
-        onEditTask={onEditTask}
-        modal={modal}
-        onHideModal={() => {
-          console.log("onhide called")
-        }}
-        onDeleteTask={() => {
-          console.log("ondelete called")
-        }}
-        taskId={id}
-      />,
+      <Provider store={store}>
+        <FormNewTask
+          kind="edit"
+          placeholder="Task Description"
+          // onEditTask={onEditTask}
+          modal={modal}
+          onHideModal={() => {
+            console.log("onhide called")
+          }}
+          taskId={id}
+        />
+      </Provider>,
     )
 
     const input = getByLabelText("Edit Task", { selector: "input" })
@@ -67,19 +73,17 @@ describe("FormNewTask", () => {
 
     // Act
     const { getByTestId } = render(
-      <FormNewTask
-        kind="edit"
-        placeholder="Task Description"
-        onEditTask={() => {
-          console.log("onEdit called")
-        }}
-        modal={modal}
-        onHideModal={() => {
-          console.log("onhide called")
-        }}
-        onDeleteTask={onDeleteTask}
-        taskId={id}
-      />,
+      <Provider store={store}>
+        <FormNewTask
+          kind="edit"
+          placeholder="Task Description"
+          modal={modal}
+          onHideModal={() => {
+            console.log("onhide called")
+          }}
+          taskId={id}
+        />
+      </Provider>,
     )
 
     const deleteIcon = getByTestId("deleteIcon")
