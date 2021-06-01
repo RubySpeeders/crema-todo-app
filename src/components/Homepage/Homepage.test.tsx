@@ -1,6 +1,5 @@
-import { Homepage } from "./Homepage"
 import { render } from "@testing-library/react"
-import React from "react"
+import { Homepage } from "./Homepage"
 
 describe("Homepage", () => {
   it("name prop is rendered", () => {
