@@ -4,7 +4,7 @@ import { nanoid } from "nanoid"
 import { useState } from "react"
 import { useAppDispatch, useAppSelector } from "../../redux/hooks"
 import "./styles.css"
-import { addTask, editStatus } from "../../redux/task/taskSlice"
+import { addTask, editStatus, editTask } from "../../redux/task/taskSlice"
 import { Task } from "../../types/Task"
 import { AppHeader } from "../AppHeader"
 import { ButtonCreateTask } from "../ButtonCreateTask"
@@ -25,34 +25,10 @@ export function App() {
 
   const statusHandler = (task: Task) => {
     dispatch(editStatus(task))
-    // setTasks((previousArray) => {
-    //   const found = previousArray.find((task) => task.id === id)
-    //   if (found) {
-    //     return [
-    //       ...previousArray.filter((item) => item.id !== id),
-    //       { ...found, isComplete: !found.isComplete },
-    //     ]
-    //   } else {
-    //     return [...previousArray]
-    //   }
-    // })
   }
 
-  const editTask = (id: string, text: string) => {
-    // setTasks((previousArray) => {
-    //   const found = previousArray.find((task) => task.id === id)
-    //   if (found) {
-    //     return previousArray.map((item) => {
-    //       if (item === found) {
-    //         return { ...found, description: text }
-    //       }
-    //       return item
-    //     })
-    //   } else {
-    //     return [...previousArray]
-    //   }
-    // })
-    console.log(id, text)
+  const editHandler = (id: string, text: string) => {
+    dispatch(editTask({ id, text }))
   }
 
   const deleteTask = (id: string) => {
@@ -88,7 +64,7 @@ export function App() {
                 task={taskItem}
                 onStatusChange={statusHandler}
                 onDeleteTask={deleteTask}
-                onEditTask={editTask}
+                onEditTask={editHandler}
               />
             )
           })}
@@ -118,7 +94,7 @@ export function App() {
                   task={taskItem}
                   onStatusChange={statusHandler}
                   onDeleteTask={deleteTask}
-                  onEditTask={editTask}
+                  onEditTask={editHandler}
                 />
               )
             })}
@@ -129,7 +105,7 @@ export function App() {
         onAddTask={addTaskHandler}
         kind="new"
         modal={modal}
-        placeholder="i thought i deleted this"
+        placeholder="Task description"
       />
     </div>
   )
