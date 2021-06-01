@@ -30,14 +30,13 @@ describe("FormNewTask", () => {
     fireEvent.click(saveButton)
 
     // Assert
-    expect(handleSubmitNewTask).toHaveBeenCalledWith("meeting with Mandy")
     const state = store.getState().allTasks
-    console.log(store.getState().allTasks.tasks)
+    expect(handleSubmitNewTask).toHaveBeenCalled()
     expect(state.tasks[0].description).toBe("meeting with Mandy")
   })
   it("tests Edit Form called with correct parameters", () => {
     // Arrange
-    const onEditTask = jest.fn()
+    const handleSubmitEditTask = jest.fn()
     const modal = true
     const id = "123ABC"
 
@@ -47,7 +46,6 @@ describe("FormNewTask", () => {
         <FormNewTask
           kind="edit"
           placeholder="Task Description"
-          // onEditTask={onEditTask}
           modal={modal}
           onHideModal={() => {
             console.log("onhide called")
@@ -63,11 +61,11 @@ describe("FormNewTask", () => {
     fireEvent.click(saveButton)
 
     // Assert
-    expect(onEditTask).toHaveBeenCalledWith(id, "meeting with Mandy")
+    expect(handleSubmitEditTask).toHaveBeenCalled()
   })
   it("tests deleting is called with correct parameters", () => {
     // Arrange
-    const onDeleteTask = jest.fn()
+    const handleDelete = jest.fn()
     const modal = true
     const id = "123ABC"
 
@@ -90,6 +88,6 @@ describe("FormNewTask", () => {
     fireEvent.click(deleteIcon)
 
     // Assert
-    expect(onDeleteTask).toHaveBeenCalledWith(id)
+    expect(handleDelete).toHaveBeenCalled()
   })
 })
