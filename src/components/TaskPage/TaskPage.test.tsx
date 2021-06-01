@@ -1,16 +1,11 @@
-import { render } from "@testing-library/react"
+import ReactDOM from "react-dom"
 import { TaskPage } from "./TaskPage"
 
+//TODO clean up, make real tests
 describe("TaskPage", () => {
-  it("name prop is rendered", () => {
-    // Arrange
-    const name = "TaskPage"
-
-    // Act
-    const { getByText } = render(<TaskPage />)
-    const received = getByText(name)
-
-    // Assert
-    expect(received).toBeDefined()
+  it("renders", () => {
+    const div = document.createElement("div")
+    ReactDOM.render(<TaskPage />, div)
+    ReactDOM.unmountComponentAtNode(div)
   })
 })
