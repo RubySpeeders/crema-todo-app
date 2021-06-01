@@ -1,4 +1,3 @@
-import { convertColorToString } from "material-ui/utils/colorManipulator"
 import { Task } from "../../types/Task"
 import store from "../store"
 import taskReducer, {
