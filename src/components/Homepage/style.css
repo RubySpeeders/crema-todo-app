@@ -30,3 +30,18 @@ button {
   padding: 16px 16px;
   /* bottom: 32.45%; */
 }
+
+.circle {
+  width: 5em;
+  height: 5em;
+  border: solid black 1px;
+  opacity: 0.15;
+  background: #4158C4;
+  position: relative
+}
+
+.child {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
