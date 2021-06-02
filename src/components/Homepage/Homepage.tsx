@@ -17,7 +17,9 @@ export function Homepage() {
           <p>Get things done with Todo</p>
         </div>
         <Link to="/todo">
-          <button data-testid="getStarted">Get Started</button>
+          <button data-testid="getStarted" className="getStarted">
+            Get Started
+          </button>
         </Link>
       </div>
     </div>
