@@ -35,7 +35,7 @@ describe("taskSlice", () => {
     const state = store.getState().allTasks
     const value = state.tasks.find((task) => task.id === "123XYZ")
     // Assert
-    expect(value?.isComplete).toBe(true)
+    expect(value?.isComplete).toBeTruthy()
   })
   it("deleteTask function deletes the task", () => {
     //Arrange
