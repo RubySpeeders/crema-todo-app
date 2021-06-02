@@ -1,4 +1,4 @@
-import { fireEvent, render } from "@testing-library/react"
+import { render } from "@testing-library/react"
 import ReactDOM from "react-dom"
 import { BrowserRouter } from "react-router-dom"
 import { Homepage } from "./Homepage"
@@ -15,13 +15,17 @@ describe("Homepage", () => {
     )
     ReactDOM.unmountComponentAtNode(div)
   })
-  it("calls statushandler function when checkbox is clicked", () => {
+  it("expect button to exist", () => {
+    //Arrange
     // Act
-    const { getByTestId } = render(<Homepage />)
-    const checkbox = getByTestId("checkbox")
-    fireEvent.click(checkbox)
+    const { getByTestId } = render(
+      <BrowserRouter>
+        <Homepage />
+      </BrowserRouter>,
+    )
+    const start = getByTestId("getStarted")
 
     // Assert
-    expect(statusHandler).toHaveBeenCalledWith(task.id)
+    expect(start).toHaveTextContent("Get Started")
   })
 })
