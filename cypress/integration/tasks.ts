@@ -1,9 +1,10 @@
 describe("App", function () {
   it("Contains a button that starts the app in motion", function () {
     cy.visit("/")
-    cy.get(".getStarted").contains("Get Started")
-    cy.get(".getStarted").click()
+    cy.get("[data-testid=getStarted]").contains("Get Started")
+    cy.get("[data-testid=getStarted]").click()
     cy.get(".AppHeader").contains("My Tasks")
+    cy.url().should("include", "/todo")
   })
   it("Contains a header with a title", function () {
     cy.visit("/todo")
