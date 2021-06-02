@@ -1,10 +1,17 @@
 describe("App", function () {
-  it("Contains a header with a title", function () {
+  it("Contains a button that starts the app in motion", function () {
     cy.visit("/")
+    cy.get("[data-testid=getStarted]").contains("Get Started")
+    cy.get("[data-testid=getStarted]").click()
+    cy.get(".AppHeader").contains("My Tasks")
+    cy.url().should("include", "/todo")
+  })
+  it("Contains a header with a title", function () {
+    cy.visit("/todo")
     cy.get(".AppHeader").contains("My Tasks")
   })
   it("shows a modal after clicking Create New Task button and hides it after clicking cancel", function () {
-    cy.visit("/")
+    cy.visit("/todo")
     cy.get(".createTaskButton").click()
     cy.get(".taskForm").should("exist")
     cy.get("label").should("have.text", "New Task")
@@ -12,14 +19,14 @@ describe("App", function () {
     cy.get(".taskForm").should("not.exist")
   })
   it("creates a new task with a checkbox", function () {
-    cy.visit("/")
+    cy.visit("/todo")
     cy.get(".createTaskButton").click()
     cy.get("#taskInput").type("make dinner")
     cy.get("#saveButton").click()
     cy.get(".checkbox > .MuiSvgIcon-root").should("exist")
   })
   it("changes an active task to completed when checkbox is clicked", function () {
-    cy.visit("/")
+    cy.visit("/todo")
     cy.get(".createTaskButton").click()
     cy.get("#taskInput").type("make dinner")
     cy.get("#saveButton").click()
@@ -27,7 +34,7 @@ describe("App", function () {
     cy.get("[data-testid=checked] > path").should("exist")
   })
   it("shows an edit modal after clicking a task, edits the description, then hides the modal after clicking save", function () {
-    cy.visit("/")
+    cy.visit("/todo")
     cy.get(".createTaskButton").click()
     cy.get("#taskInput").type("make dinner")
     cy.get("#saveButton").click()
@@ -37,7 +44,7 @@ describe("App", function () {
     cy.get(".normal").should("have.text", "wash the dishes")
   })
   it("shows and hides complete tasks", function () {
-    cy.visit("/")
+    cy.visit("/todo")
     cy.get(".createTaskButton").click()
     cy.get("#taskInput").type("another task")
     cy.get("#saveButton").click()
