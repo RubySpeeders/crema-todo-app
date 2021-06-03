@@ -1,23 +1,28 @@
 import { fireEvent, render } from "@testing-library/react"
+import { Provider } from "react-redux"
+import store from "../../redux/store"
+import { addTask } from "../../redux/task/taskSlice"
+import { Task } from "../../types/Task"
 import { FormNewTask } from "./FormNewTask"
 
 describe("FormNewTask", () => {
   it("tests onAddTask is called with correct parameter", () => {
     // Arrange
-    const onAddTask = jest.fn()
     const modal = true
 
     // Act
     const { getByLabelText, getByText } = render(
-      <FormNewTask
-        kind="new"
-        placeholder="Task Description"
-        onAddTask={onAddTask}
-        modal={modal}
-        onHideModal={() => {
-          console.log("onhide called")
-        }}
-      />,
+      <Provider store={store}>
+        <FormNewTask
+          kind="new"
+          placeholder="Task Description"
+          modal={modal}
+          onHideModal={() => {
+            console.log("onhide called")
+          }}
+        />
+        ,
+      </Provider>,
     )
 
     const input = getByLabelText("New Task", { selector: "input" })
@@ -26,66 +31,74 @@ describe("FormNewTask", () => {
     fireEvent.click(saveButton)
 
     // Assert
-    expect(onAddTask).toHaveBeenCalledWith("meeting with Mandy")
+    const state = store.getState().allTasks
+    expect(state.tasks[0].description).toBe("meeting with Mandy")
   })
   it("tests Edit Form called with correct parameters", () => {
     // Arrange
-    const onEditTask = jest.fn()
     const modal = true
-    const id = "123ABC"
+    const newTask: Task = {
+      id: "123XYZ",
+      description: "zoom with Mandy",
+      isComplete: false,
+    }
+    store.dispatch(addTask(newTask))
 
     // Act
     const { getByLabelText, getByText } = render(
-      <FormNewTask
-        kind="edit"
-        placeholder="Task Description"
-        onEditTask={onEditTask}
-        modal={modal}
-        onHideModal={() => {
-          console.log("onhide called")
-        }}
-        onDeleteTask={() => {
-          console.log("ondelete called")
-        }}
-        taskId={id}
-      />,
+      <Provider store={store}>
+        <FormNewTask
+          kind="edit"
+          placeholder="Task Description"
+          modal={modal}
+          onHideModal={() => {
+            console.log("onhide called")
+          }}
+          taskId={newTask.id}
+        />
+      </Provider>,
     )
 
     const input = getByLabelText("Edit Task", { selector: "input" })
     const saveButton = getByText("Save")
-    fireEvent.change(input, { target: { value: "meeting with Mandy" } })
+    fireEvent.change(input, { target: { value: "meeting with Israel" } })
     fireEvent.click(saveButton)
 
     // Assert
-    expect(onEditTask).toHaveBeenCalledWith(id, "meeting with Mandy")
+    const state = store.getState().allTasks
+    const found = state.tasks.find((task) => task.id === newTask.id)
+    expect(found?.description).toBe("meeting with Israel")
   })
   it("tests deleting is called with correct parameters", () => {
     // Arrange
-    const onDeleteTask = jest.fn()
     const modal = true
-    const id = "123ABC"
+    const newTask: Task = {
+      id: "123XYZ",
+      description: "zoom with Blake",
+      isComplete: false,
+    }
 
     // Act
     const { getByTestId } = render(
-      <FormNewTask
-        kind="edit"
-        placeholder="Task Description"
-        onEditTask={() => {
-          console.log("onEdit called")
-        }}
-        modal={modal}
-        onHideModal={() => {
-          console.log("onhide called")
-        }}
-        onDeleteTask={onDeleteTask}
-        taskId={id}
-      />,
+      <Provider store={store}>
+        <FormNewTask
+          kind="edit"
+          placeholder="Task Description"
+          modal={modal}
+          onHideModal={() => {
+            console.log("onhide called")
+          }}
+          taskId={newTask.id}
+        />
+      </Provider>,
     )
 
     const deleteIcon = getByTestId("deleteIcon")
     fireEvent.click(deleteIcon)
 
     // Assert
-    expect(onDeleteTask).toHaveBeenCalledWith(id)
+    const state = store.getState().allTasks
+    const found = state.tasks.find((task) => task.id === newTask.id)
+    expect(found).not.toBeDefined()
   })
 })

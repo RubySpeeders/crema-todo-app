@@ -2,28 +2,23 @@ import CheckCircleIcon from "@material-ui/icons/CheckCircle"
 import RadioButtonUncheckedIcon from "@material-ui/icons/RadioButtonUnchecked"
 import "./style.css"
 import { useState } from "react"
+import { useAppDispatch } from "../../redux/hooks"
+import { editStatus } from "../../redux/task/taskSlice"
 import { Task } from "../../types/Task"
 import { FormNewTask } from "../FormNewTask"
 
 export type Props = {
   task: Task
-  onStatusChange: (id: string) => void
-  onDeleteTask: (id: string) => void
-  onEditTask: (id: string, text: string) => void
 }
 
-export function TaskCard({
-  task,
-  onStatusChange,
-  onDeleteTask,
-  onEditTask,
-}: Props) {
+export function TaskCard({ task }: Props) {
+  const dispatch = useAppDispatch()
   const [editModal, setEditModal] = useState(false)
   const handleEditModal = () => {
     setEditModal(!editModal)
   }
   const handleCheckbox = () => {
-    onStatusChange(task.id)
+    dispatch(editStatus(task))
   }
 
   return (
@@ -51,8 +46,6 @@ export function TaskCard({
         kind="edit"
         modal={editModal}
         onHideModal={handleEditModal}
-        onDeleteTask={onDeleteTask}
-        onEditTask={onEditTask}
         placeholder={task.description}
         taskId={task.id}
       />

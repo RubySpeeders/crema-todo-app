@@ -1,6 +1,9 @@
 import DeleteOutlineIcon from "@material-ui/icons/DeleteOutline"
+import { nanoid } from "nanoid"
 import React, { useRef } from "react"
 import "./style.css"
+import { useAppDispatch } from "../../redux/hooks"
+import { addTask, deleteTask, editTask } from "../../redux/task/taskSlice"
 
 export type FormProps = (EditTaskProps | NewTaskProps) & {
   placeholder: string
@@ -9,14 +12,11 @@ export type FormProps = (EditTaskProps | NewTaskProps) & {
 }
 
 type EditTaskProps = {
-  onDeleteTask: (id: string) => void
-  onEditTask: (id: string, text: string) => void
   taskId: string
   kind: "edit"
 }
 
 type NewTaskProps = {
-  onAddTask: (text: string) => void
   kind: "new"
 }
 
@@ -27,12 +27,19 @@ export function FormNewTask({
   ...props
 }: FormProps) {
   const textInputRef = useRef<HTMLInputElement>(null)
+  const dispatch = useAppDispatch()
 
   const handleSubmitNewTask = (e: React.FormEvent) => {
     e.preventDefault()
     if (textInputRef.current && props.kind === "new") {
       const enteredText = textInputRef.current.value
-      props.onAddTask(enteredText)
+      dispatch(
+        addTask({
+          id: nanoid(),
+          description: enteredText,
+          isComplete: false,
+        }),
+      )
       onHideModal()
     }
   }
@@ -41,14 +48,14 @@ export function FormNewTask({
     e.preventDefault()
     if (textInputRef.current && props.kind === "edit") {
       const enteredText = textInputRef.current.value
-      props.onEditTask(props.taskId, enteredText)
+      dispatch(editTask({ id: props.taskId, text: enteredText }))
       onHideModal()
     }
   }
 
   const handleDelete = () => {
     if (props.kind === "edit") {
-      props.onDeleteTask(props.taskId)
+      dispatch(deleteTask(props.taskId))
       onHideModal()
     }
   }

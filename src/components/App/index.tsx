@@ -1,4 +1,5 @@
 import { BrowserRouter, Route } from "react-router-dom"
+import "./styles.css"
 import { Homepage } from "../Homepage"
 import { TaskPage } from "../TaskPage"
 
