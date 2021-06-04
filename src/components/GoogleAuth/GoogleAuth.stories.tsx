@@ -1,4 +1,3 @@
-import React from "react"
 import decoratorCentered from "@storybook/addon-centered"
 import { GoogleAuth } from "./GoogleAuth"
 
