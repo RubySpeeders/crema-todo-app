@@ -5,7 +5,7 @@ color: #4158C4;
 .taskCard {
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: flex-start;
     justify-content: flex-start;
     padding: 16px;
     margin: .5em;
@@ -33,5 +33,7 @@ color: #4158C4;
 .normal {
   flex-grow: 1;
   font-weight: normal;
-
+  display: flex;
+  text-align: left;
+  margin-top: 0.25em
   }
