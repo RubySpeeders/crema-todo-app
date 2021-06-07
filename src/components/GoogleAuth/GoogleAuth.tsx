@@ -1,16 +1,37 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 
 export function GoogleAuth() {
-  useEffect =
-    (() => {
-      window.gapi.load("client:auth2", () => {
-        window.gapi.client.init({
+  const [isSignedIn, setisSignedIn] = useState<boolean>()
+  useEffect(() => {
+    window.gapi.load("client:auth2", () => {
+      window.gapi.client
+        .init({
           clientId:
-            "1000160533098-053ssjekeh140r1gpv5eb8iq0qhq2ls5.apps.googleusercontent.com",
+            "97459474309-nv26m4tb2fgrk15uvvkup2cen066hqq9.apps.googleusercontent.com",
           scope: "email",
         })
-      })
-    },
-      [])
-  return <button className="getStarted">Sign in</button>
+        .then(() => {
+          const auth = window.gapi.auth2.getAuthInstance()
+          setisSignedIn(auth.isSignedIn.get())
+        })
+    })
+  }, [])
+
+  const renderAuthButton = () => {
+    if (isSignedIn === null) {
+      return <div>I don't know</div>
+    }
+    if (isSignedIn) {
+      return <div>Get Started</div>
+    } else {
+      return <div>Sign In To Get Started!</div>
+    }
+  }
+
+  return (
+    <div>
+      {renderAuthButton()}
+      <button className="getStarted">Sign in</button>
+    </div>
+  )
 }
