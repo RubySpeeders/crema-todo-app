@@ -1,5 +1,5 @@
-import { PayloadAction, createSlice } from "@reduxjs/toolkit"
-// import type { RootState } from "../store"
+import { createSlice } from "@reduxjs/toolkit"
+import type { RootState } from "../store"
 
 const isSignedIn = false
 export const oauthSlice = createSlice({
@@ -8,8 +8,8 @@ export const oauthSlice = createSlice({
     isSignedIn,
   },
   reducers: {
-    signIn: (state, action: PayloadAction<boolean>) => {
-      console.log(action, state, "placeholder")
+    signIn: (state) => {
+      state.isSignedIn = true
     },
   },
 })
@@ -17,6 +17,6 @@ export const oauthSlice = createSlice({
 // Action creators are generated for each case reducer function
 export const { signIn } = oauthSlice.actions
 
-// export const selectTasks = (state: RootState) => state.allTasks.tasks
+export const selectOauth = (state: RootState) => state.allOauth.isSignedIn
 
 export default oauthSlice.reducer
