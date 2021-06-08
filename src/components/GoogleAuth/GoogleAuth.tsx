@@ -25,7 +25,9 @@ export function GoogleAuth() {
 
   const onAuthChange = (isSignedIn: boolean) => {
     if (isSignedIn) {
-      dispatch(signIn())
+      dispatch(
+        signIn(window.gapi.auth2.getAuthInstance().currentUser.get().getId()),
+      )
     } else {
       dispatch(signOut())
     }

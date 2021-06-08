@@ -1,19 +1,21 @@
-import { createSlice } from "@reduxjs/toolkit"
+import { PayloadAction, createSlice } from "@reduxjs/toolkit"
 import type { RootState } from "../store"
 
 export const initialState = {
-  userId: 0,
+  userId: "null",
   isSignedIn: false,
 }
 export const oauthSlice = createSlice({
   name: "oauth",
   initialState,
   reducers: {
-    signIn: (state) => {
+    signIn: (state, action: PayloadAction<string>) => {
       state.isSignedIn = true
+      state.userId = action.payload
     },
     signOut: (state) => {
       state.isSignedIn = false
+      state.userId = "null"
     },
   },
 })
