@@ -1,6 +1,6 @@
 import { useEffect } from "react"
 import { useAppDispatch, useAppSelector } from "../../redux/hooks"
-import { signIn } from "../../redux/oauth/oauthSlice"
+import { signIn, signOut } from "../../redux/oauth/oauthSlice"
 
 export function GoogleAuth() {
   const dispatch = useAppDispatch()
@@ -17,24 +17,34 @@ export function GoogleAuth() {
         })
         .then(() => {
           const auth = window.gapi.auth2.getAuthInstance()
-          // setIsSignedIn(auth.isSignedIn.get())
+          onAuthChange(auth.isSignedIn.get())
           auth.isSignedIn.listen(onAuthChange)
         })
     })
-  }, [])
+  })
 
-  const onAuthChange = () => {
-    // const auth = window.gapi.auth2.getAuthInstance()
-    dispatch(signIn())
-    // setIsSignedIn(auth.isSignedIn.get())
+  const onAuthChange = (isSignedIn: boolean) => {
+    if (isSignedIn) {
+      dispatch(signIn())
+    } else {
+      dispatch(signOut())
+    }
+  }
+
+  const onSignInClick = () => {
+    window.gapi.auth2.getAuthInstance().signIn()
+  }
+
+  const onSignOutClick = () => {
+    window.gapi.auth2.getAuthInstance().signOut()
   }
 
   const renderAuthButton = () => {
-    if (isSignedIn === null) {
-      return <div>I don't know</div>
-    }
     return (
-      <button className="getStarted">
+      <button
+        className="getStarted"
+        onClick={!isSignedIn ? onSignInClick : onSignOutClick}
+      >
         {isSignedIn ? "Get Started" : "Sign In To Get Started"}
       </button>
     )
