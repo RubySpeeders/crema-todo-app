@@ -10,7 +10,11 @@ export function AppHeader() {
   }
   return (
     <header className="AppHeader">
-      <MenuIcon className="menuIcon" onClick={onDrawerClick} />
+      <MenuIcon
+        className="menuIcon"
+        data-testid="hamburger"
+        onClick={onDrawerClick}
+      />
       <h5 className="AppHeaderTitle">My Tasks</h5>
     </header>
   )
