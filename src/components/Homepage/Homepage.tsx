@@ -1,15 +1,12 @@
 import CheckIcon from "@material-ui/icons/Check"
 import { Link } from "react-router-dom"
-import { GoogleAuth } from "../GoogleAuth"
 
 import "./style.css"
 
 export function Homepage() {
   return (
     <div className="homepage">
-      <section>
-        <GoogleAuth />
-      </section>
+      <section></section>
       <div className="homepageContent">
         <div className="circle">
           <div className="child">

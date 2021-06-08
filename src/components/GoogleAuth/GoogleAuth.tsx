@@ -1,4 +1,5 @@
 import { useEffect } from "react"
+import { handleDrawer } from "../../redux/drawer/drawerSlice"
 import { useAppDispatch, useAppSelector } from "../../redux/hooks"
 import { signIn, signOut } from "../../redux/oauth/oauthSlice"
 
@@ -37,10 +38,12 @@ export function GoogleAuth() {
 
   const onSignInClick = () => {
     window.gapi.auth2.getAuthInstance().signIn()
+    dispatch(handleDrawer())
   }
 
   const onSignOutClick = () => {
     window.gapi.auth2.getAuthInstance().signOut()
+    dispatch(handleDrawer())
   }
 
   const renderAuthButton = () => {
