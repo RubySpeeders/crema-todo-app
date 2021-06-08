@@ -21,6 +21,7 @@ describe("AppHeader", () => {
   })
   it("calls to rtk to open the drawer", () => {
     // Arrange
+
     // Act
     const { getByTestId } = render(
       <Provider store={store}>
