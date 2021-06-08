@@ -47,7 +47,7 @@ export function GoogleAuth() {
         className="getStarted"
         onClick={!isSignedIn ? onSignInClick : onSignOutClick}
       >
-        {isSignedIn ? "Get Started" : "Sign In To Get Started"}
+        {isSignedIn ? "Sign Out" : "Sign In"}
       </button>
     )
   }

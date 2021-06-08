@@ -6,11 +6,13 @@ import { useAppSelector } from "../../redux/hooks"
 import { Task } from "../../types/Task"
 import { AppHeader } from "../AppHeader"
 import { ButtonCreateTask } from "../ButtonCreateTask"
+import { Drawer } from "../Drawer"
 import { FormNewTask } from "../FormNewTask"
 import { TaskCard } from "../TaskCard"
 
 export function TaskPage() {
   const tasks: Task[] = useAppSelector((state) => state.allTasks.tasks)
+  const drawer: boolean = useAppSelector((state) => state.allDrawer.drawer)
   const [modal, setModal] = useState(false)
   const [expanded, setExpand] = useState(true)
   const completedTasks = tasks.filter((task) => task.isComplete)
@@ -27,6 +29,7 @@ export function TaskPage() {
   return (
     <div className="App">
       <AppHeader />
+      {drawer && <Drawer />}
       <main>
         {tasks.length === 0 ? (
           <div className="emptyTaskList">
