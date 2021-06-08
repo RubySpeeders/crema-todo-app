@@ -8,19 +8,21 @@ export function GoogleAuth() {
     (state) => state.allOauth.isSignedIn,
   )
   useEffect(() => {
-    window.gapi.load("client:auth2", () => {
-      window.gapi.client
-        .init({
-          clientId:
-            "97459474309-nv26m4tb2fgrk15uvvkup2cen066hqq9.apps.googleusercontent.com",
-          scope: "email",
-        })
-        .then(() => {
-          const auth = window.gapi.auth2.getAuthInstance()
-          onAuthChange(auth.isSignedIn.get())
-          auth.isSignedIn.listen(onAuthChange)
-        })
-    })
+    if (window.gapi) {
+      window.gapi.load("client:auth2", () => {
+        window.gapi.client
+          .init({
+            clientId:
+              "97459474309-nv26m4tb2fgrk15uvvkup2cen066hqq9.apps.googleusercontent.com",
+            scope: "email",
+          })
+          .then(() => {
+            const auth = window.gapi.auth2.getAuthInstance()
+            onAuthChange(auth.isSignedIn.get())
+            auth.isSignedIn.listen(onAuthChange)
+          })
+      })
+    }
   })
 
   const onAuthChange = (isSignedIn: boolean) => {
