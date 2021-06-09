@@ -1,5 +1,6 @@
 import CheckCircleIcon from "@material-ui/icons/CheckCircle"
 import RadioButtonUncheckedIcon from "@material-ui/icons/RadioButtonUnchecked"
+import TodayIcon from "@material-ui/icons/Today"
 import "./style.css"
 import { useState } from "react"
 import { useAppDispatch } from "../../redux/hooks"
@@ -24,23 +25,31 @@ export function TaskCard({ task }: Props) {
   return (
     <div>
       <div className="taskCard" onClick={handleEditModal}>
-        <div
-          className="checkbox"
-          data-testid="checkbox"
-          onClick={handleCheckbox}
-        >
-          {!task.isComplete ? (
-            <RadioButtonUncheckedIcon
-              className="ellipse"
-              data-testid="unchecked"
-            />
-          ) : (
-            <CheckCircleIcon className="ellipse" data-testid="checked" />
-          )}
+        <div className="checkboxAndDescription">
+          <div
+            className="checkbox"
+            data-testid="checkbox"
+            onClick={handleCheckbox}
+          >
+            {!task.isComplete ? (
+              <RadioButtonUncheckedIcon
+                className="ellipse"
+                data-testid="unchecked"
+              />
+            ) : (
+              <CheckCircleIcon className="ellipse" data-testid="checked" />
+            )}
+          </div>
+          <p className={`normal ${task.isComplete && "completeDescription"}`}>
+            {task.description}
+          </p>
         </div>
-        <p className={`normal ${task.isComplete && "completeDescription"}`}>
-          {task.description}
-        </p>
+        <div className="dateArea">
+          <TodayIcon className="ellipse" />
+          <p className={`normal ${task.isComplete && "completeDescription"}`}>
+            Mon Sep 20
+          </p>
+        </div>
       </div>
       <FormNewTask
         kind="edit"

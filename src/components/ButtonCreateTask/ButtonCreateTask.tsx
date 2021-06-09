@@ -1,13 +1,16 @@
-// import { useState } from "react"
+import { useAppSelector } from "../../redux/hooks"
+import { Task } from "../../types/Task"
 
 type Props = { onShowModal: () => void }
 
 export function ButtonCreateTask({ onShowModal }: Props) {
-  // const [modal, setModal] = useState(0)
-
+  const tasks: Task[] = useAppSelector((state) => state.allTasks.tasks)
   return (
     <div>
-      <button className="createTaskButton" onClick={onShowModal}>
+      <button
+        className={tasks.length === 0 ? "primaryButton" : "createTaskButton"}
+        onClick={onShowModal}
+      >
         <p id="newTaskText">Create New Task</p>
       </button>
     </div>
