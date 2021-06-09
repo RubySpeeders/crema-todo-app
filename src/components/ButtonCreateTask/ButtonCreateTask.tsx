@@ -8,6 +8,7 @@ export function ButtonCreateTask({ onShowModal }: Props) {
   return (
     <div>
       <button
+        data-testid="createButton"
         className={tasks.length === 0 ? "primaryButton" : "createTaskButton"}
         onClick={onShowModal}
       >

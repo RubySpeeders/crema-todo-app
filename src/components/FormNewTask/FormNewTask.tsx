@@ -109,10 +109,14 @@ export function FormNewTask({
           ></input>
         </div>
         <div className="buttonArea">
-          <button className="secondaryButton" onClick={onHideModal}>
+          <button
+            className="secondaryButton"
+            onClick={onHideModal}
+            data-testid="cancel"
+          >
             Cancel
           </button>
-          <button type="submit" className="primaryButton">
+          <button type="submit" className="primaryButton" data-testid="save">
             Save
           </button>
         </div>
