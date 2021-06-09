@@ -36,7 +36,8 @@ color: #4158C4;
   }
 
 .checkboxAndDescription {
-  display: flex
+  display: flex;
+  width: 26em;
 }
 
 .dateArea {

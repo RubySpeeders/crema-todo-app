@@ -98,6 +98,7 @@ export function FormNewTask({
               <DeleteOutlineIcon
                 onClick={handleDelete}
                 data-testid="deleteIcon"
+                className="ellipse"
               />
             )}
           </div>
