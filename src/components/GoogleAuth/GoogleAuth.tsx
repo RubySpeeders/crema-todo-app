@@ -44,6 +44,9 @@ export function GoogleAuth() {
   }
 
   const renderAuthButton = () => {
+    if (isSignedIn === null) {
+      return <p>...loading</p>
+    }
     return (
       <button
         className="getStarted"
