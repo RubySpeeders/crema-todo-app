@@ -1,56 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
-.createTaskButton {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  padding: 0px 32px;
-
-  width: 466px;
-  height: 40px;
-  left: 487px;
-  top: 274px;
-
-  background: rgba(65, 88, 196, 0.1);
-  border-radius: 4px;
-  border: none;
-}
-
-#newTaskText {
-  /* Button Text */
-
-  position: static;
-  height: 18px;
-  left: 35.09%;
-  right: 35.09%;
-  top: calc(50% - 18px / 2);
-
-  /* Button/Large */
-
-  font-style: normal;
-  font-weight: 600;
-  font-size: 18px;
-  line-height: 100%;
-  font-family: "Roboto";
-  /* identical to box height, or 18px */
-
-  text-align: center;
-  letter-spacing: 0.0125em;
-  text-transform: capitalize;
-
-  /* Primary */
-
-  color: #4158c4;
-
-  /* Inside Auto Layout */
-
-  flex: none;
-  order: 0;
-  flex-grow: 1;
-  margin: 0px 10px;
-}
-
 main {
   display: flex;
   flex-direction: column;
@@ -109,4 +58,11 @@ p {
 .emptyTaskList p {
   flex: 1;
   width: 20em;
+}
+
+.activeList {
+  width: 29em;
+}
+.completeList {
+  width: 29em;
 }
