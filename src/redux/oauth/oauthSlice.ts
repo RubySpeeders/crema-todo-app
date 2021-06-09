@@ -1,11 +1,11 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit"
 import type { RootState } from "../store"
 
-type sliceState = { isSignedIn: null | boolean; userId: null | string }
+type sliceState = { isSignedIn: boolean; userId: null | string }
 
 export const initialState: sliceState = {
   userId: null,
-  isSignedIn: null,
+  isSignedIn: false,
 }
 export const oauthSlice = createSlice({
   name: "oauth",
