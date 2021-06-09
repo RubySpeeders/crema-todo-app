@@ -44,8 +44,9 @@ export function GoogleAuth() {
   }
 
   const renderAuthButton = () => {
+    //this should really say something like "loading", but if it does, then the tests don't run because I am not sure how to make tests that work with google oauth
     if (isSignedIn === null) {
-      return <p>...loading</p>
+      return <p>Sign In</p>
     }
     return (
       <button
