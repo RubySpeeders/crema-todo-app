@@ -18,9 +18,8 @@ export function GoogleAuth() {
             scope: "email",
           })
           .then(() => {
-            const auth = window.gapi.auth2.getAuthInstance()
-            onAuthChange(auth.isSignedIn.get())
-            auth.isSignedIn.listen(onAuthChange)
+            onAuthChange(window.gapi.auth2.getAuthInstance().isSignedIn.get())
+            window.gapi.auth2.getAuthInstance().isSignedIn.listen(onAuthChange)
           })
       })
     }

@@ -19,4 +19,21 @@ describe("GoogleAuth", () => {
     // Assert
     expect(received).toBeDefined()
   })
+  // it("tests onSignIn is called", () => {
+  //   // Arrange
+  //   const text = "Sign In"
+
+  //   // Act
+  //   const { getByText } = render(
+  //     <Provider store={store}>
+  //       <GoogleAuth />
+  //     </Provider>,
+  //   )
+  //   const signInButton = getByText(text)
+  //   fireEvent.click(signInButton)
+  //   const state = store.getState().allOauth
+
+  //   // Assert
+  //   expect(state.userId).toBeDefined()
+  // })
 })
