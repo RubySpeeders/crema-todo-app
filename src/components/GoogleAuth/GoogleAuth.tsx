@@ -5,9 +5,7 @@ import { signIn, signOut } from "../../redux/oauth/oauthSlice"
 
 export function GoogleAuth() {
   const dispatch = useAppDispatch()
-  const isSignedIn: boolean = useAppSelector(
-    (state) => state.allOauth.isSignedIn,
-  )
+  const isSignedIn = useAppSelector((state) => state.allOauth.isSignedIn)
   useEffect(() => {
     if (window.gapi) {
       window.gapi.load("client:auth2", () => {
