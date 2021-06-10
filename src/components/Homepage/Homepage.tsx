@@ -6,7 +6,6 @@ import "./style.css"
 export function Homepage() {
   return (
     <div className="homepage">
-      <section></section>
       <div className="homepageContent">
         <div className="circle">
           <div className="child">

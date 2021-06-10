@@ -19,7 +19,7 @@ describe("AppHeader", () => {
     // Assert
     expect(received).toBeDefined()
   })
-  it("calls to rtk to open the drawer", () => {
+  it("opens the drawer", () => {
     // Arrange
 
     // Act

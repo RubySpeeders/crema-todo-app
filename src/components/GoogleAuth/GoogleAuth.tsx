@@ -34,8 +34,10 @@ export function GoogleAuth() {
   }
 
   const onSignInClick = () => {
-    window.gapi.auth2.getAuthInstance().signIn()
-    dispatch(handleDrawer())
+    if (window.gapi) {
+      window.gapi.auth2.getAuthInstance().signIn()
+      dispatch(handleDrawer())
+    }
   }
 
   const onSignOutClick = () => {

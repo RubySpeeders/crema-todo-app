@@ -17,6 +17,6 @@ export const drawerSlice = createSlice({
 // Action creators are generated for each case reducer function
 export const { handleDrawer } = drawerSlice.actions
 
-export const selectOauth = (state: RootState) => state.allDrawer
+export const selectDrawer = (state: RootState) => state.allDrawer
 
 export default drawerSlice.reducer

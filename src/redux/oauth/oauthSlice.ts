@@ -17,7 +17,7 @@ export const oauthSlice = createSlice({
     },
     signOut: (state) => {
       state.isSignedIn = false
-      state.userId = "null"
+      state.userId = null
     },
   },
 })
