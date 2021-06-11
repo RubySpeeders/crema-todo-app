@@ -31,9 +31,10 @@ describe("GoogleAuth", () => {
     )
     const signInButton = getByText(text)
     fireEvent.click(signInButton)
-    const state = store.getState().allOauth
+    const state = store.getState().auth
 
     // Assert
-    expect(state.userId).toEqual("")
+    //TODO change this after making a custom hook for useAuth and dependency injection for testing userId
+    expect(state.userId).toEqual(null)
   })
 })

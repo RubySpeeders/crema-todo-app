@@ -19,6 +19,6 @@ describe("oauthSlice", () => {
     const state = oauthReducer(undefined, signOut())
     // Assert
     expect(state.isSignedIn).toBeFalsy()
-    expect(state.userId).toBe("null")
+    expect(state.userId).toBe(null)
   })
 })

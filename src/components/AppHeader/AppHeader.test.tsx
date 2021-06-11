@@ -32,7 +32,7 @@ describe("AppHeader", () => {
     fireEvent.click(hamburger)
 
     // Assert
-    const state = store.getState().allDrawer
-    expect(state.drawer).toBeTruthy()
+    const state = store.getState().drawer
+    expect(state.isOpen).toBeTruthy()
   })
 })

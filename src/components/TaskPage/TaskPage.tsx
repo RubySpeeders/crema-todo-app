@@ -11,8 +11,8 @@ import { FormNewTask } from "../FormNewTask"
 import { TaskCard } from "../TaskCard"
 
 export function TaskPage() {
-  const tasks: Task[] = useAppSelector((state) => state.allTasks.tasks)
-  const drawer: boolean = useAppSelector((state) => state.allDrawer.drawer)
+  const tasks: Task[] = useAppSelector((state) => state.tasks.tasks)
+  const drawer: boolean = useAppSelector((state) => state.drawer.isOpen)
   const [modal, setModal] = useState(false)
   const [expanded, setExpand] = useState(true)
   const completedTasks = tasks.filter((task) => task.isComplete)

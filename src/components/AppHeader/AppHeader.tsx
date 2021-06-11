@@ -1,12 +1,12 @@
 import "./style.css"
 import MenuIcon from "@material-ui/icons/Menu"
-import { handleDrawer } from "../../redux/drawer/drawerSlice"
+import { toggleDrawerOpen } from "../../redux/drawer/drawerSlice"
 import { useAppDispatch } from "../../redux/hooks"
 
 export function AppHeader() {
   const dispatch = useAppDispatch()
   const onDrawerClick = () => {
-    dispatch(handleDrawer())
+    dispatch(toggleDrawerOpen())
   }
   return (
     <header className="AppHeader">

@@ -5,9 +5,9 @@ import taskReducer from "./task/taskSlice"
 
 const store = configureStore({
   reducer: {
-    allTasks: taskReducer,
-    allOauth: oauthReducer,
-    allDrawer: drawerReducer,
+    tasks: taskReducer,
+    auth: oauthReducer,
+    drawer: drawerReducer,
   },
 })
 export type RootState = ReturnType<typeof store.getState>

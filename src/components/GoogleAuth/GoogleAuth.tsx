@@ -1,11 +1,11 @@
 import { useEffect } from "react"
-import { handleDrawer } from "../../redux/drawer/drawerSlice"
+import { toggleDrawerOpen } from "../../redux/drawer/drawerSlice"
 import { useAppDispatch, useAppSelector } from "../../redux/hooks"
 import { signIn, signOut } from "../../redux/oauth/oauthSlice"
 
 export function GoogleAuth() {
   const dispatch = useAppDispatch()
-  const isSignedIn = useAppSelector((state) => state.allOauth.isSignedIn)
+  const isSignedIn = useAppSelector((state) => state.auth.isSignedIn)
   useEffect(() => {
     if (window.gapi) {
       window.gapi.load("client:auth2", () => {
@@ -36,13 +36,13 @@ export function GoogleAuth() {
   const onSignInClick = () => {
     if (window.gapi) {
       window.gapi.auth2.getAuthInstance().signIn()
-      dispatch(handleDrawer())
+      dispatch(toggleDrawerOpen())
     }
   }
 
   const onSignOutClick = () => {
     window.gapi.auth2.getAuthInstance().signOut()
-    dispatch(handleDrawer())
+    dispatch(toggleDrawerOpen())
   }
 
   const renderAuthButton = () => {
