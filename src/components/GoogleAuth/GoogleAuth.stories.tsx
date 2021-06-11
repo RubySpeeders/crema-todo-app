@@ -1,5 +1,5 @@
 import decoratorCentered from "@storybook/addon-centered"
-import { GoogleAuth } from "./GoogleAuth"
+import { Auth } from "./GoogleAuth"
 
 /**
  * See Storybook Docs: Writing Stories
@@ -11,4 +11,4 @@ export default {
   decorators: [decoratorCentered],
 }
 
-export const example = () => <GoogleAuth />
+export const example = () => <Auth />

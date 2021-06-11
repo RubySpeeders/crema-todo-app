@@ -1,7 +1,7 @@
 import { fireEvent, render } from "@testing-library/react"
 import { Provider } from "react-redux"
 import store from "../../redux/store"
-import { GoogleAuth } from "./GoogleAuth"
+import { Auth } from "./GoogleAuth"
 
 describe("GoogleAuth", () => {
   it("has correct message before clicking", () => {
@@ -11,7 +11,7 @@ describe("GoogleAuth", () => {
     // Act
     const { getByText } = render(
       <Provider store={store}>
-        <GoogleAuth />
+        <Auth />
       </Provider>,
     )
     const received = getByText(message)
@@ -26,7 +26,7 @@ describe("GoogleAuth", () => {
     // Act
     const { getByText } = render(
       <Provider store={store}>
-        <GoogleAuth />
+        <Auth />
       </Provider>,
     )
     const signInButton = getByText(text)
