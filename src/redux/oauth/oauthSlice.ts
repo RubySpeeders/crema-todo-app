@@ -25,6 +25,6 @@ export const oauthSlice = createSlice({
 // Action creators are generated for each case reducer function
 export const { signIn, signOut } = oauthSlice.actions
 
-export const selectOauth = (state: RootState) => state.allOauth
+export const selectOauth = (state: RootState) => state.auth
 
 export default oauthSlice.reducer

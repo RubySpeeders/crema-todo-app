@@ -49,6 +49,6 @@ export const taskSlice = createSlice({
 // Action creators are generated for each case reducer function
 export const { addTask, editStatus, editTask, deleteTask } = taskSlice.actions
 
-export const selectTasks = (state: RootState) => state.allTasks.tasks
+export const selectTasks = (state: RootState) => state.tasks.tasks
 
 export default taskSlice.reducer
