@@ -1,12 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit"
 import drawerReducer from "./drawer/drawerSlice"
-import oauthReducer from "./oauth/oauthSlice"
+import authReducer from "./oauth/oauthSlice"
 import taskReducer from "./task/taskSlice"
 
 const store = configureStore({
   reducer: {
     tasks: taskReducer,
-    auth: oauthReducer,
+    auth: authReducer,
     drawer: drawerReducer,
   },
 })

@@ -13,6 +13,7 @@ import { TaskCard } from "../TaskCard"
 export function TaskPage() {
   const tasks: Task[] = useAppSelector((state) => state.tasks.tasks)
   const drawer: boolean = useAppSelector((state) => state.drawer.isOpen)
+  const isSignedIn: boolean = useAppSelector((state) => state.auth.isSignedIn)
   const [modal, setModal] = useState(false)
   const [expanded, setExpand] = useState(true)
   const completedTasks = tasks.filter((task) => task.isComplete)
@@ -30,7 +31,13 @@ export function TaskPage() {
     <div className="App">
       <AppHeader />
       {drawer && <Drawer />}
+
       <main>
+        {isSignedIn ? (
+          <div>you're signed in!</div>
+        ) : (
+          <div>you're not signed in</div>
+        )}
         {tasks.length === 0 ? (
           <div className="emptyTaskList">
             <p>Create a task with the button below.</p>

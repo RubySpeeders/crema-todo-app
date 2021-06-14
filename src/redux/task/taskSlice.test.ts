@@ -32,7 +32,7 @@ describe("taskSlice", () => {
     store.dispatch(addTask(newTask))
     // Act
     store.dispatch(editStatus(newTask))
-    const state = store.getState().allTasks
+    const state = store.getState().tasks
     const value = state.tasks.find((task) => task.id === "123XYZ")
     // Assert
     expect(value?.isComplete).toBeTruthy()
@@ -47,7 +47,7 @@ describe("taskSlice", () => {
     store.dispatch(addTask(newTask))
     // Act
     store.dispatch(deleteTask(newTask.id))
-    const state = store.getState().allTasks
+    const state = store.getState().tasks
     const value = state.tasks.find((task) => task.id === newTask.id)
     // Assert
     expect(value).not.toBeDefined()
@@ -63,7 +63,7 @@ describe("taskSlice", () => {
     const newText = "no more zoom with Rob"
     // Act
     store.dispatch(editTask({ id: newTask.id, text: newText }))
-    const state = store.getState().allTasks
+    const state = store.getState().tasks
     const value = state.tasks.find((task) => task.id === newTask.id)
     // Assert
     expect(value?.description).toBe(newText)
