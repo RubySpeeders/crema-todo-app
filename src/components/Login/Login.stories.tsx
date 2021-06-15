@@ -1,5 +1,5 @@
 import decoratorCentered from "@storybook/addon-centered"
-import { GoogleLogin } from "./GoogleLogin"
+import { Login } from "./Login"
 
 /**
  * See Storybook Docs: Writing Stories
@@ -7,8 +7,8 @@ import { GoogleLogin } from "./GoogleLogin"
  */
 
 export default {
-  title: "GoogleLogin",
+  title: "Login",
   decorators: [decoratorCentered],
 }
 
-export const example = () => <GoogleLogin />
+export const example = () => <Login />

@@ -1,13 +1,13 @@
 import { render } from "@testing-library/react"
-import { GoogleLogin } from "./GoogleLogin"
+import { Login } from "./Login"
 
-describe("GoogleLogin", () => {
+describe("Login", () => {
   it("name prop is rendered", () => {
     // Arrange
-    const name = "GoogleLogin"
+    const name = "Log in"
 
     // Act
-    const { getByText } = render(<GoogleLogin />)
+    const { getByText } = render(<Login />)
     const received = getByText(name)
 
     // Assert
