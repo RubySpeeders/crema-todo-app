@@ -34,45 +34,47 @@ export function TaskPage() {
 
       <main>
         {isSignedIn ? (
-          <div>you're signed in!</div>
-        ) : (
-          <div>you're not signed in</div>
-        )}
-        {tasks.length === 0 ? (
-          <div className="emptyTaskList">
-            <p>Create a task with the button below.</p>
-          </div>
-        ) : (
-          <div className="activeList">
-            <p>Active Tasks</p>
-            {activeTasks.map((taskItem: Task) => {
-              return <TaskCard key={taskItem.id} task={taskItem} />
-            })}
-          </div>
-        )}
-
-        <ButtonCreateTask onShowModal={handleModal} />
-        {modal}
-        <div className="completeList">
-          <div className="completeLabel">
-            <p className="complete">Completed Tasks</p>
-            {expanded ? (
-              <div className="expand active" onClick={handleExpand}>
-                Hide
-                <ExpandLessIcon />
+          <>
+            {tasks.length === 0 ? (
+              <div className="emptyTaskList">
+                <p>Create a task with the button below.</p>
               </div>
             ) : (
-              <div className="expand" onClick={handleExpand}>
-                Show
-                <ExpandMoreIcon />
+              <div className="activeList">
+                <p>Active Tasks</p>
+                {activeTasks.map((taskItem: Task) => {
+                  return <TaskCard key={taskItem.id} task={taskItem} />
+                })}
               </div>
             )}
+
+            <ButtonCreateTask onShowModal={handleModal} />
+            <div className="completeList">
+              <div className="completeLabel">
+                <p className="complete">Completed Tasks</p>
+                {expanded ? (
+                  <div className="expand active" onClick={handleExpand}>
+                    Hide
+                    <ExpandLessIcon />
+                  </div>
+                ) : (
+                  <div className="expand" onClick={handleExpand}>
+                    Show
+                    <ExpandMoreIcon />
+                  </div>
+                )}
+              </div>
+              {expanded &&
+                completedTasks.map((taskItem: Task) => {
+                  return <TaskCard key={taskItem.id} task={taskItem} />
+                })}
+            </div>
+          </>
+        ) : (
+          <div>
+            <p>please sign in</p>
           </div>
-          {expanded &&
-            completedTasks.map((taskItem: Task) => {
-              return <TaskCard key={taskItem.id} task={taskItem} />
-            })}
-        </div>
+        )}
       </main>
       <FormNewTask
         kind="new"

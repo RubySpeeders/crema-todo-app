@@ -1,9 +1,15 @@
 // import React from "react"
-import { GoogleLogin } from "react-google-login"
+import {
+  GoogleLogin,
+  GoogleLoginResponse,
+  GoogleLoginResponseOffline,
+} from "react-google-login"
 
 export function Login() {
-  const CLIENT_ID = process.env.GOOGLE_APP_ID
-  const handleGoogleResponse = (response) => {
+  const CLIENT_ID = process.env.GOOGLE_APP_ID ?? ""
+  const handleGoogleResponse = (
+    response: GoogleLoginResponseOffline | GoogleLoginResponse,
+  ) => {
     console.log(response)
   }
   return (
