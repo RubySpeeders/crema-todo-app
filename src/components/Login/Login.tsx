@@ -6,11 +6,13 @@ import {
 } from "react-google-login"
 
 export function Login() {
-  const CLIENT_ID = process.env.GOOGLE_APP_ID ?? ""
+  const CLIENT_ID = process.env.REACT_APP_GOOGLE_APP_ID ?? ""
   const handleGoogleResponse = (
     response: GoogleLoginResponseOffline | GoogleLoginResponse,
   ) => {
-    console.log(response)
+    if (response.profileObj) {
+      console.log(response.profileObj)
+    }
   }
   return (
     <div>
