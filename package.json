@@ -109,9 +109,7 @@
       "!src/**/index.ts",
       "!src/reportWebVitals.ts",
       "!src/serviceWorker.ts",
-      "!src/components/TaskPage/*.{ts,tsx}",
-      "!src/components/EmptyStateSVG/*.{ts,tsx}",
-      "!src/components/LogoSVG/*.{ts,tsx}"
+      "!src/components/TaskPage/*.{ts,tsx}"
     ]
   },
   "loki": {
