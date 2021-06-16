@@ -12,7 +12,7 @@ describe("App", function () {
   })
   it("shows a modal after clicking Create New Task button and hides it after clicking cancel", function () {
     cy.visit("/todo")
-    cy.get("[data-testid=createButton]").click()
+    cy.findByText("Create New Task").click()
     cy.get(".taskForm").should("exist")
     cy.get("label").should("have.text", "New Task")
     cy.get("[data-testid=cancel]").click()

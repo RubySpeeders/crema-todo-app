@@ -2,6 +2,7 @@ import CheckCircleIcon from "@material-ui/icons/CheckCircle"
 import RadioButtonUncheckedIcon from "@material-ui/icons/RadioButtonUnchecked"
 import TodayIcon from "@material-ui/icons/Today"
 import "./style.css"
+import classnames from "classnames"
 import { useState } from "react"
 import { useAppDispatch } from "../../redux/hooks"
 import { editStatus } from "../../redux/task/taskSlice"
@@ -40,15 +41,21 @@ export function TaskCard({ task }: Props) {
               <CheckCircleIcon className="ellipse" data-testid="checked" />
             )}
           </div>
-          <p className={`normal ${task.isComplete && "completeDescription"}`}>
+          <p
+            className={classnames("normal", {
+              completeDescription: task.isComplete,
+            })}
+          >
             {task.description}
           </p>
         </div>
-        <div className="dateArea">
+        <div
+          className={classnames("dateArea", {
+            completeDescription: task.isComplete,
+          })}
+        >
           <TodayIcon className="ellipse" />
-          <p className={`normal ${task.isComplete && "completeDescription"}`}>
-            Mon Sep 20
-          </p>
+          <p className="normal">Mon Sep 20</p>
         </div>
       </div>
       <FormNewTask
