@@ -6,7 +6,7 @@ import { Login } from "./Login"
 describe("Login", () => {
   it("name prop is rendered", () => {
     // Arrange
-    const name = "Log in"
+    const name = "Login"
 
     // Act
     const { getByText } = render(

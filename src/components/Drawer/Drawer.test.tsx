@@ -6,7 +6,7 @@ import { Drawer } from "./Drawer"
 describe("Drawer", () => {
   it("has correct message before clicking", () => {
     // Arrange
-    const message = "Sign In"
+    const message = "Login"
 
     // Act
     const { getByText } = render(
