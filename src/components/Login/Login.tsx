@@ -5,12 +5,12 @@ import {
   GoogleLoginResponseOffline,
 } from "react-google-login"
 import { toggleDrawerOpen } from "../../redux/drawer/drawerSlice"
-import { useAppDispatch, useAppSelector } from "../../redux/hooks"
+import { useAppDispatch } from "../../redux/hooks"
 import { signIn } from "../../redux/oauth/oauthSlice"
 
 export function Login() {
-  const isSignedIn = useAppSelector((state) => state.auth.isSignedIn)
-  const googleId = useAppSelector((state) => state.auth.userId)
+  // const isSignedIn = useAppSelector((state) => state.auth.isSignedIn)
+  // const googleId = useAppSelector((state) => state.auth.userId)
   const dispatch = useAppDispatch()
   const CLIENT_ID = process.env.REACT_APP_GOOGLE_APP_ID ?? ""
   const isGoogleLoginResponse = (
@@ -31,7 +31,7 @@ export function Login() {
     }
     console.log(response.isSignedIn())
     dispatch(signIn(response.profileObj.googleId))
-    dispatch(toggleDrawerOpen)
+    dispatch(toggleDrawerOpen())
   }
 
   return (
@@ -43,7 +43,6 @@ export function Login() {
         onFailure={handleGoogleResponse}
         cookiePolicy={"single_host_origin"}
       />
-      {isSignedIn ? <p>{googleId}</p> : <p>no not signed in</p>}
     </div>
   )
 }
