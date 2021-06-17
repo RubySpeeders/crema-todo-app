@@ -1,4 +1,5 @@
 import { GoogleLogout } from "react-google-login"
+import { toggleDrawerOpen } from "../../redux/drawer/drawerSlice"
 import { useAppDispatch } from "../../redux/hooks"
 import { signOut } from "../../redux/oauth/oauthSlice"
 
@@ -9,6 +10,7 @@ export function Logout() {
     //TODO - actually sign out of google
     console.log("signed out")
     dispatch(signOut())
+    dispatch(toggleDrawerOpen())
   }
   return (
     <div>
