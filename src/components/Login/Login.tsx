@@ -29,7 +29,6 @@ export function Login() {
     if (!isGoogleLoginResponse(response)) {
       return
     }
-    console.log(response.isSignedIn())
     dispatch(signIn(response.profileObj.googleId))
     dispatch(toggleDrawerOpen())
   }
