@@ -1,4 +1,7 @@
 describe("App", function () {
+  beforeEach(() => {
+    cy.loginByGoogleApi()
+  })
   it("Contains a button that starts the app in motion", function () {
     cy.visit("/")
     cy.get("[data-testid=getStarted]").contains("Get Started")

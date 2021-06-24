@@ -12,7 +12,8 @@ export function Login() {
   // const isSignedIn = useAppSelector((state) => state.auth.isSignedIn)
   // const googleId = useAppSelector((state) => state.auth.userId)
   const dispatch = useAppDispatch()
-  const CLIENT_ID = process.env.REACT_APP_GOOGLE_APP_ID ?? ""
+  const CLIENT_ID = process.env.REACT_APP_GOOGLE_CLIENTID ?? ""
+  console.log(CLIENT_ID)
   const isGoogleLoginResponse = (
     response: GoogleLoginResponse | GoogleLoginResponseOffline,
   ): response is GoogleLoginResponse => {
@@ -30,18 +31,17 @@ export function Login() {
       return
     }
     dispatch(signIn(response.profileObj.googleId))
+    console.log(response.isSignedIn())
     dispatch(toggleDrawerOpen())
   }
 
   return (
-    <div>
-      <GoogleLogin
-        clientId={CLIENT_ID}
-        buttonText="Login"
-        onSuccess={handleGoogleResponse}
-        onFailure={handleGoogleResponse}
-        cookiePolicy={"single_host_origin"}
-      />
-    </div>
+    <GoogleLogin
+      clientId={CLIENT_ID}
+      buttonText="Login"
+      onSuccess={handleGoogleResponse}
+      onFailure={handleGoogleResponse}
+      cookiePolicy={"single_host_origin"}
+    />
   )
 }

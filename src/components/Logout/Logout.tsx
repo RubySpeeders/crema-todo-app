@@ -5,7 +5,7 @@ import { signOut } from "../../redux/oauth/oauthSlice"
 
 export function Logout() {
   const dispatch = useAppDispatch()
-  const CLIENT_ID = process.env.REACT_APP_GOOGLE_APP_ID ?? ""
+  const CLIENT_ID = process.env.REACT_APP_GOOGLE_CLIENTID ?? ""
   const handleGoogleResponse = () => {
     //TODO - actually sign out of google
     console.log("signed out")
@@ -13,12 +13,10 @@ export function Logout() {
     dispatch(toggleDrawerOpen())
   }
   return (
-    <div>
-      <GoogleLogout
-        clientId={CLIENT_ID}
-        buttonText="Logout"
-        onLogoutSuccess={handleGoogleResponse}
-      ></GoogleLogout>
-    </div>
+    <GoogleLogout
+      clientId={CLIENT_ID}
+      buttonText="Logout"
+      onLogoutSuccess={handleGoogleResponse}
+    />
   )
 }
