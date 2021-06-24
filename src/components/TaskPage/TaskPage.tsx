@@ -6,6 +6,7 @@ import { useAppSelector } from "../../redux/hooks"
 import { Task } from "../../types/Task"
 import { AppHeader } from "../AppHeader"
 import { ButtonCreateTask } from "../ButtonCreateTask"
+import { EmptyStateSVG } from "../EmptyStateSVG"
 import { FormNewTask } from "../FormNewTask"
 import { TaskCard } from "../TaskCard"
 
@@ -31,6 +32,7 @@ export function TaskPage() {
         {tasks.length === 0 ? (
           <div className="emptyTaskList">
             <p>Create a task with the button below.</p>
+            <EmptyStateSVG />
           </div>
         ) : (
           <div className="activeList">
@@ -42,27 +44,28 @@ export function TaskPage() {
         )}
 
         <ButtonCreateTask onShowModal={handleModal} />
-        {modal}
-        <div className="completeList">
-          <div className="completeLabel">
-            <p className="complete">Completed Tasks</p>
-            {expanded ? (
-              <div className="expand active" onClick={handleExpand}>
-                Hide
-                <ExpandLessIcon />
-              </div>
-            ) : (
-              <div className="expand" onClick={handleExpand}>
-                Show
-                <ExpandMoreIcon />
-              </div>
-            )}
+        {completedTasks.length > 0 && (
+          <div className="completeList">
+            <div className="completeLabel">
+              <p className="complete">Completed Tasks</p>
+              {expanded ? (
+                <div className="expand active" onClick={handleExpand}>
+                  Hide
+                  <ExpandLessIcon />
+                </div>
+              ) : (
+                <div className="expand" onClick={handleExpand}>
+                  Show
+                  <ExpandMoreIcon />
+                </div>
+              )}
+            </div>
+            {expanded &&
+              completedTasks.map((taskItem: Task) => {
+                return <TaskCard key={taskItem.id} task={taskItem} />
+              })}
           </div>
-          {expanded &&
-            completedTasks.map((taskItem: Task) => {
-              return <TaskCard key={taskItem.id} task={taskItem} />
-            })}
-        </div>
+        )}
       </main>
       <FormNewTask
         kind="new"
