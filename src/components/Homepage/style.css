@@ -3,7 +3,7 @@
 .homepage {
   display: flex;
   justify-content: center;
-  margin-top: 10em;
+  margin-top: 5em;
 }
 .homepageContent {
   display: flex;
@@ -41,36 +41,6 @@
   color: #ffffff;
   padding: 16px 16px;
   /* bottom: 32.45%; */
-}
-
-.circle {
-  width: 10em;
-  height: 10em;
-  background: #cdd4f4b0;
-  position: relative;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.child {
-  position: absolute;
-  text-align: center;
-  color: #4158C4;
-  font-size: 2em;
-}
-
-.child p {
-  color: #4158C4;
-  height: 2em;
-  font-family: Roboto;
-  font-style: italic;
-  font-size: 1.5em;
-  line-height: 75px;
-  text-align: center;
-  letter-spacing: 0.470588px;
-  margin: auto;
 }
 
 .link {

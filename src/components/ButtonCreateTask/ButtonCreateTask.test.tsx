@@ -1,5 +1,6 @@
 import { render } from "@testing-library/react"
-// import React from "react"
+import { Provider } from "react-redux"
+import store from "../../redux/store"
 import { ButtonCreateTask } from "./ButtonCreateTask"
 
 describe("ButtonCreateTask", () => {
@@ -9,11 +10,13 @@ describe("ButtonCreateTask", () => {
 
     // Act
     const { getByText } = render(
-      <ButtonCreateTask
-        onShowModal={() => {
-          console.log("test happened")
-        }}
-      />,
+      <Provider store={store}>
+        <ButtonCreateTask
+          onShowModal={() => {
+            console.log("test happened")
+          }}
+        />
+      </Provider>,
     )
     const received = getByText(name)
 

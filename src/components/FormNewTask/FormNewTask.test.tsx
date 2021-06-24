@@ -34,7 +34,7 @@ describe("FormNewTask", () => {
     const state = store.getState().tasks
     expect(state.tasks[0].description).toBe("meeting with Mandy")
   })
-  it("tests Edit Form called with correct parameters", () => {
+  it("tests Edit Form calls to Redux", () => {
     // Arrange
     const modal = true
     const newTask: Task = {

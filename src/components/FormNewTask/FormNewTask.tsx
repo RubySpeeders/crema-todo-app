@@ -98,6 +98,7 @@ export function FormNewTask({
               <DeleteOutlineIcon
                 onClick={handleDelete}
                 data-testid="deleteIcon"
+                className="ellipse"
               />
             )}
           </div>
@@ -109,10 +110,14 @@ export function FormNewTask({
           ></input>
         </div>
         <div className="buttonArea">
-          <button id="cancelButton" onClick={onHideModal}>
+          <button
+            className="secondaryButton"
+            onClick={onHideModal}
+            data-testid="cancel"
+          >
             Cancel
           </button>
-          <button type="submit" id="saveButton">
+          <button type="submit" className="primaryButton" data-testid="save">
             Save
           </button>
         </div>

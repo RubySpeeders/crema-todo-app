@@ -1,3 +1,4 @@
+import "@testing-library/cypress/add-commands"
 Cypress.Commands.add("loginByGoogleApi", () => {
   cy.log("Logging in to Google")
   cy.request({

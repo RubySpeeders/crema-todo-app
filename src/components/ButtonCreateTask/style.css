@@ -1,0 +1,25 @@
+.buttonContainer {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+
+.createTaskButton {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0px 32px;
+  width: 466px;
+  height: 40px;
+  left: 487px;
+  top: 274px;
+  background: rgba(65, 88, 196, 0.1);
+  border-radius: 4px;
+  border: none;
+  font-weight: bold;
+  font-size: 1em;
+  font-family: Roboto;
+  line-height: 100%;
+  letter-spacing: 0.0125em;
+  color: #4158C4;
+}

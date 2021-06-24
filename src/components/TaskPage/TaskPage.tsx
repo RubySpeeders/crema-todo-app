@@ -7,6 +7,7 @@ import { Task } from "../../types/Task"
 import { AppHeader } from "../AppHeader"
 import { ButtonCreateTask } from "../ButtonCreateTask"
 import { Drawer } from "../Drawer"
+import { EmptyStateSVG } from "../EmptyStateSVG"
 import { FormNewTask } from "../FormNewTask"
 import { TaskCard } from "../TaskCard"
 
@@ -38,6 +39,7 @@ export function TaskPage() {
             {tasks.length === 0 ? (
               <div className="emptyTaskList">
                 <p>Create a task with the button below.</p>
+                <EmptyStateSVG />
               </div>
             ) : (
               <div className="activeList">
