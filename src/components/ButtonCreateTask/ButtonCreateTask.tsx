@@ -4,7 +4,7 @@ import "./style.css"
 type Props = { onShowModal: () => void }
 
 export function ButtonCreateTask({ onShowModal }: Props) {
-  const tasks = useAppSelector((state) => state.allTasks.tasks)
+  const tasks = useAppSelector((state) => state.tasks.tasks)
   return (
     <div className="buttonContainer">
       <button
