@@ -1,7 +1,15 @@
 import { BrowserRouter, Route } from "react-router-dom"
 import "./styles.css"
+import store from "../../redux/store"
 import { Homepage } from "../Homepage"
 import { TaskPage } from "../TaskPage"
+
+declare global {
+  interface Window {
+    Cypress: unknown
+    store: unknown
+  }
+}
 
 export function App() {
   return (
@@ -12,4 +20,8 @@ export function App() {
       </BrowserRouter>
     </div>
   )
+}
+
+if (window.Cypress) {
+  window.store = store
 }

@@ -32,7 +32,7 @@ Cypress.Commands.add("loginByGoogleApi", () => {
       }
 
       window.localStorage.setItem("googleCypress", JSON.stringify(userItem))
-      cy.visit("/")
+      cy.visit("/todo")
     })
   })
 })

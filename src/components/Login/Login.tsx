@@ -31,7 +31,6 @@ export function Login() {
       return
     }
     dispatch(signIn(response.profileObj.googleId))
-    console.log(response.isSignedIn())
     dispatch(toggleDrawerOpen())
   }
 

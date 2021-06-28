@@ -16,7 +16,8 @@
 // ***********************************************************
 
 // Import commands.js using ES2015 syntax:
-import "./commands"
+import "./googleLogin"
+import "./createTask"
 
 declare global {
   namespace Cypress {
@@ -26,6 +27,7 @@ declare global {
        * @example cy.loginByGoogleApi()
        */
       loginByGoogleApi(): Chainable<Window>
+      createTask(): Chainable<Window>
     }
   }
 }
