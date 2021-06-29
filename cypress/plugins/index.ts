@@ -17,11 +17,9 @@ export default (_on: Cypress.PluginEvents, config: Cypress.ConfigOptions) => {
   // `on` is used to hook into various events Cypress emits
   // `config` is the resolved Cypress config
   if (config.env) {
-    config.env.googleRefreshToken =
-      "97459474309-nv26m4tb2fgrk15uvvkup2cen066hqq9.apps.googleusercontent.com"
-    config.env.googleClientId = "YvQhsB7SMrvCtccwaOJQli5Y"
-    config.env.googleClientSecret =
-      "1//04U9UldjyUHQ7CgYIARAAGAQSNwF-L9IrX3E0huBSMo-Ycd_zQLUY8x4rN7Y6Wt8US6BJPDYWIsxjD7qm3AKp0Q-Jgd-G1PzMlps"
+    config.env.googleRefreshToken = process.env.GOOGLE_REFRESH_TOKEN
+    config.env.googleClientId = process.env.REACT_APP_GOOGLE_CLIENTID
+    config.env.googleClientSecret = process.env.REACT_APP_GOOGLE_CLIENT_SECRET
   }
   return config
 }
