@@ -36,6 +36,7 @@ export function Login() {
 
   return (
     <GoogleLogin
+      data-testid="login"
       clientId={CLIENT_ID}
       buttonText="Login"
       onSuccess={handleGoogleResponse}

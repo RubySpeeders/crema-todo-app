@@ -7,8 +7,6 @@ export function Logout() {
   const dispatch = useAppDispatch()
   const CLIENT_ID = process.env.REACT_APP_GOOGLE_CLIENTID ?? ""
   const handleGoogleResponse = () => {
-    //TODO - actually sign out of google
-    console.log("signed out")
     dispatch(signOut())
     dispatch(toggleDrawerOpen())
   }

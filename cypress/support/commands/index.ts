@@ -18,14 +18,26 @@
 // Import commands.js using ES2015 syntax:
 import "./googleLogin"
 import "./createTask"
+import "./interceptGoogle"
+import "@testing-library/cypress/add-commands"
+
+// declare global {
+//   namespace Cypress {
+//     interface Chainable {
+//       /**
+//        * Custom command to select DOM element by data-cy attribute.
+//        * @example cy.loginByGoogleApi()
+//        */
+//       loginByGoogleApi(): Chainable<Window>
+//       createTask(): Chainable<Window>
+//     }
+//   }
+// }
 
 declare global {
   namespace Cypress {
     interface Chainable {
-      /**
-       * Custom command to select DOM element by data-cy attribute.
-       * @example cy.loginByGoogleApi()
-       */
+      login(path?: string, options?: Cypress.VisitOptions): Chainable<AUTWindow>
       loginByGoogleApi(): Chainable<Window>
       createTask(): Chainable<Window>
     }

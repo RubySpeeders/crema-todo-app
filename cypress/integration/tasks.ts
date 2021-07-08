@@ -1,16 +1,16 @@
-describe("app with no oauth", () => {
-  it("Contains a button that starts the app in motion", function () {
-    cy.visit("/")
-    cy.findByText("Get Started").contains("Get Started")
-    cy.findByText("Get Started").click()
-    cy.get(".AppHeader").contains("My Tasks")
-    cy.url().should("include", "/todo")
-  })
-  it("Contains a header with a title", function () {
-    cy.visit("/todo")
-    cy.get(".AppHeader").contains("My Tasks")
-  })
-})
+// describe("app with no oauth", () => {
+//   it("Contains a button that starts the app in motion", function () {
+//     cy.visit("/")
+//     cy.findByText("Get Started").contains("Get Started")
+//     cy.findByText("Get Started").click()
+//     cy.get(".AppHeader").contains("My Tasks")
+//     cy.url().should("include", "/todo")
+//   })
+//   it("Contains a header with a title", function () {
+//     cy.visit("/todo")
+//     cy.get(".AppHeader").contains("My Tasks")
+//   })
+// })
 
 describe("App with oauth before each test", function () {
   // beforeEach(() => {
@@ -18,13 +18,9 @@ describe("App with oauth before each test", function () {
   // })
   it("shows a modal after clicking Create New Task button and hides it after clicking cancel", function () {
     cy.visit("/todo")
+    cy.login()
     cy.get("[data-testid=hamburger]").click()
     cy.findByText("Login").click()
-    cy.loginByGoogleApi()
-    cy.window()
-      .its("store")
-      .invoke("dispatch", { type: "signIn", userId: "123ABC" })
-    cy.window().its("store").invoke("getState")
   })
   // cy.findByText("Create New Task").click()
   // cy.get(".taskForm").should("exist")
@@ -34,7 +30,6 @@ describe("App with oauth before each test", function () {
 
   it("creates a new task with a checkbox", function () {
     cy.visit("/todo")
-    cy.loginByGoogleApi()
     cy.findByText("Create New Task").click()
     //   cy.get("#taskInput").type("make dinner")
     //   cy.findByText("Save").click()
