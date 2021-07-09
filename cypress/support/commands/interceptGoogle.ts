@@ -6,9 +6,9 @@ const login = (
     method: "POST",
     url: "https://www.googleapis.com/oauth2/v4/token",
     body: {
-      client_id: Cypress.env("CLIENT_ID"),
-      client_secret: Cypress.env("CLIENT_SECRET"),
-      refresh_token: Cypress.env("REFRESH_TOKEN"),
+      client_id: Cypress.env("googleClientId"),
+      client_secret: Cypress.env("googleClientSecret"),
+      refresh_token: Cypress.env("googleRefreshToken"),
       grant_type: "refresh_token",
       audience: Cypress.env("IAP_AUDIENCE"),
     },
@@ -18,7 +18,9 @@ const login = (
   }
 
   return cy.request(options).then((response) => {
+    console.log(options.body.client_id)
     if (response.status !== 200) {
+      console.log(response)
       throw new Error(
         `Request to get auth token failed, response: ${JSON.stringify(
           response.body,
