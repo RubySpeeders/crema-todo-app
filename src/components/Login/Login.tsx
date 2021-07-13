@@ -30,7 +30,6 @@ export function Login() {
     if (!isGoogleLoginResponse(response)) {
       return
     }
-    console.log(response.profileObj)
     dispatch(
       signIn({
         userId: response.profileObj.googleId,
