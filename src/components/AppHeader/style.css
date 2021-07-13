@@ -14,3 +14,15 @@
 .menuIcon {
     margin-left: 1em;
 }
+
+.HeaderItems {
+    display: flex;
+    justify-content: space-between;
+    width: 80em
+}
+
+.HeaderItems p {
+    margin-top: 2em;
+    margin-right: 1em;
+    width: 10em
+}

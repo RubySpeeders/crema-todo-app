@@ -30,7 +30,13 @@ export function Login() {
     if (!isGoogleLoginResponse(response)) {
       return
     }
-    dispatch(signIn(response.profileObj.googleId))
+    console.log(response.profileObj)
+    dispatch(
+      signIn({
+        userId: response.profileObj.googleId,
+        userName: response.profileObj.name,
+      }),
+    )
     dispatch(toggleDrawerOpen())
   }
 

@@ -24,7 +24,17 @@ const useAuth = (authInstance = window.gapi) => {
   const onAuthChange = (isSignedIn: boolean) => {
     if (isSignedIn) {
       dispatch(
-        signIn(authInstance.auth2.getAuthInstance().currentUser.get().getId()),
+        signIn({
+          userId: authInstance.auth2
+            .getAuthInstance()
+            .currentUser.get()
+            .getId(),
+          userName: authInstance.auth2
+            .getAuthInstance()
+            .currentUser.get()
+            .getBasicProfile()
+            .getName(),
+        }),
       )
     } else {
       dispatch(signOut())
