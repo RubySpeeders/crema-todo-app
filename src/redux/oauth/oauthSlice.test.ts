@@ -5,8 +5,9 @@ describe("oauthSlice", () => {
   it("sign in changes isSignedIn to true and saves the userId", () => {
     //Arrange
     const userId = "test123"
+    const userName = "Sarah Peters"
     // Act
-    const state = oauthReducer(undefined, signIn(userId))
+    const state = oauthReducer(undefined, signIn({ userId, userName }))
 
     // Assert
     expect(state.userId).toBe(userId)
@@ -20,5 +21,6 @@ describe("oauthSlice", () => {
     // Assert
     expect(state.isSignedIn).toBeFalsy()
     expect(state.userId).toBe(null)
+    expect(state.userName).toBe(null)
   })
 })
