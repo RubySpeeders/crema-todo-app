@@ -42,7 +42,7 @@ describe("TaskCard", () => {
     fireEvent.click(checkbox)
 
     // Assert
-    const state = store.getState().allTasks
+    const state = store.getState().tasks
     const found = state.tasks.find((task) => task.id === newTask.id)
     expect(found?.isComplete).toBeTruthy()
   })

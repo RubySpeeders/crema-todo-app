@@ -29,3 +29,5 @@ yarn-error.log*
 # depcruiser visualizations
 dependency-graph.svg
 dependency-report.html
+
+todo-app-315819-5c42dd0d1c80.json

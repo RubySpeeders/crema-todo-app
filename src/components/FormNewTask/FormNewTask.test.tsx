@@ -31,7 +31,7 @@ describe("FormNewTask", () => {
     fireEvent.click(saveButton)
 
     // Assert
-    const state = store.getState().allTasks
+    const state = store.getState().tasks
     expect(state.tasks[0].description).toBe("meeting with Mandy")
   })
   it("tests Edit Form calls to Redux", () => {
@@ -65,7 +65,7 @@ describe("FormNewTask", () => {
     fireEvent.click(saveButton)
 
     // Assert
-    const state = store.getState().allTasks
+    const state = store.getState().tasks
     const found = state.tasks.find((task) => task.id === newTask.id)
     expect(found?.description).toBe("meeting with Israel")
   })
@@ -97,7 +97,7 @@ describe("FormNewTask", () => {
     fireEvent.click(deleteIcon)
 
     // Assert
-    const state = store.getState().allTasks
+    const state = store.getState().tasks
     const found = state.tasks.find((task) => task.id === newTask.id)
     expect(found).not.toBeDefined()
   })
