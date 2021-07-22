@@ -28,4 +28,26 @@ describe("Login", () => {
     expect(state.auth.userId).toBe("testing123")
     expect(state.auth.userName).toBe("Sarah Peters")
   })
+
+  // it("tests the mock function", () => {
+  //   jest.mock("react-google-login", () => {
+  //     const defaultMockSuccess = {
+  //       tokenId: "tokenId",
+  //     } as GoogleLoginResponse
+  //     const GoogleLogin = (
+  //       onSuccess: (
+  //         response: GoogleLoginResponse | GoogleLoginResponseOffline,
+  //       ) => void | undefined,
+  //       buttonText = "Login",
+  //     ) => {
+  //       const handleClick = () => {
+  //         onSuccess(defaultMockSuccess)
+  //       }
+
+  //       return <button onClick={handleClick}>{buttonText}</button>
+  //     }
+
+  //     return GoogleLogin
+  //   })
+  // })
 })

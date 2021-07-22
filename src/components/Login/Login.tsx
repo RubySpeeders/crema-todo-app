@@ -1,4 +1,3 @@
-// import React from "react"
 import {
   GoogleLogin,
   GoogleLoginResponse,
@@ -9,14 +8,13 @@ import { useAppDispatch } from "../../redux/hooks"
 import { signIn } from "../../redux/oauth/oauthSlice"
 
 export function Login() {
-  // const isSignedIn = useAppSelector((state) => state.auth.isSignedIn)
-  // const googleId = useAppSelector((state) => state.auth.userId)
   const dispatch = useAppDispatch()
   const CLIENT_ID = process.env.REACT_APP_GOOGLE_CLIENTID ?? ""
-  console.log(CLIENT_ID)
+
   const isGoogleLoginResponse = (
     response: GoogleLoginResponse | GoogleLoginResponseOffline,
   ): response is GoogleLoginResponse => {
+    console.log("is google response")
     return (
       Boolean(response) &&
       typeof response === "object" &&
@@ -24,12 +22,13 @@ export function Login() {
     )
   }
 
-  function handleGoogleResponse(
+  const handleGoogleResponse = (
     response: GoogleLoginResponse | GoogleLoginResponseOffline,
-  ) {
+  ) => {
     if (!isGoogleLoginResponse(response)) {
       return
     }
+    console.log("handle google")
     dispatch(
       signIn({
         userId: response.profileObj.googleId,
